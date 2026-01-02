@@ -400,8 +400,6 @@ namespace StarterAssets
         {
             Ray interactRay = new Ray(_mainCamera.transform.position, _mainCamera.transform.forward);
 
-            Debug.DrawRay(_mainCamera.transform.position, _mainCamera.transform.forward, Color.green,8);
-
             if (_input.interact)
             {
                 void InteractAction(Interactable i)
@@ -412,6 +410,12 @@ namespace StarterAssets
                     {
                         currentVehicle = v.GetComponent<Vehicle>();
                         _playerInput.SwitchCurrentActionMap("Aircraft");
+                        GetComponent<CharacterController>().enabled = false;
+                        _animator.SetFloat(_animIDSpeed, 0f);
+                        _animator.SetBool(_animIDFreeFall, false);
+                        _animator.SetBool(_animIDJump, false);
+                        _animator.SetBool(_animIDGrounded, true);
+                        this.enabled = false;
                     }
                 }
                 

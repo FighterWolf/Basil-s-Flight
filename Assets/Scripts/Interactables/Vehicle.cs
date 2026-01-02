@@ -9,13 +9,17 @@ public class Vehicle : MonoBehaviour, Interactable
     public float speed;
     public float maxSpeed;
 
+    private float turnSpeed;
+
     public GameObject[] exitSpots;
 
     private GameObject player;
     private AircraftControls pilotInput;
     private Camera planeCam;
     private Camera playerCam;
+    private Rigidbody rb;
 
+    public Vector2 look;
     public float yaw;
     public float pitch;
     public float roll;
@@ -27,6 +31,7 @@ public class Vehicle : MonoBehaviour, Interactable
     void Start()
     {
         planeCam= EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -34,6 +39,7 @@ public class Vehicle : MonoBehaviour, Interactable
     {
         if (pilotInput != null)
         {
+            look = pilotInput.look;
             yaw = pilotInput.yaw;
             pitch = pilotInput.pitch;
             roll = pilotInput.roll;
@@ -42,7 +48,21 @@ public class Vehicle : MonoBehaviour, Interactable
         }
 
         OnDismount();
+    }
+
+    void FixedUpdate()
+    {
         OnDrive();
+        OnTakeOff();
+
+        rb.angularVelocity *= 0.95f;
+    }
+
+    private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+    {
+        if (lfAngle < -360f) lfAngle += 360f;
+        if (lfAngle > 360f) lfAngle -= 360f;
+        return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
     public void Interact(GameObject player)
@@ -106,8 +126,11 @@ public class Vehicle : MonoBehaviour, Interactable
 
             player.transform.SetParent(null);
             SwitchControls(false,"Player");
+            player.GetComponent<CharacterController>().enabled = true;
+            player.GetComponent<ThirdPersonController>().enabled = true;
             player.GetComponent<ThirdPersonController>().OnExitVehicle();
             pilotInput = null;
+            speed = 0;
             dismount = false;
         }
     }
@@ -116,35 +139,39 @@ public class Vehicle : MonoBehaviour, Interactable
     {
         Accelerate(throttle*3);
 
-        if (speed != 0)
+        if (speed < 0)
         {
-            UseRudder(yaw * speed * Time.deltaTime);
-            UseElevator(pitch * speed * Time.deltaTime);
-            UseAileron(roll * speed * Time.deltaTime);
-
-            transform.position += transform.forward * speed * Time.deltaTime;
+            if (throttle >= 0)
+            {
+                speed = 0;
+            }
         }
+        else
+        {
+            turnSpeed = Mathf.Lerp(maxSpeed * 0.25f, maxSpeed, rb.linearVelocity.magnitude);
 
+            rb.AddForce(transform.forward * speed);
+            
+            rb.AddTorque(transform.up * yaw * turnSpeed * Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.right  * pitch * turnSpeed * -1 * Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.forward * roll * turnSpeed * -1 * Time.fixedDeltaTime, ForceMode.Acceleration);
+        }
+    }
+
+    public void OnTakeOff()
+    {
+        rb.AddForce(transform.up*pitch*1.2f, ForceMode.Acceleration);
     }
 
     public void Accelerate(float speed)
     {
         this.speed += speed*Time.deltaTime;
-        this.speed = Mathf.Clamp(this.speed, -1, maxSpeed);
+        this.speed = Mathf.Clamp(this.speed, -5, maxSpeed);
     }
 
-    public void UseRudder(float y)
+    public void Explode()
     {
-        transform.rotation *= Quaternion.Euler(0,y,0);
-    }
-
-    public void UseElevator(float x)
-    {
-        transform.rotation *= Quaternion.Euler(-x, 0, 0);
-    }
-
-    public void UseAileron(float z)
-    {
-        transform.rotation *= Quaternion.Euler(0, 0, -z);
+        Debug.Log("Plane Exploded");
+        //Destroys aircraft
     }
 }

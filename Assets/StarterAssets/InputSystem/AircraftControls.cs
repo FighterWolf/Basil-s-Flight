@@ -8,6 +8,7 @@ namespace StarterAssets
 	public class AircraftControls : MonoBehaviour
 	{
 		[Header("Character Input Values")]
+		public Vector2 look;
 		public float yaw;
 		public float pitch;
 		public float roll;
@@ -22,6 +23,13 @@ namespace StarterAssets
 		public bool cursorInputForLook = true;
 
 #if ENABLE_INPUT_SYSTEM
+		public void OnLook(InputValue value)
+		{
+			if (cursorInputForLook)
+			{
+				LookInput(value.Get<Vector2>());
+			}
+		}
 
 		public void OnYaw(InputValue v)
 		{
@@ -48,7 +56,10 @@ namespace StarterAssets
 			DismountInput(v.isPressed);
         }
 #endif
-
+		public void LookInput(Vector2 newLookDirection)
+		{
+			look = newLookDirection;
+		}
 		private void YawInput(float i)
         {
 			yaw = i;
