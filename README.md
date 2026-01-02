@@ -21,7 +21,7 @@ itch.io link: TBA
 
 ## Characters
 - Basil Avery
-<img src="/Assets/CustomSprites/Models/Characters/Basil/BasilThumbnail.png" alt="Portrait of Basil Avery" style="width:15%; height:auto;">
+<img src="/Assets/Models/Characters/Basil/BasilThumbnail.png" alt="Portrait of Basil Avery" style="width:15%; height:auto;">
 
 WIP:
 - Toshiko Suzuki/鈴木敏子 (A.I. friendly pilot)
