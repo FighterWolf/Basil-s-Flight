@@ -2,17 +2,22 @@ using UnityEngine;
 using StarterAssets;
 using UnityEngine.InputSystem;
 
-public class Vehicle : MonoBehaviour, Interactable
+public class Aircraft : MonoBehaviour, Interactable
 {
     public string vehicleName;
 
     public float speed;
     public float maxSpeed;
 
-    private float turnSpeed;
+    public bool overrideHeightLimit;
+    public static float maxHeightLimit=100f;
+
+    public float altitude;
+    public float actualSpeed;
 
     public GameObject[] exitSpots;
 
+    public float glideSpeed;
     private GameObject player;
     private AircraftControls pilotInput;
     private Camera planeCam;
@@ -32,6 +37,7 @@ public class Vehicle : MonoBehaviour, Interactable
     {
         planeCam= EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody>();
+        rb.maxLinearVelocity = maxSpeed * 0.75f;
     }
 
     // Update is called once per frame
@@ -47,13 +53,18 @@ public class Vehicle : MonoBehaviour, Interactable
             dismount = pilotInput.dismount;
         }
 
+        CalculateAltitude();
         OnDismount();
+        HandleGlideSpeed();
     }
 
     void FixedUpdate()
     {
-        OnDrive();
+        OnSteer();
         OnTakeOff();
+        AdhereToHeightLimit();
+
+        actualSpeed=rb.linearVelocity.magnitude;
 
         rb.angularVelocity *= 0.95f;
     }
@@ -135,7 +146,7 @@ public class Vehicle : MonoBehaviour, Interactable
         }
     }
 
-    public void OnDrive()
+    public void OnSteer()
     {
         Accelerate(throttle*3);
 
@@ -148,13 +159,12 @@ public class Vehicle : MonoBehaviour, Interactable
         }
         else
         {
-            turnSpeed = Mathf.Lerp(maxSpeed * 0.25f, maxSpeed, rb.linearVelocity.magnitude);
-
-            rb.AddForce(transform.forward * speed);
+            rb.AddForce(transform.forward * glideSpeed, ForceMode.Acceleration);
             
-            rb.AddTorque(transform.up * yaw * turnSpeed * Time.fixedDeltaTime, ForceMode.Acceleration);
-            rb.AddTorque(transform.right  * pitch * turnSpeed * -1 * Time.fixedDeltaTime, ForceMode.Acceleration);
-            rb.AddTorque(transform.forward * roll * turnSpeed * -1 * Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.up * yaw * actualSpeed * 1f*Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.right  * pitch * actualSpeed * -1f* Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.forward * roll * actualSpeed * -1f* Time.fixedDeltaTime, ForceMode.Acceleration);
+            //OnDrag();
         }
     }
 
@@ -163,14 +173,76 @@ public class Vehicle : MonoBehaviour, Interactable
         rb.AddForce(transform.up*pitch*1.2f, ForceMode.Acceleration);
     }
 
+    public void CalculateAltitude()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down,out hit, Mathf.Infinity))
+        {
+            altitude = hit.distance;
+        }
+        else
+        {
+            altitude = -1;
+        }
+    }
+
+    public void AdhereToHeightLimit()
+    {
+        if (!overrideHeightLimit)
+        {
+            if (altitude > maxHeightLimit)
+            {
+                float excessHeight = altitude - maxHeightLimit;
+                //rb.MoveRotation(Quaternion.Euler(0,transform.rotation.y,0));
+                rb.AddForce(Vector3.down*5, ForceMode.Force);
+            }
+        }
+    }
+
+    public void OnDrag()
+    {
+        rb.AddForce(transform.forward * actualSpeed * -0.25f, ForceMode.Force);
+    }
+
     public void Accelerate(float speed)
     {
-        this.speed += speed*Time.deltaTime;
+        this.speed += speed; //*Time.deltaTime
         this.speed = Mathf.Clamp(this.speed, -5, maxSpeed);
+
+        if (speed > 0)
+        {
+            glideSpeed += speed;
+            glideSpeed = Mathf.Clamp(glideSpeed, -5, maxSpeed);
+        }
+    }
+
+    public void HandleGlideSpeed()
+    {
+        if (glideSpeed < 0)
+        {
+            glideSpeed = 0;
+            return;
+        }
+
+        if (glideSpeed > speed)
+        {
+            glideSpeed -= Time.deltaTime * 5;
+        }
+        else if (throttle < 0 && speed<=0)
+        {
+            glideSpeed += throttle;
+        }
+        else if (altitude < 3 && glideSpeed>0)
+        {
+            glideSpeed -= Time.deltaTime * 100;
+        }
     }
 
     public void Explode()
     {
+        rb.linearVelocity = new Vector3(0,0,0);
+        speed = 0;
+        glideSpeed = 0;
         Debug.Log("Plane Exploded");
         //Destroys aircraft
     }

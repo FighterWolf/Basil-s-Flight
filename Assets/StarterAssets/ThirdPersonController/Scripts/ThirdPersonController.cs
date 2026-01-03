@@ -99,7 +99,7 @@ namespace StarterAssets
         private int _animIDMotionSpeed;
 
         // Other Shit
-        public Vehicle currentVehicle;
+        public Aircraft currentVehicle;
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -406,9 +406,9 @@ namespace StarterAssets
                 {
                     i.Interact(gameObject);
                     
-                    if (i is Vehicle v)
+                    if (i is Aircraft v)
                     {
-                        currentVehicle = v.GetComponent<Vehicle>();
+                        currentVehicle = v.GetComponent<Aircraft>();
                         _playerInput.SwitchCurrentActionMap("Aircraft");
                         GetComponent<CharacterController>().enabled = false;
                         _animator.SetFloat(_animIDSpeed, 0f);

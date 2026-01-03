@@ -837,6 +837,7 @@ MonoBehaviour:
   vehicleName: F/A-3 "Spatz"
   speed: 0
   maxSpeed: 50
+  altitude: 0
   exitSpots:
   - {fileID: 8910511755575260039}
   - {fileID: 5009221705600780823}
@@ -856,8 +857,8 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 0.5
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 2}
+  m_AngularDamping: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0.5}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -1446,7 +1447,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.2
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 40
   orthographic: 0
   orthographic size: 10

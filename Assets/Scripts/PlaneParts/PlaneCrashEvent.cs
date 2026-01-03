@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlaneCrashEvent : MonoBehaviour
 {
-    private Vehicle plane;
+    private Aircraft plane;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        plane = transform.root.GetComponent<Vehicle>();
+        plane = transform.root.GetComponent<Aircraft>();
     }
 
     // Update is called once per frame
@@ -17,9 +17,8 @@ public class PlaneCrashEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!IsColliderAPartOfThePlane(other)&&plane.speed>(plane.maxSpeed*0.25f)&&(other.GetType() != typeof(CharacterController)))
+        if (!IsColliderAPartOfThePlane(other)&&plane.actualSpeed>25f&&(other.GetType() != typeof(CharacterController)))
         {
-            plane.speed -= plane.maxSpeed * 0.25f;
             plane.Explode();
         }
     }

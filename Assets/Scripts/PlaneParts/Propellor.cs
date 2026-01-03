@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Propellor : MonoBehaviour
 {
-    private Vehicle plane;
+    private Aircraft plane;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        plane = transform.root.GetComponent<Vehicle>();   
+        plane = transform.root.GetComponent<Aircraft>();   
     }
 
     // Update is called once per frame
