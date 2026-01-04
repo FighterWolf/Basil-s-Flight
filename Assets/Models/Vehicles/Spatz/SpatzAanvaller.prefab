@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5333687939058182634}
   - component: {fileID: 3809096959212730148}
   - component: {fileID: 2487646823305219672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8520235633893216880}
   - component: {fileID: 5932117613448573011}
   - component: {fileID: 3674238771825923983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Elevators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 4043009365128078737}
   - component: {fileID: 1751627748325772697}
   - component: {fileID: 8101570918029482402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6866295423230125291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Propeller_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 6777044898850848631}
   - component: {fileID: 3494632315986114754}
   - component: {fileID: 5725561662161109601}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LandingGear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8798881006709734925}
   - component: {fileID: 4536286725338806465}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1548946483364558238}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 8942380823186096977}
   - component: {fileID: 3094771412564100022}
   - component: {fileID: 4899103265755496467}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,6 +632,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: fce1907cd54ca444ab2ddf769732b368, type: 2}
   - {fileID: 2100000, guid: 0b9ec2e32fd5627489bceeb86e1dbffc, type: 2}
+  - {fileID: 2100000, guid: 0f2723a96d545f442bb3963d049afe60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -688,7 +689,7 @@ GameObject:
   - component: {fileID: 6281501036821183177}
   - component: {fileID: 6391236213886937259}
   - component: {fileID: 6426955387334174466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosionZone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,6 +744,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9299818a2050a044ba24ed994ae6c632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneCrashEvent
+--- !u!1 &4543032566436690910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7692816367613633523}
+  m_Layer: 6
+  m_Name: Seat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7692816367613633523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543032566436690910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.994, z: 0.532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4750847076759050104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4673268930022379842
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7266504069924009827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Propeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,6 +852,7 @@ Transform:
   - {fileID: 5333687939058182634}
   - {fileID: 4047676605308054398}
   - {fileID: 6281501036821183177}
+  - {fileID: 7692816367613633523}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5578115157143983340
@@ -836,17 +869,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Vehicle
   vehicleName: F/A-3 "Spatz"
   speed: 0
-  maxSpeed: 50
+  maxSpeed: 100
+  overrideHeightLimit: 0
   altitude: 0
+  actualSpeed: 0
   exitSpots:
   - {fileID: 8910511755575260039}
   - {fileID: 5009221705600780823}
+  glideSpeed: 0
   look: {x: 0, y: 0}
   yaw: 0
   pitch: 0
   roll: 0
   throttle: 0
   dismount: 0
+  whatIsBelowPlane: {fileID: 0}
 --- !u!54 &6217533169751488334
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -855,7 +892,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4955196284485647673}
   serializedVersion: 5
-  m_Mass: 0.5
+  m_Mass: 20
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0.5}
@@ -884,7 +921,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3666234084538505353}
   - component: {fileID: 6313891129606592529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExitSpot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -938,7 +975,7 @@ GameObject:
   - component: {fileID: 4047676605308054398}
   - component: {fileID: 7094264660152085829}
   - component: {fileID: 5471438294324766331}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosionZone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545570333726662714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1038,7 +1075,7 @@ GameObject:
   - component: {fileID: 5027275519833440102}
   - component: {fileID: 2923481160542785753}
   - component: {fileID: 6647337399864263733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Propeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1201,7 @@ GameObject:
   - component: {fileID: 1864578607320020358}
   - component: {fileID: 3482752428897059180}
   - component: {fileID: 3346188989498305381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1338,7 +1375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 769190146105683600}
   - component: {fileID: 8589985065028880845}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExitSpot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1430,7 @@ GameObject:
   - component: {fileID: 5065516613480088251}
   - component: {fileID: 5648084877510821608}
   - component: {fileID: 6162433061987077097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

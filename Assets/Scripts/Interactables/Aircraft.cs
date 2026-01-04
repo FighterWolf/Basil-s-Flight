@@ -23,6 +23,7 @@ public class Aircraft : MonoBehaviour, Interactable
     private Camera planeCam;
     private Camera playerCam;
     private Rigidbody rb;
+    private int planeLayer;
 
     public Vector2 look;
     public float yaw;
@@ -38,6 +39,7 @@ public class Aircraft : MonoBehaviour, Interactable
         planeCam= EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
+        planeLayer = LayerMask.GetMask("Plane Parts");
     }
 
     // Update is called once per frame
@@ -110,10 +112,10 @@ public class Aircraft : MonoBehaviour, Interactable
         Transform playerTransform = player.transform;
 
         pilotInput = player.GetComponent<AircraftControls>();
-        playerTransform.position = transform.position;
-        playerTransform.rotation = transform.rotation;
         playerCam = EssentialFunctions.FindDescendants(playerTransform, "MainCamera").GetComponent<Camera>();
-        playerTransform.SetParent(transform);
+        playerTransform.SetParent(EssentialFunctions.FindDescendants(transform,"Seat"));
+        playerTransform.localPosition = Vector3.zero;
+        playerTransform.localEulerAngles = Vector3.zero;
         SwitchControls(true,"Aircraft");
     }
 
@@ -160,6 +162,11 @@ public class Aircraft : MonoBehaviour, Interactable
         else
         {
             rb.AddForce(transform.forward * glideSpeed, ForceMode.Acceleration);
+
+            if (speed<0)
+            {
+                rb.AddForce(transform.forward * speed*5, ForceMode.Force);
+            }
             
             rb.AddTorque(transform.up * yaw * actualSpeed * 1f*Time.fixedDeltaTime, ForceMode.Acceleration);
             rb.AddTorque(transform.right  * pitch * actualSpeed * -1f* Time.fixedDeltaTime, ForceMode.Acceleration);
@@ -173,16 +180,19 @@ public class Aircraft : MonoBehaviour, Interactable
         rb.AddForce(transform.up*pitch*1.2f, ForceMode.Acceleration);
     }
 
+    public GameObject whatIsBelowPlane;
     public void CalculateAltitude()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, Vector3.down,out hit, Mathf.Infinity))
+        if(Physics.Raycast(transform.position, Vector3.down,out hit, Mathf.Infinity, ~planeLayer))
         {
             altitude = hit.distance;
+            whatIsBelowPlane = hit.collider.gameObject;
         }
         else
         {
             altitude = -1;
+            whatIsBelowPlane = null;
         }
     }
 
@@ -206,7 +216,7 @@ public class Aircraft : MonoBehaviour, Interactable
 
     public void Accelerate(float speed)
     {
-        this.speed += speed; //*Time.deltaTime
+        this.speed += speed; 
         this.speed = Mathf.Clamp(this.speed, -5, maxSpeed);
 
         if (speed > 0)
@@ -224,17 +234,18 @@ public class Aircraft : MonoBehaviour, Interactable
             return;
         }
 
-        if (glideSpeed > speed)
-        {
-            glideSpeed -= Time.deltaTime * 5;
-        }
-        else if (throttle < 0 && speed<=0)
+        
+        if (throttle < 0 && speed<=0)
         {
             glideSpeed += throttle;
         }
-        else if (altitude < 3 && glideSpeed>0)
+        else if (speed < 0)
         {
-            glideSpeed -= Time.deltaTime * 100;
+            glideSpeed -= speed;
+        }
+        else if (glideSpeed > speed)
+        {
+            glideSpeed -= Time.deltaTime * 5;
         }
     }
 
