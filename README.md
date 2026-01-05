@@ -13,6 +13,8 @@ Aircraft Controls:
 - AD - Change Roll
 - QE - Change Yaw
 - F - Exit Aircraft
+- Left-Click - Use Plane Gun
+- Space - Switch Weapon Type
 
 Plot:\
 *Yay! Playtime! Flying o'er New York to Halifax! It will be fun! - 2nd Lt. Basil Avery, 2124 A.D.*
@@ -24,5 +26,5 @@ itch.io link: TBA
 <img src="/Assets/Models/Characters/Basil/BasilThumbnail.png" alt="Portrait of Basil Avery" style="width:15%; height:auto;">
 
 WIP:
-- Toshiko Suzuki/鈴木敏子 (A.I. friendly pilot)
+- Toshiko Suzuki/鈴木敏子/スズキトシコ (Friendly pilot)
 - Lieke	Meijsing (Captain of the N.Y.M.S. Orange/Oranje)

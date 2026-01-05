@@ -14,6 +14,8 @@ namespace StarterAssets
 		public float roll;
 		public float throttle;
 		public bool dismount;
+		public bool fire;
+		public bool switchWeapon;
 		
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -55,6 +57,16 @@ namespace StarterAssets
         {
 			DismountInput(v.isPressed);
         }
+
+		public void OnFire(InputValue v)
+        {
+			FireInput(v.isPressed);
+        }
+
+		public void OnSwitchWeapon(InputValue v)
+        {
+			SwitchWeaponInput(v.isPressed);
+        }
 #endif
 		public void LookInput(Vector2 newLookDirection)
 		{
@@ -84,6 +96,16 @@ namespace StarterAssets
         {
 			dismount = b;
         }
+
+		private void FireInput(bool b)
+        {
+			fire = b;
+        }
+
+		private void SwitchWeaponInput(bool b)
+		{
+			switchWeapon = b;
+		}
 
 		private void OnApplicationFocus(bool hasFocus)
 		{

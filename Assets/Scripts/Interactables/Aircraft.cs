@@ -24,6 +24,7 @@ public class Aircraft : MonoBehaviour, Interactable
     private Camera playerCam;
     private Rigidbody rb;
     private int planeLayer;
+    private PlaneWeaponSystem weaponSystem;
 
     public Vector2 look;
     public float yaw;
@@ -40,6 +41,7 @@ public class Aircraft : MonoBehaviour, Interactable
         rb = GetComponent<Rigidbody>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");
+        weaponSystem = GetComponent<PlaneWeaponSystem>();
     }
 
     // Update is called once per frame
@@ -117,6 +119,7 @@ public class Aircraft : MonoBehaviour, Interactable
         playerTransform.localPosition = Vector3.zero;
         playerTransform.localEulerAngles = Vector3.zero;
         SwitchControls(true,"Aircraft");
+        weaponSystem.SetPlayer(player.GetComponent<ThirdPersonController>());
     }
 
     public void OnDismount()
@@ -144,6 +147,7 @@ public class Aircraft : MonoBehaviour, Interactable
             player.GetComponent<ThirdPersonController>().OnExitVehicle();
             pilotInput = null;
             speed = 0;
+            weaponSystem.SetPlayer(null);
             dismount = false;
         }
     }
