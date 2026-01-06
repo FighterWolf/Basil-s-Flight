@@ -630,6 +630,37 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!1 &798574072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798574073}
+  m_Layer: 0
+  m_Name: MissileLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &798574073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798574072}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.49, y: 0.77, z: 2.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1013364178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &922208591
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +762,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 769190146105683600, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 769190146105683600, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.48
+      objectReference: {fileID: 0}
     - target: {fileID: 1173279934779645426, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -766,6 +805,14 @@ PrefabInstance:
     - target: {fileID: 3452194885263932356, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666234084538505353, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666234084538505353, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.47998047
       objectReference: {fileID: 0}
     - target: {fileID: 4022556129149190063, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_Layer
@@ -835,6 +882,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6217533169751488334, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6646748788831075962, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -861,11 +912,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 798574073}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4955196284485647673, guid: 9223d6844c65f35419aa956550937148, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1013364175}
+    - targetCorrespondingSourceObject: {fileID: 4955196284485647673, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1013364179}
   m_SourcePrefab: {fileID: 100100000, guid: 9223d6844c65f35419aa956550937148, type: 3}
 --- !u!1 &1013364171 stripped
 GameObject:
@@ -890,9 +947,29 @@ MonoBehaviour:
   missileReloadRate: 0
   weaponSystem: 0
   gunPod: {fileID: 0}
-  MissilePod: {fileID: 0}
+  missilePod: {fileID: 798574072}
+  missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
   fire: 0
   switchWeapon: 0
+--- !u!4 &1013364178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
+  m_PrefabInstance: {fileID: 929452965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1013364179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013364171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49db6b66ff09978468bd0782a7402b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
+  health: 250
+  maxHealth: 250
 --- !u!1 &1048810577
 GameObject:
   m_ObjectHideFlags: 0

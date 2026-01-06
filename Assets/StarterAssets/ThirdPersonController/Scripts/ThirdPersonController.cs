@@ -420,15 +420,9 @@ namespace StarterAssets
                 
                 if (Physics.Raycast(interactRay, out RaycastHit hit, 8)) 
                 { 
-                    if(hit.collider.TryGetComponent<Interactable>(out Interactable i))
+                    if(hit.collider.TryGetComponent<Interactable>(out Interactable i)|| hit.collider.transform.root.TryGetComponent<Interactable>(out i))
                     {
                         InteractAction(i);
-                    }
-
-                    //If all the colliders are in the children.
-                    if(hit.collider.transform.root.TryGetComponent<Interactable>(out Interactable ip))
-                    {
-                        InteractAction(ip);
                     }
                 }
                 _input.interact = false;

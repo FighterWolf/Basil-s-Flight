@@ -20,4 +20,10 @@ public class EssentialFunctions : MonoBehaviour
         }
         return null;
     }
+
+    public static void AimForTarget(Transform ownerTransform, Transform targetTransform, float rotationSpeed)
+    {
+        Quaternion q = Quaternion.LookRotation((ownerTransform.position - targetTransform.position).normalized);
+        ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation,q,rotationSpeed);
+    }
 }

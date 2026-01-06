@@ -24,10 +24,14 @@ public class PlaneWeaponSystem : MonoBehaviour
     private AircraftControls pilotInput;
 
     public GameObject gunPod;
-    public GameObject MissilePod;
+
+    public GameObject missilePod;
+    public Missile missile;
 
     public bool fire;
     public bool switchWeapon;
+
+    private Entity lockedOnEntity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,7 +87,20 @@ public class PlaneWeaponSystem : MonoBehaviour
 
         void FireMissile()
         {
+            Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(r, out hit, Mathf.Infinity))
+            {
+                if (hit.collider.TryGetComponent<Entity>(out Entity hitTarget))
+                {
+                    Debug.Log("Locked on to Target: " + hitTarget + "!");
+                    lockedOnEntity = hitTarget;
+                }
+            }
+
             Debug.Log("Firing Missile");
+            GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation);
+            missile.GetComponent<Missile>().targetToStrike = lockedOnEntity.transform;
         }
     }
 
