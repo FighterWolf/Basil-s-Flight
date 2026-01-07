@@ -5,11 +5,13 @@ public class Missile : MonoBehaviour
 {
 
     public float cruiseSpeed;
+    public float speedModifier;
     public float explosionRadius;
+    public float fuel;
 
     public Transform targetToStrike;
 
-    private float cooldown=0.5f;
+    private float cooldown=0.1f;
     private Rigidbody rb;
     private Collider col;
 
@@ -30,18 +32,32 @@ public class Missile : MonoBehaviour
         else
         {
             col.enabled = true;
+            transform.SetParent(null);
+            if (targetToStrike != null) EssentialFunctions.AimForTarget(transform, targetToStrike, 25f);
         }
-        
-        EssentialFunctions.AimForTarget(transform,targetToStrike,25f);
         Cruise();
+
+        if (fuel >= 0)
+        {
+            fuel -= Time.deltaTime;
+        }
+        else
+        {
+            Explode();
+        }
     }
 
     public void Cruise()
     {
-        rb.AddForce(transform.forward * cruiseSpeed *-1, ForceMode.Acceleration);
+        rb.AddForce(transform.forward * 2 * (speedModifier+cruiseSpeed), ForceMode.Acceleration);
     }
 
     public void OnCollisionEnter(Collision collision)
+    {
+        Explode();
+    }
+
+    public void Explode()
     {
         if (cooldown <= 0)
         {

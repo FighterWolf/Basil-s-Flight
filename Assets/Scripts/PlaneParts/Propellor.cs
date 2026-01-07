@@ -13,6 +13,6 @@ public class Propellor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,plane.speed*5,0);
+        transform.Rotate(0,plane.speed,0);
     }
 }

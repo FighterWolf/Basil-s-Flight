@@ -126,8 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e89cc0c9710e7f4b819d8d46b34840d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missile
-  cruiseSpeed: 150
+  cruiseSpeed: 250
   explosionRadius: 7.5
+  fuel: 10
   targetToStrike: {fileID: 0}
 --- !u!54 &3773582429414321847
 Rigidbody:

@@ -9,15 +9,17 @@ Player's Ground Controls:
 - F - Interact/Enter Vehicle
 
 Aircraft Controls:
-- WS - Change Pitch
-- AD - Change Roll
-- QE - Change Yaw
+- W/S - Ascend/Descend
+- A/D - Bank Left/Right
+- Q/E - Turn Left/Right
 - F - Exit Aircraft
 - Left-Click - Use Plane Gun
 - Space - Switch Weapon Type
 
 Plot:\
-*Yay! Playtime! Flying o'er New York to Halifax! It will be fun! - 2nd Lt. Basil Avery, 2124 A.D.*
+*Yay! Playtime! Flying o'er New York to Halifax! It will be fun! What can go wrong? - 2nd Lt. Basil Avery, 2124 A.D.*
+
+*Turns out... many things... - Captain Lieke Meijsing, 2124 A.D.*
 
 itch.io link: TBA
 

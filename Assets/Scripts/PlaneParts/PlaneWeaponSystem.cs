@@ -1,5 +1,6 @@
 using UnityEngine;
 using StarterAssets;
+using System.Collections;
 
 public class PlaneWeaponSystem : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlaneWeaponSystem : MonoBehaviour
 
     public float gunFireRate;
     public float missileReloadRate;
+
+    private bool isReadyToFireGun=true;
+    private bool isReadyToBomb=true;
 
     public enum WeaponSystem {
         Gun,
@@ -61,10 +65,10 @@ public class PlaneWeaponSystem : MonoBehaviour
             switch (weaponSystem)
             {
                 case WeaponSystem.Gun:
-                    FireGun();
+                    if(isReadyToFireGun) FireGun();
                     break;
                 case WeaponSystem.Missile:
-                    FireMissile();
+                    if(isReadyToBomb) FireMissile();
                     break;
             }
         }
@@ -83,6 +87,8 @@ public class PlaneWeaponSystem : MonoBehaviour
                     hitTarget.DecreaseHealth(gunDamage);
                 }
             }
+            isReadyToFireGun = false;
+            StartCoroutine(ResetGunShot());
         }
 
         void FireMissile()
@@ -99,9 +105,27 @@ public class PlaneWeaponSystem : MonoBehaviour
             }
 
             Debug.Log("Firing Missile");
-            GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation);
-            missile.GetComponent<Missile>().targetToStrike = lockedOnEntity.transform;
+            GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation,missilePod.transform);
+            if(lockedOnEntity!=null) missile.GetComponent<Missile>().targetToStrike = lockedOnEntity.transform;
+            missile.GetComponent<Missile>().speedModifier = plane.speed;
+            lockedOnEntity = null;
+            isReadyToBomb = false;
+            pilotInput.fire = false;
+            StartCoroutine(ResetMissileShot());
         }
+    }
+
+    public IEnumerator ResetGunShot()
+    {
+        yield return new WaitForSeconds(60 / gunFireRate);
+        isReadyToFireGun = true;
+    }
+
+    public IEnumerator ResetMissileShot()
+    {
+        yield return new WaitForSeconds(60 / missileReloadRate);
+        yield return new WaitUntil(() => !pilotInput.fire);
+        isReadyToBomb=true;
     }
 
     public void SwitchWeapon()
@@ -119,7 +143,6 @@ public class PlaneWeaponSystem : MonoBehaviour
 
             weaponSystem = (WeaponSystem)weaponSystemIterator;
             pilotInput.switchWeapon = false;
-            switchWeapon = false;
            
         }
     }
