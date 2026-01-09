@@ -1,6 +1,7 @@
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class Aircraft : MonoBehaviour, Interactable
 {
@@ -15,7 +16,11 @@ public class Aircraft : MonoBehaviour, Interactable
     public float altitude;
     public float actualSpeed;
 
-    public GameObject[] exitSpots;
+    public Transform[] exitSpots;
+    public VFormationSpot[] vFormations;
+
+    public bool isLeadPlane;
+    public Aircraft planeToFollow;
 
     public float glideSpeed;
     private GameObject player;
@@ -25,6 +30,19 @@ public class Aircraft : MonoBehaviour, Interactable
     private Rigidbody rb;
     private int planeLayer;
     private PlaneWeaponSystem weaponSystem;
+
+    public enum FormationPosition
+    {
+        Lead,
+        Left,
+        Right
+    }
+
+    public FormationPosition formationPosition;
+
+    public VFormationSpot whichSpotToFollow;
+
+    public List<Aircraft> listOfLastTrailingPlanes = new List<Aircraft>();
 
     public Vector2 look;
     public float yaw;
@@ -42,6 +60,10 @@ public class Aircraft : MonoBehaviour, Interactable
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");
         weaponSystem = GetComponent<PlaneWeaponSystem>();
+        if (isLeadPlane)
+        {
+            formationPosition = FormationPosition.Lead;
+        }
     }
 
     // Update is called once per frame
@@ -60,6 +82,7 @@ public class Aircraft : MonoBehaviour, Interactable
         CalculateAltitude();
         OnDismount();
         HandleGlideSpeed();
+        AddAllLastTrailingAircraft(this);
     }
 
     void FixedUpdate()
@@ -110,16 +133,19 @@ public class Aircraft : MonoBehaviour, Interactable
 
     public void OnPlayerEnter(GameObject player)
     {
-        this.player = player;
-        Transform playerTransform = player.transform;
+        if(!TryGetComponent<AircraftAI>(out AircraftAI a))
+        {
+            this.player = player;
+            Transform playerTransform = player.transform;
 
-        pilotInput = player.GetComponent<AircraftControls>();
-        playerCam = EssentialFunctions.FindDescendants(playerTransform, "MainCamera").GetComponent<Camera>();
-        playerTransform.SetParent(EssentialFunctions.FindDescendants(transform,"Seat"));
-        playerTransform.localPosition = Vector3.zero;
-        playerTransform.localEulerAngles = Vector3.zero;
-        SwitchControls(true,"Aircraft");
-        weaponSystem.SetPlayer(player.GetComponent<ThirdPersonController>());
+            pilotInput = player.GetComponent<AircraftControls>();
+            playerCam = EssentialFunctions.FindDescendants(playerTransform, "MainCamera").GetComponent<Camera>();
+            playerTransform.SetParent(EssentialFunctions.FindDescendants(transform, "Seat"));
+            playerTransform.localPosition = Vector3.zero;
+            playerTransform.localEulerAngles = Vector3.zero;
+            SwitchControls(true, "Aircraft");
+            weaponSystem.SetPlayer(player.GetComponent<ThirdPersonController>());
+        }
     }
 
     public void OnDismount()
@@ -128,11 +154,11 @@ public class Aircraft : MonoBehaviour, Interactable
         {
             Transform spotToExit=null;
 
-            foreach(GameObject o in exitSpots)
+            foreach(Transform o in exitSpots)
             {
                 if (o != null)
                 {
-                    spotToExit = o.transform;
+                    spotToExit = o;
                     break;
                 }
             }
@@ -251,6 +277,93 @@ public class Aircraft : MonoBehaviour, Interactable
         {
             glideSpeed -= Time.deltaTime * 5;
         }
+    }
+    public Aircraft GetLeadAircraft()
+    {
+        if (planeToFollow != null && planeToFollow.TryGetComponent<Aircraft>(out Aircraft leadPlane))
+        {
+            return leadPlane.GetLeadAircraft();
+        }
+        else
+        {
+            return this;
+        }
+    }
+
+    public void AddAllLastTrailingAircraft(Aircraft plane)
+    {  
+        if (plane.isLeadPlane)
+        {
+            //This assumes that more than one of the formation spots can be occupied.
+            bool areAllSpotsFull = true;
+
+            foreach (VFormationSpot v in plane.vFormations)
+            {
+                if (v.whoTakesTheSpot != null)
+                {
+                    AddAllLastTrailingAircraft(v.whoTakesTheSpot);
+                }
+                else
+                {
+                    areAllSpotsFull = false;
+                }
+            }
+
+            if (!areAllSpotsFull)
+            {
+                if (!listOfLastTrailingPlanes.Contains(plane))
+                {
+                    listOfLastTrailingPlanes.Add(plane);
+                }
+            }
+            else
+            {
+                listOfLastTrailingPlanes.Remove(plane);
+            }
+        }
+        else
+        {
+            bool isAnyPlaneFollowing = false;
+
+            //If there is an aircraft in any of the formation spots, add aircraft to the list. This assumes only one formation spot is occupied.
+            foreach (VFormationSpot v in plane.vFormations)
+            {
+                if (v.whoTakesTheSpot != null)
+                {
+                    isAnyPlaneFollowing = true;
+                    AddAllLastTrailingAircraft(v.whoTakesTheSpot);
+                    break;
+                }
+            }
+            //Debug.Log(isAnyPlaneFollowing+" "+plane.vehicleName);
+            if (!isAnyPlaneFollowing && !listOfLastTrailingPlanes.Contains(plane))
+            {
+                if (!listOfLastTrailingPlanes.Contains(plane))
+                {
+                    listOfLastTrailingPlanes.Add(plane);
+                }
+            }
+            else
+            {
+                if (isAnyPlaneFollowing)
+                {
+                    switch (plane.formationPosition)
+                    {
+                        case Aircraft.FormationPosition.Left:
+                            if (plane.formationPosition == Aircraft.FormationPosition.Left) listOfLastTrailingPlanes.Remove(plane);
+                            break;
+                        case Aircraft.FormationPosition.Right:
+                            if (plane.formationPosition == Aircraft.FormationPosition.Right) listOfLastTrailingPlanes.Remove(plane);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    public void HandleVSpots()
+    {
+
     }
 
     public void Explode()

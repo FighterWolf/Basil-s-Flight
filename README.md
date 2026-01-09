@@ -1,6 +1,8 @@
 # Basil-s-Flight
 Unity game about flying planes and having very good moments
 
+Takes place several months before the events of [Operation Jager](https://github.com/FighterWolf/CISC-4900-Operation-Jager).
+
 Player's Ground Controls:
 - WASD - Move around
 - Mouse - Look around
@@ -17,9 +19,9 @@ Aircraft Controls:
 - Space - Switch Weapon Type
 
 Plot:\
-*Yay! Playtime! Flying o'er New York to Halifax! It will be fun! What can go wrong? - 2nd Lt. Basil Avery, 2124 A.D.*
+*"Yay! Playtime! Flying o'er New York to Halifax! It will be fun! What can go wrong?" - 2nd Lt. Basil Avery, 2124 A.D.*
 
-*Turns out... many things... - Captain Lieke Meijsing, 2124 A.D.*
+*"Turns out... many things..." - Captain Lieke Meijsing, 2124 A.D.*
 
 itch.io link: TBA
 

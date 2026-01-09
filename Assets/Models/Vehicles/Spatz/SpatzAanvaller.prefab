@@ -563,6 +563,68 @@ Transform:
   - {fileID: 545570333726662714}
   m_Father: {fileID: 4750847076759050104}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &3500326051257277902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7534352512960864872}
+  m_Layer: 0
+  m_Name: VFormationLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7534352512960864872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500326051257277902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.02, y: 0.12, z: -14.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4750847076759050104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3934829666160393099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4943243964713966891}
+  m_Layer: 0
+  m_Name: VFormationRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4943243964713966891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934829666160393099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.02, y: 0.12, z: -14.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4750847076759050104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4022556129149190063
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +879,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4750847076759050104}
   - component: {fileID: 5578115157143983340}
+  - component: {fileID: 6050315831535864764}
   - component: {fileID: 6217533169751488334}
+  - component: {fileID: 147083472764795230}
   m_Layer: 0
   m_Name: SpatzAanvaller
   m_TagString: Untagged
@@ -853,6 +917,9 @@ Transform:
   - {fileID: 4047676605308054398}
   - {fileID: 6281501036821183177}
   - {fileID: 7692816367613633523}
+  - {fileID: 3664575946624961636}
+  - {fileID: 7534352512960864872}
+  - {fileID: 4943243964713966891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5578115157143983340
@@ -876,6 +943,9 @@ MonoBehaviour:
   exitSpots:
   - {fileID: 8910511755575260039}
   - {fileID: 5009221705600780823}
+  vFormations:
+  - {fileID: 7534352512960864872}
+  - {fileID: 4943243964713966891}
   glideSpeed: 0
   look: {x: 0, y: 0}
   yaw: 0
@@ -884,6 +954,28 @@ MonoBehaviour:
   throttle: 0
   dismount: 0
   whatIsBelowPlane: {fileID: 0}
+--- !u!114 &6050315831535864764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955196284485647673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9110d5286b8d5e94786c488ed2ff0029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneWeaponSystem
+  gunDamage: 15
+  missileDamage: 75
+  gunFireRate: 3900
+  missileReloadRate: 12
+  weaponSystem: 0
+  gunPod: {fileID: 0}
+  missilePod: {fileID: 5311091559890614467}
+  missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  fire: 0
+  switchWeapon: 0
 --- !u!54 &6217533169751488334
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -911,6 +1003,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &147083472764795230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955196284485647673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49db6b66ff09978468bd0782a7402b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
+  health: 250
+  maxHealth: 250
 --- !u!1 &5009221705600780823
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +1043,7 @@ Transform:
   m_GameObject: {fileID: 5009221705600780823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0.781, z: 2}
+  m_LocalPosition: {x: 1.5, y: 2.14, z: 0.47998047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -964,6 +1070,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6175926, y: 1.6223747, z: 0.56198144}
   m_Center: {x: 0.20120227, y: 0.31118733, z: -0.21900928}
+--- !u!1 &5311091559890614467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3664575946624961636}
+  m_Layer: 0
+  m_Name: MissileLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3664575946624961636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311091559890614467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.49, y: 0.717, z: 2.415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4750847076759050104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6646748788831075962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1528,7 @@ Transform:
   m_GameObject: {fileID: 8910511755575260039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.781, z: 2}
+  m_LocalPosition: {x: -1.5, y: 2.14, z: 0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1534,8 +1671,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
