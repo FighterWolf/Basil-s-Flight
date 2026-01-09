@@ -43,6 +43,7 @@ public class Aircraft : MonoBehaviour, Interactable
     public VFormationSpot whichSpotToFollow;
 
     public List<Aircraft> listOfLastTrailingPlanes = new List<Aircraft>();
+    private HashSet<Aircraft> checkedList = new HashSet<Aircraft>();
 
     public Vector2 look;
     public float yaw;
@@ -50,7 +51,6 @@ public class Aircraft : MonoBehaviour, Interactable
     public float roll;
     public float throttle;
     public bool dismount;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,7 +82,13 @@ public class Aircraft : MonoBehaviour, Interactable
         CalculateAltitude();
         OnDismount();
         HandleGlideSpeed();
-        AddAllLastTrailingAircraft(this);
+        RemoveMissingAircraftFromTrailingList();
+        if (isLeadPlane)
+        {
+            checkedList.Clear();
+            listOfLastTrailingPlanes.Clear();
+            AddAllLastTrailingAircraft(this,listOfLastTrailingPlanes);
+        }
     }
 
     void FixedUpdate()
@@ -290,8 +296,13 @@ public class Aircraft : MonoBehaviour, Interactable
         }
     }
 
-    public void AddAllLastTrailingAircraft(Aircraft plane)
-    {  
+    public void AddAllLastTrailingAircraft(Aircraft plane, List<Aircraft> list)
+    {
+        if (!checkedList.Add(plane))
+        {
+            return;
+        }
+
         if (plane.isLeadPlane)
         {
             //This assumes that more than one of the formation spots can be occupied.
@@ -301,7 +312,7 @@ public class Aircraft : MonoBehaviour, Interactable
             {
                 if (v.whoTakesTheSpot != null)
                 {
-                    AddAllLastTrailingAircraft(v.whoTakesTheSpot);
+                    AddAllLastTrailingAircraft(v.whoTakesTheSpot, list);
                 }
                 else
                 {
@@ -311,14 +322,14 @@ public class Aircraft : MonoBehaviour, Interactable
 
             if (!areAllSpotsFull)
             {
-                if (!listOfLastTrailingPlanes.Contains(plane))
+                if (!list.Contains(plane))
                 {
-                    listOfLastTrailingPlanes.Add(plane);
+                    list.Add(plane);
                 }
             }
             else
             {
-                listOfLastTrailingPlanes.Remove(plane);
+                list.Remove(plane);
             }
         }
         else
@@ -331,16 +342,16 @@ public class Aircraft : MonoBehaviour, Interactable
                 if (v.whoTakesTheSpot != null)
                 {
                     isAnyPlaneFollowing = true;
-                    AddAllLastTrailingAircraft(v.whoTakesTheSpot);
+                    AddAllLastTrailingAircraft(v.whoTakesTheSpot, list);
                     break;
                 }
             }
             //Debug.Log(isAnyPlaneFollowing+" "+plane.vehicleName);
-            if (!isAnyPlaneFollowing && !listOfLastTrailingPlanes.Contains(plane))
+            if (!isAnyPlaneFollowing && !list.Contains(plane))
             {
-                if (!listOfLastTrailingPlanes.Contains(plane))
+                if (!list.Contains(plane))
                 {
-                    listOfLastTrailingPlanes.Add(plane);
+                    list.Add(plane);
                 }
             }
             else
@@ -350,10 +361,10 @@ public class Aircraft : MonoBehaviour, Interactable
                     switch (plane.formationPosition)
                     {
                         case Aircraft.FormationPosition.Left:
-                            if (plane.formationPosition == Aircraft.FormationPosition.Left) listOfLastTrailingPlanes.Remove(plane);
+                            if (plane.formationPosition == Aircraft.FormationPosition.Left) list.Remove(plane);
                             break;
                         case Aircraft.FormationPosition.Right:
-                            if (plane.formationPosition == Aircraft.FormationPosition.Right) listOfLastTrailingPlanes.Remove(plane);
+                            if (plane.formationPosition == Aircraft.FormationPosition.Right) list.Remove(plane);
                             break;
                     }
                 }
@@ -361,9 +372,9 @@ public class Aircraft : MonoBehaviour, Interactable
         }
     }
 
-    public void HandleVSpots()
+    public void RemoveMissingAircraftFromTrailingList()
     {
-
+        listOfLastTrailingPlanes.RemoveAll(missingPlane => missingPlane == null);
     }
 
     public void Explode()

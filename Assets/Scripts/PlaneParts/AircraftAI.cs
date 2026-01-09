@@ -4,6 +4,9 @@ using System.Collections.Generic;
 public class AircraftAI : MonoBehaviour
 {
     Aircraft plane;
+    Aircraft planeToFollow;
+    VFormationSpot spotToFollow;
+    private float distanceToSpotToFollow;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,25 +17,45 @@ public class AircraftAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         FollowAircraft();
     }
 
     void FollowAircraft()
     {
+        this.planeToFollow = plane.planeToFollow;
         plane.whichSpotToFollow = FindFirstEmptyFormationSpot();
-        if (plane.whichSpotToFollow!=null)
+        spotToFollow = plane.whichSpotToFollow;
+        if (spotToFollow != null)
         {
-            EssentialFunctions.AimForTarget(transform, plane.whichSpotToFollow.transform, 5f);
+            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 5f);
+        }
+        HandleSpeed();
+    }
+
+    void HandleSpeed()
+    {
+        distanceToSpotToFollow = Vector3.Distance(transform.position,spotToFollow.transform.position);
+        
+        ChangeSpeed(planeToFollow.speed);
+    }
+
+    void ChangeSpeed(float desiredSpeed)
+    {   
+        if (plane.speed<desiredSpeed)
+        {
+            plane.Accelerate(1);
         }
     }
+
     public VFormationSpot FindFirstEmptyFormationSpot()
     {
-        if (plane.whichSpotToFollow != null)
+        if (spotToFollow != null)
         {
-            return plane.whichSpotToFollow;
+            return spotToFollow;
         }
 
-        plane.planeToFollow.AddAllLastTrailingAircraft(plane.planeToFollow);
+        //planeToFollow.AddAllLastTrailingAircraft(planeToFollow,planeToFollow.listOfLastTrailingPlanes);
 
         void ChooseFormationPosition(VFormationSpot.LeftORRight position)
         {
@@ -61,13 +84,8 @@ public class AircraftAI : MonoBehaviour
             return null;
         }
 
-        foreach (Aircraft a in plane.planeToFollow.listOfLastTrailingPlanes)
+        foreach (Aircraft a in planeToFollow.listOfLastTrailingPlanes)
         {
-            if (plane.whichSpotToFollow!=null)
-            {
-                return plane.whichSpotToFollow;
-            } 
-
             //If one of the trailing planes is leading.
             if (a.isLeadPlane)
             {

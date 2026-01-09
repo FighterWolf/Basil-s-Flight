@@ -21,6 +21,9 @@ public class VFormationSpot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (whoTakesTheSpot==null)
+        {
+            whoTakesTheSpot = null;
+        }
     }
 }
