@@ -30,6 +30,7 @@ public class Aircraft : MonoBehaviour, Interactable
     private Rigidbody rb;
     private int planeLayer;
     private PlaneWeaponSystem weaponSystem;
+    private Transform cameraHolder;
 
     public enum FormationPosition
     {
@@ -60,6 +61,7 @@ public class Aircraft : MonoBehaviour, Interactable
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");
         weaponSystem = GetComponent<PlaneWeaponSystem>();
+        cameraHolder = EssentialFunctions.FindDescendants(transform, "LookAtObject");
         if (isLeadPlane)
         {
             formationPosition = FormationPosition.Lead;
@@ -80,7 +82,6 @@ public class Aircraft : MonoBehaviour, Interactable
         }
 
         CalculateAltitude();
-        OnDismount();
         HandleGlideSpeed();
         RemoveMissingAircraftFromTrailingList();
         if (isLeadPlane)
@@ -89,6 +90,7 @@ public class Aircraft : MonoBehaviour, Interactable
             listOfLastTrailingPlanes.Clear();
             AddAllLastTrailingAircraft(this,listOfLastTrailingPlanes);
         }
+        OnDismount();
     }
 
     void FixedUpdate()
@@ -100,6 +102,11 @@ public class Aircraft : MonoBehaviour, Interactable
         actualSpeed=rb.linearVelocity.magnitude;
 
         rb.angularVelocity *= 0.95f;
+    }
+
+    private void LateUpdate()
+    {
+        HandleCamera();
     }
 
     private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -162,7 +169,7 @@ public class Aircraft : MonoBehaviour, Interactable
 
             foreach(Transform o in exitSpots)
             {
-                if (o != null)
+                if (o)
                 {
                     spotToExit = o;
                     break;
@@ -375,6 +382,21 @@ public class Aircraft : MonoBehaviour, Interactable
     public void RemoveMissingAircraftFromTrailingList()
     {
         listOfLastTrailingPlanes.RemoveAll(missingPlane => missingPlane == null);
+    }
+
+    public void HandleCamera()
+    {
+        if (pilotInput != null)
+        {
+            if (pilotInput.allowLook)
+            {
+                cameraHolder.rotation *= Quaternion.Euler(pilotInput.look.y * 3 * Time.fixedDeltaTime, pilotInput.look.x * 3 * Time.fixedDeltaTime, 0f);
+            }
+            else
+            {
+                cameraHolder.rotation = transform.rotation;
+            }
+        }
     }
 
     public void Explode()

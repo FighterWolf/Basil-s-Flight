@@ -9,6 +9,7 @@ namespace StarterAssets
 	{
 		[Header("Character Input Values")]
 		public Vector2 look;
+		public bool allowLook;
 		public float yaw;
 		public float pitch;
 		public float roll;
@@ -31,6 +32,11 @@ namespace StarterAssets
 			{
 				LookInput(value.Get<Vector2>());
 			}
+		}
+
+		public void OnAllowLook(InputValue v)
+		{
+			AllowLookInput(v.isPressed);
 		}
 
 		public void OnYaw(InputValue v)
@@ -68,10 +74,16 @@ namespace StarterAssets
 			SwitchWeaponInput(v.isPressed);
         }
 #endif
-		public void LookInput(Vector2 newLookDirection)
+		private void LookInput(Vector2 newLookDirection)
 		{
 			look = newLookDirection;
 		}
+
+		private void AllowLookInput(bool b)
+        {
+			allowLook = b;
+        }
+
 		private void YawInput(float i)
         {
 			yaw = i;

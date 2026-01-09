@@ -60,7 +60,7 @@ public class PlaneWeaponSystem : MonoBehaviour
 
     public void Fire()
     {
-        if (fire)
+        if (fire&&!pilotInput.allowLook)
         {
             switch (weaponSystem)
             {

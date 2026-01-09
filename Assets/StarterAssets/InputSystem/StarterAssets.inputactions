@@ -267,6 +267,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "AllowLook",
+                    "type": "PassThrough",
+                    "id": "15f25f49-21bb-4880-b776-eb0f0169d57a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Yaw",
                     "type": "Value",
                     "id": "8e54ed91-9b70-4cd8-a257-512351a17dc1",
@@ -576,7 +585,18 @@
                 {
                     "name": "",
                     "id": "bb7a8551-68d1-4893-8deb-5f9c7daf8032",
-                    "path": "",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6dbbe21b-89fb-4ac8-9df2-3cdba0f0cb5e",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -625,6 +645,28 @@
                     "processors": "",
                     "groups": ";Gamepad;Xbox Controller;PS4 Controller",
                     "action": "Switch Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5eca0611-706c-4239-a24c-062987b884f4",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AllowLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da4fa9fc-a8ac-46f7-8d07-da022be91316",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AllowLook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
