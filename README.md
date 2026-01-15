@@ -29,6 +29,8 @@ itch.io link: TBA
 - Basil Avery
 <img src="/Assets/Models/Characters/Basil/BasilThumbnail.png" alt="Portrait of Basil Avery" style="width:15%; height:auto;">
 
+- Toshiko Suzuki/鈴木敏子/スズキトシコ
+<img src="/Assets/Models/Characters/Toshiko/ToshikoThumbnail.png" alt="Portrait of Toshiko Suzuki" style="width:15%; height:auto;">
+
 WIP:
-- Toshiko Suzuki/鈴木敏子/スズキトシコ (Friendly pilot)
 - Lieke	Meijsing (Captain of the N.Y.M.S. Orange/Oranje)

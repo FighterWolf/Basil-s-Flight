@@ -405,7 +405,7 @@ namespace StarterAssets
                 {
                     i.Interact(gameObject);
                     
-                    if (i is Aircraft v)
+                    if (i is Aircraft v && !v.TryGetComponent<AircraftAI>(out AircraftAI a))
                     {
                         currentVehicle = v.GetComponent<Aircraft>();
                         _playerInput.SwitchCurrentActionMap("Aircraft");

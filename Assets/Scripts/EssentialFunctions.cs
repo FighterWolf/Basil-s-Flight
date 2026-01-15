@@ -26,4 +26,10 @@ public class EssentialFunctions : MonoBehaviour
         Quaternion q = Quaternion.LookRotation((targetTransform.position - ownerTransform.position).normalized);
         ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation,q,rotationSpeed);
     }
+
+    public static void AimForTarget(Transform ownerTransform, Vector3 targetTransform, float rotationSpeed)
+    {
+        Quaternion q = Quaternion.LookRotation((targetTransform - ownerTransform.position).normalized);
+        ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation, q, rotationSpeed);
+    }
 }
