@@ -28,8 +28,8 @@ public class AircraftAI : MonoBehaviour
         spotToFollow = plane.whichSpotToFollow;
         if (spotToFollow != null)
         {
-            SteerPlane();
-            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 5f);
+
+            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 2.5f);
             HandleSpeed();
         }
     }
@@ -47,11 +47,6 @@ public class AircraftAI : MonoBehaviour
         {
             plane.Accelerate(1);
         }
-    }
-
-    void SteerPlane()
-    {
-        plane.roll=planeToFollow.roll;
     }
 
     public VFormationSpot FindFirstEmptyFormationSpot()

@@ -32,4 +32,10 @@ public class EssentialFunctions : MonoBehaviour
         Quaternion q = Quaternion.LookRotation((targetTransform - ownerTransform.position).normalized);
         ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation, q, rotationSpeed);
     }
+
+    public static Vector3 TransformWorldCoordsToScreen(Vector3 objectPosition,Camera camera)
+    {
+        Vector3 screenCoords = camera.WorldToScreenPoint(objectPosition);
+        return screenCoords - new Vector3(camera.pixelWidth / 2, camera.pixelHeight / 2);
+    }
 }
