@@ -1353,7 +1353,7 @@ GameObject:
   - component: {fileID: 1132212533}
   - component: {fileID: 1132212532}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: LockOnBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1368,7 +1368,7 @@ RectTransform:
   m_GameObject: {fileID: 1132212530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1823870982}
@@ -7146,7 +7146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneHUD
   targetBox: {fileID: 1132212530}
+  pilot: {fileID: 0}
   potentialTargets: []
+  lockOnTarget: {fileID: 0}
 --- !u!4 &6225615761300513867
 Transform:
   m_ObjectHideFlags: 0

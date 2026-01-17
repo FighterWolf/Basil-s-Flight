@@ -158,6 +158,11 @@ public class Aircraft : MonoBehaviour, Interactable
             playerTransform.localEulerAngles = Vector3.zero;
             SwitchControls(true, "Aircraft");
             weaponSystem.SetPlayer(player.GetComponent<ThirdPersonController>());
+
+            if(TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
+            {
+                planeHUD.pilot = player;
+            }
         }
     }
 
@@ -187,6 +192,10 @@ public class Aircraft : MonoBehaviour, Interactable
             pilotInput = null;
             speed = 0;
             weaponSystem.SetPlayer(null);
+            if (TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
+            {
+                planeHUD.pilot = null;
+            }
             dismount = false;
         }
     }
