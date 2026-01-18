@@ -6,6 +6,7 @@ public class PlaneHUD : MonoBehaviour
     public GameObject targetBox;
     public GameObject pilot;
     private Aircraft plane;
+    private PlaneWeaponSystem planeWeaponSystem;
     private Camera cam;
     public Entity[] potentialTargets;
     public Entity lockOnTarget;
@@ -14,6 +15,7 @@ public class PlaneHUD : MonoBehaviour
     void Start()
     {
         plane = GetComponent<Aircraft>();
+        planeWeaponSystem = GetComponent<PlaneWeaponSystem>();
         cam = EssentialFunctions.FindDescendants(plane.transform,"Camera").GetComponent<Camera>();
     }
 
@@ -27,7 +29,7 @@ public class PlaneHUD : MonoBehaviour
 
     void HandleTargetLock()
     {
-        if (pilot != null&&lockOnTarget != null)
+        if (pilot != null&&planeWeaponSystem.weaponSystem==PlaneWeaponSystem.WeaponSystem.Missile&&lockOnTarget != null)
         {
             float targetDistance = Vector3.Distance(lockOnTarget.transform.position, transform.position);
             Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam);

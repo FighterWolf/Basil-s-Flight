@@ -35,8 +35,6 @@ public class PlaneWeaponSystem : MonoBehaviour
     public bool fire;
     public bool switchWeapon;
 
-    private Entity lockedOnEntity;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,12 +58,12 @@ public class PlaneWeaponSystem : MonoBehaviour
 
     public void Fire()
     {
-        if (fire&&!pilotInput.allowLook)
+        if (fire)
         {
             switch (weaponSystem)
             {
                 case WeaponSystem.Gun:
-                    if(isReadyToFireGun) FireGun();
+                    if(isReadyToFireGun && !pilotInput.allowLook) FireGun();
                     break;
                 case WeaponSystem.Missile:
                     if(isReadyToBomb) FireMissile();
@@ -93,22 +91,10 @@ public class PlaneWeaponSystem : MonoBehaviour
 
         void FireMissile()
         {
-            Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(r, out hit, Mathf.Infinity))
-            {
-                if (hit.collider.TryGetComponent<Entity>(out Entity hitTarget))
-                {
-                    Debug.Log("Locked on to Target: " + hitTarget + "!");
-                    lockedOnEntity = hitTarget;
-                }
-            }
-
             Debug.Log("Firing Missile");
             GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation,missilePod.transform);
-            if(lockedOnEntity!=null) missile.GetComponent<Missile>().targetToStrike = lockedOnEntity.transform;
+            if(GetComponent<PlaneHUD>().lockOnTarget != null) missile.GetComponent<Missile>().targetToStrike = GetComponent<PlaneHUD>().lockOnTarget.transform;
             missile.GetComponent<Missile>().speedModifier = plane.speed;
-            lockedOnEntity = null;
             isReadyToBomb = false;
             pilotInput.fire = false;
             StartCoroutine(ResetMissileShot());
