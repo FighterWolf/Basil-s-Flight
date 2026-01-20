@@ -31,6 +31,7 @@ public class Aircraft : MonoBehaviour, Interactable
     private int planeLayer;
     private PlaneWeaponSystem weaponSystem;
     private Transform cameraHolder;
+    private Entity entity;
 
     public enum FormationPosition
     {
@@ -58,6 +59,7 @@ public class Aircraft : MonoBehaviour, Interactable
     {
         planeCam= EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody>();
+        entity=GetComponent<Entity>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");
         weaponSystem = GetComponent<PlaneWeaponSystem>();
@@ -151,6 +153,12 @@ public class Aircraft : MonoBehaviour, Interactable
             this.player = player;
             Transform playerTransform = player.transform;
 
+            if (TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
+            {
+                planeHUD.pilot = player;
+                planeHUD.pilotCanvas = player.GetComponent<CanvasHolder>().canvas;
+            }
+
             pilotInput = player.GetComponent<AircraftControls>();
             playerCam = EssentialFunctions.FindDescendants(playerTransform, "MainCamera").GetComponent<Camera>();
             playerTransform.SetParent(EssentialFunctions.FindDescendants(transform, "Seat"));
@@ -158,11 +166,6 @@ public class Aircraft : MonoBehaviour, Interactable
             playerTransform.localEulerAngles = Vector3.zero;
             SwitchControls(true, "Aircraft");
             weaponSystem.SetPlayer(player.GetComponent<ThirdPersonController>());
-
-            if(TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
-            {
-                planeHUD.pilot = player;
-            }
         }
     }
 
@@ -195,6 +198,7 @@ public class Aircraft : MonoBehaviour, Interactable
             if (TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
             {
                 planeHUD.pilot = null;
+                planeHUD.pilotCanvas = null;
             }
             dismount = false;
         }

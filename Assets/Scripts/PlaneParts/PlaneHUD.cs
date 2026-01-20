@@ -1,15 +1,25 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlaneHUD : MonoBehaviour
 {
     public GameObject targetBox;
+    public TextMeshProUGUI distanceCalculator;
     public GameObject pilot;
+    public GameObject pilotCanvas;
     private Aircraft plane;
     private PlaneWeaponSystem planeWeaponSystem;
     private Camera cam;
+    private Transform cameraHolder;
     public Entity[] potentialTargets;
     public Entity lockOnTarget;
+
+    private Image planeHealthBar;
+    private TextMeshProUGUI planeThrottle;
+    private TextMeshProUGUI planeSpeed;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +27,7 @@ public class PlaneHUD : MonoBehaviour
         plane = GetComponent<Aircraft>();
         planeWeaponSystem = GetComponent<PlaneWeaponSystem>();
         cam = EssentialFunctions.FindDescendants(plane.transform,"Camera").GetComponent<Camera>();
+        cameraHolder = EssentialFunctions.FindDescendants(plane.transform, "LookAtObject");
     }
 
     // Update is called once per frame
@@ -25,6 +36,7 @@ public class PlaneHUD : MonoBehaviour
         potentialTargets = Entity.FindObjectsByType<Entity>(FindObjectsInactive.Exclude,FindObjectsSortMode.None);
         lockOnTarget = FindClosestTargetInScreen();
         HandleTargetLock();
+        HandleDisplay();
     }
 
     void HandleTargetLock()
@@ -34,9 +46,13 @@ public class PlaneHUD : MonoBehaviour
             float targetDistance = Vector3.Distance(lockOnTarget.transform.position, transform.position);
             Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam);
 
-            if (targetPositionInScreen.z > 0)
+            float angle = Vector3.Angle(transform.forward,cameraHolder.forward);
+            bool isLookingForward = angle < 60;
+
+            if (targetPositionInScreen.z > 0 && isLookingForward)
             {
                 targetBox.SetActive(true);
+                if(distanceCalculator!=null) distanceCalculator.text = targetDistance.ToString("F2") + "m";
                 targetBox.transform.localPosition = new Vector3(targetPositionInScreen.x, targetPositionInScreen.y, 0);
             }
             else
@@ -58,7 +74,6 @@ public class PlaneHUD : MonoBehaviour
         {
             if (e == null|| e == this.GetComponent<Entity>()) continue;
             
-            //This viewpoint part has problems, not turning true
             Vector3 viewPoint = cam.WorldToViewportPoint(e.transform.position);
             bool isVisible = viewPoint.x >= 0 && viewPoint.x <= 1 && viewPoint.y >= 0 && viewPoint.y <= 1 && viewPoint.z > 0;
             if (!isVisible) continue;
@@ -72,5 +87,41 @@ public class PlaneHUD : MonoBehaviour
             }
         }
         return closest;
+    }
+
+    void HandleDisplay()
+    {
+        if (pilotCanvas)
+        {
+            Aircraft plane = GetComponent<Aircraft>();
+            Entity e = GetComponent<Entity>();
+            planeHealthBar = EssentialFunctions.FindDescendants(pilotCanvas.transform,"HealthBar").GetComponent<Image>();
+            planeThrottle = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ThrottleSpeed").GetComponent<TextMeshProUGUI>();
+            planeSpeed = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ActualSpeed").GetComponent<TextMeshProUGUI>();
+
+            planeHealthBar.fillAmount = e.health / e.maxHealth;
+
+            if (e.health <= (e.maxHealth * 0.33))
+            {
+                planeHealthBar.color = Color.red;
+            }
+            else
+            {
+                planeHealthBar.color = Color.green;
+            }
+
+            if (plane.speed >= plane.maxSpeed)
+            {
+                planeThrottle.color = Color.red;
+                planeThrottle.text = "WEP";
+            }
+            else
+            {
+                planeThrottle.color = Color.white;
+                planeThrottle.text = plane.speed.ToString("F2");
+            }
+
+            planeSpeed.text = plane.actualSpeed.ToString("F2");
+        }
     }
 }

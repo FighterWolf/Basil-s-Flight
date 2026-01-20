@@ -33,7 +33,7 @@ public class Missile : MonoBehaviour
         {
             col.enabled = true;
             transform.SetParent(null);
-            if (targetToStrike != null) EssentialFunctions.AimForTarget(transform, targetToStrike, 25f);
+            if (targetToStrike != null) EssentialFunctions.AimForTarget(transform, targetToStrike, 50f);
         }
         Cruise();
 
@@ -59,7 +59,7 @@ public class Missile : MonoBehaviour
 
     public void Explode()
     {
-        if (cooldown <= 0)
+        if (cooldown <= 0||Vector3.Distance(transform.position,targetToStrike.position)<1)
         {
             Collider[] affectedColliders = Physics.OverlapSphere(transform.position, explosionRadius);
 

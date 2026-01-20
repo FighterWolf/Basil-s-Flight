@@ -2,6 +2,8 @@
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
+using UnityEngine.UI;
+using TMPro;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -100,6 +102,7 @@ namespace StarterAssets
 
         // Other Shit
         public Aircraft currentVehicle;
+        public GameObject playerCanvas;
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
