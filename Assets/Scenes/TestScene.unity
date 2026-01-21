@@ -2283,7 +2283,7 @@ Transform:
   m_GameObject: {fileID: 1337960776}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1014.85, y: 11.9, z: -831.2}
+  m_LocalPosition: {x: -722, y: 80, z: 53}
   m_LocalScale: {x: 19.27, y: 19.27, z: 19.27}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3224,6 +3224,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5981599401684864149, guid: ad89906d6116ea645a9d77321b863c8f, type: 3}
       propertyPath: 'm_BlendShapeWeights.Array.data[6]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981599401684864149, guid: ad89906d6116ea645a9d77321b863c8f, type: 3}
+      propertyPath: 'm_BlendShapeWeights.Array.data[7]'
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6521774311824297415, guid: ad89906d6116ea645a9d77321b863c8f, type: 3}

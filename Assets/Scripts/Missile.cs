@@ -11,7 +11,7 @@ public class Missile : MonoBehaviour
 
     public Transform targetToStrike;
 
-    private float cooldown=0.1f;
+    private float cooldown=0.25f;
     private Rigidbody rb;
     private Collider col;
 
@@ -33,7 +33,7 @@ public class Missile : MonoBehaviour
         {
             col.enabled = true;
             transform.SetParent(null);
-            if (targetToStrike != null) EssentialFunctions.AimForTarget(transform, targetToStrike, 50f);
+            if (targetToStrike != null) EssentialFunctions.AimForTarget(transform,targetToStrike,90f);
         }
         Cruise();
 
@@ -45,11 +45,16 @@ public class Missile : MonoBehaviour
         {
             Explode();
         }
+
+        if(Vector3.Distance(transform.position, targetToStrike.position) < 10)
+        {
+            Explode();
+        }
     }
 
     public void Cruise()
     {
-        rb.AddForce(transform.forward * 2 * (speedModifier+cruiseSpeed), ForceMode.Acceleration);
+        rb.AddForce(transform.forward * (speedModifier+cruiseSpeed), ForceMode.Acceleration);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -59,7 +64,7 @@ public class Missile : MonoBehaviour
 
     public void Explode()
     {
-        if (cooldown <= 0||Vector3.Distance(transform.position,targetToStrike.position)<1)
+        if (cooldown <= 0)
         {
             Collider[] affectedColliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
