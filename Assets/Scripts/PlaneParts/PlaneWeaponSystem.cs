@@ -93,7 +93,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         {
             Debug.Log("Firing Missile");
             GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation,missilePod.transform);
-            if(GetComponent<PlaneHUD>().lockOnTarget != null) missile.GetComponent<Missile>().targetToStrike = GetComponent<PlaneHUD>().lockOnTarget.transform;
+            if(GetComponent<PlaneHUD>().confirmedTarget != null) missile.GetComponent<Missile>().targetToStrike = GetComponent<PlaneHUD>().confirmedTarget.transform;
             missile.GetComponent<Missile>().speedModifier = plane.speed;
             isReadyToBomb = false;
             pilotInput.fire = false;

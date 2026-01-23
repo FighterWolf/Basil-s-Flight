@@ -23,14 +23,9 @@ public class EssentialFunctions : MonoBehaviour
 
     public static void AimForTarget(Transform ownerTransform, Transform targetTransform, float rotationSpeed)
     {
-        Quaternion q = Quaternion.LookRotation((targetTransform.position - ownerTransform.position).normalized);
-        ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation,q,rotationSpeed);
-    }
-
-    public static void AimForTarget(Transform ownerTransform, Vector3 targetTransform, float rotationSpeed)
-    {
-        Quaternion q = Quaternion.LookRotation((targetTransform - ownerTransform.position).normalized);
-        ownerTransform.rotation = Quaternion.RotateTowards(ownerTransform.rotation, q, rotationSpeed);
+        Vector3 desiredDirection = (targetTransform.position - ownerTransform.position).normalized;
+        Vector3 newDirection = Vector3.RotateTowards(ownerTransform.forward,desiredDirection,rotationSpeed*Mathf.Rad2Deg*Time.deltaTime,0f);
+        ownerTransform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     public static Vector3 TransformWorldCoordsToScreen(Vector3 objectPosition,Camera camera)

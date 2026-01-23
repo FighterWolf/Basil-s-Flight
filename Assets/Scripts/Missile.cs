@@ -10,8 +10,14 @@ public class Missile : MonoBehaviour
     public float fuel;
 
     public Transform targetToStrike;
+    public float distance;
 
-    private float cooldown=0.25f;
+    private Aircraft owner;
+    private Camera cam;
+
+    private Vector3 prediction;
+
+    private float cooldown=0.75f;
     private Rigidbody rb;
     private Collider col;
 
@@ -20,11 +26,15 @@ public class Missile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        cam = EssentialFunctions.FindDescendants(transform,"Camera").GetComponent<Camera>();
+        owner = transform.root.GetComponent<Aircraft>();
+        cam.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(targetToStrike) distance = Vector3.Distance(transform.position, targetToStrike.position);
         if (cooldown >= 0)
         {
             cooldown -= Time.deltaTime;
@@ -33,9 +43,7 @@ public class Missile : MonoBehaviour
         {
             col.enabled = true;
             transform.SetParent(null);
-            if (targetToStrike != null) EssentialFunctions.AimForTarget(transform,targetToStrike,90f);
         }
-        Cruise();
 
         if (fuel >= 0)
         {
@@ -46,20 +54,49 @@ public class Missile : MonoBehaviour
             Explode();
         }
 
-        if(Vector3.Distance(transform.position, targetToStrike.position) < 10)
+        if(targetToStrike&&Vector3.Distance(transform.position, targetToStrike.position) < explosionRadius)
         {
             Explode();
         }
     }
 
-    public void Cruise()
+    void FixedUpdate()
     {
-        rb.AddForce(transform.forward * (speedModifier+cruiseSpeed), ForceMode.Acceleration);
+        rb.AddForce(transform.forward * (cruiseSpeed + speedModifier), ForceMode.Acceleration);
+        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, cruiseSpeed+speedModifier);
+
+        if (cooldown < 0 && targetToStrike != null) {
+            float percentageOfWayToTarget = Mathf.InverseLerp(1,1000,Vector3.Distance(transform.position,targetToStrike.position));
+
+            PredictMovement(percentageOfWayToTarget);
+
+            RotateMissile();
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         Explode();
+    }
+
+    void PredictMovement(float percentageOfWayToTarget)
+    {
+        float time = Mathf.Lerp(0, 5, percentageOfWayToTarget);
+
+        Rigidbody targetRigidBody = targetToStrike.GetComponent<Rigidbody>();
+
+        prediction = targetRigidBody.position + targetRigidBody.linearVelocity * time;
+    }
+
+    void RotateMissile()
+    {
+        
+        Vector3 coordsToStrike=prediction-transform.position;
+
+        //float turnSpeed = Mathf.Lerp(30f, 360f, 1f - Mathf.Clamp01(distance / 500f));
+
+        Quaternion rotation = Quaternion.LookRotation(coordsToStrike);
+        rb.MoveRotation(Quaternion.RotateTowards(transform.rotation,rotation,120*Time.deltaTime));
     }
 
     public void Explode()

@@ -15,10 +15,12 @@ public class PlaneHUD : MonoBehaviour
     private Transform cameraHolder;
     public Entity[] potentialTargets;
     public Entity lockOnTarget;
+    public Entity confirmedTarget;
 
     private Image planeHealthBar;
     private TextMeshProUGUI planeThrottle;
     private TextMeshProUGUI planeSpeed;
+    private TextMeshProUGUI currentWeaponSystem;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,28 +43,33 @@ public class PlaneHUD : MonoBehaviour
 
     void HandleTargetLock()
     {
-        if (pilot != null&&planeWeaponSystem.weaponSystem==PlaneWeaponSystem.WeaponSystem.Missile&&lockOnTarget != null)
+        float targetDistance = Mathf.Infinity;
+        if (lockOnTarget) targetDistance=Vector3.Distance(lockOnTarget.transform.position, transform.position);
+
+        if (pilot != null&&planeWeaponSystem.weaponSystem==PlaneWeaponSystem.WeaponSystem.Missile&&lockOnTarget&& targetDistance <= 1000)
         {
-            float targetDistance = Vector3.Distance(lockOnTarget.transform.position, transform.position);
             Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam);
 
             float angle = Vector3.Angle(transform.forward,cameraHolder.forward);
-            bool isLookingForward = angle < 60;
+            bool isLookingForward = angle < 45;
 
             if (targetPositionInScreen.z > 0 && isLookingForward)
             {
                 targetBox.SetActive(true);
                 if(distanceCalculator!=null) distanceCalculator.text = targetDistance.ToString("F2") + "m";
                 targetBox.transform.localPosition = new Vector3(targetPositionInScreen.x, targetPositionInScreen.y, 0);
+                confirmedTarget = lockOnTarget;
             }
             else
             {
                 targetBox.SetActive(false);
+                confirmedTarget = null;
             }
         }
         else
         {
             targetBox.SetActive(false);
+            confirmedTarget = null;
         }
     }
 
@@ -80,7 +87,7 @@ public class PlaneHUD : MonoBehaviour
 
             float targetDistance = Vector3.Distance(e.transform.position, plane.transform.position);
 
-            if (targetDistance < closestDistance)
+            if (targetDistance<=1000&&targetDistance < closestDistance)
             {
                 closest = e;
                 closestDistance = targetDistance;
@@ -98,6 +105,7 @@ public class PlaneHUD : MonoBehaviour
             planeHealthBar = EssentialFunctions.FindDescendants(pilotCanvas.transform,"HealthBar").GetComponent<Image>();
             planeThrottle = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ThrottleSpeed").GetComponent<TextMeshProUGUI>();
             planeSpeed = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ActualSpeed").GetComponent<TextMeshProUGUI>();
+            currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
 
             planeHealthBar.fillAmount = e.health / e.maxHealth;
 
@@ -119,6 +127,16 @@ public class PlaneHUD : MonoBehaviour
             {
                 planeThrottle.color = Color.white;
                 planeThrottle.text = plane.speed.ToString("F2");
+            }
+
+            switch (planeWeaponSystem.weaponSystem)
+            {
+                case PlaneWeaponSystem.WeaponSystem.Gun:
+                    currentWeaponSystem.text = "Machine Gun";
+                    break;
+                case PlaneWeaponSystem.WeaponSystem.Missile:
+                    currentWeaponSystem.text = "Missile";
+                    break;
             }
 
             planeSpeed.text = plane.actualSpeed.ToString("F2");
