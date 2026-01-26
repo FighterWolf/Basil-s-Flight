@@ -100,6 +100,8 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
+        private int animationSit;
+
         // Other Shit
         public Aircraft currentVehicle;
         public GameObject playerCanvas;
@@ -183,6 +185,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            animationSit = Animator.StringToHash("Sitting");
         }
 
         private void GroundedCheck()
@@ -417,6 +420,7 @@ namespace StarterAssets
                         _animator.SetBool(_animIDFreeFall, false);
                         _animator.SetBool(_animIDJump, false);
                         _animator.SetBool(_animIDGrounded, true);
+                        _animator.SetBool(animationSit,true);
                         this.enabled = false;
                     }
                 }
@@ -439,6 +443,7 @@ namespace StarterAssets
             _playerInput.SwitchCurrentActionMap("Player");
             enabled = true;
             pilotControls.dismount = false;
+            _animator.SetBool(animationSit,false);
         }
     }
 }

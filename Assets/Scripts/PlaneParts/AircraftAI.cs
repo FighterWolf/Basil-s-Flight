@@ -8,6 +8,15 @@ public class AircraftAI : MonoBehaviour
     VFormationSpot spotToFollow;
     private float distanceToSpotToFollow;
     
+    public enum State
+    {
+        Patroling,
+        Following,
+        Attacking
+    }
+
+    public State state;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,8 +26,35 @@ public class AircraftAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        state = ChangeState();
+
+        switch (state)
+        {
+            case State.Patroling:
+                break;
+            case State.Following:
+                FollowAircraft();
+                break;
+            case State.Attacking:
+                break;
+        }
+    }
+
+    void FixedUpdate()
+    {
         
-        FollowAircraft();
+    }
+    State ChangeState()
+    {
+        /*
+         If enemy aircraft nearby, attack enemy aircraft
+
+         If too far from squadron, follow aircraft
+
+         Default is patrolling
+         */
+        
+        return State.Following;
     }
 
     void FollowAircraft()
@@ -28,8 +64,8 @@ public class AircraftAI : MonoBehaviour
         spotToFollow = plane.whichSpotToFollow;
         if (spotToFollow != null)
         {
-
-            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 2.5f);
+            float percentageOfWayToTarget = Mathf.InverseLerp(1, 1000, Vector3.Distance(transform.position, spotToFollow.transform.position));
+            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1f);
             HandleSpeed();
         }
     }
@@ -38,14 +74,18 @@ public class AircraftAI : MonoBehaviour
     {
         distanceToSpotToFollow = Vector3.Distance(transform.position,spotToFollow.transform.position);
         
-        ChangeSpeed(planeToFollow.speed);
+        ChangeSpeed(planeToFollow.glideSpeed);
     }
 
     void ChangeSpeed(float desiredSpeed)
     {   
-        if (plane.speed<desiredSpeed)
+        if (plane.glideSpeed<desiredSpeed)
         {
             plane.Accelerate(1);
+        }
+        else if (plane.glideSpeed >desiredSpeed)
+        {
+            plane.Accelerate(-1);
         }
     }
 

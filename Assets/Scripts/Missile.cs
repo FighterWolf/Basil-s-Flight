@@ -12,9 +12,6 @@ public class Missile : MonoBehaviour
     public Transform targetToStrike;
     public float distance;
 
-    private Aircraft owner;
-    private Camera cam;
-
     private Vector3 prediction;
 
     private float cooldown=0.75f;
@@ -26,9 +23,6 @@ public class Missile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-        cam = EssentialFunctions.FindDescendants(transform,"Camera").GetComponent<Camera>();
-        owner = transform.root.GetComponent<Aircraft>();
-        cam.enabled = true;
     }
 
     // Update is called once per frame
@@ -90,10 +84,7 @@ public class Missile : MonoBehaviour
 
     void RotateMissile()
     {
-        
         Vector3 coordsToStrike=prediction-transform.position;
-
-        //float turnSpeed = Mathf.Lerp(30f, 360f, 1f - Mathf.Clamp01(distance / 500f));
 
         Quaternion rotation = Quaternion.LookRotation(coordsToStrike);
         rb.MoveRotation(Quaternion.RotateTowards(transform.rotation,rotation,120*Time.deltaTime));

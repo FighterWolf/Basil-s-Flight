@@ -224,9 +224,9 @@ public class Aircraft : MonoBehaviour, Interactable
                 rb.AddForce(transform.forward * speed*5, ForceMode.Force);
             }
             
-            rb.AddTorque(transform.up * yaw * actualSpeed * 1f*Time.fixedDeltaTime, ForceMode.Acceleration);
-            rb.AddTorque(transform.right  * pitch * actualSpeed * -1f* Time.fixedDeltaTime, ForceMode.Acceleration);
-            rb.AddTorque(transform.forward * roll * actualSpeed * -1f* Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.up * yaw * actualSpeed * 1.25f*Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.right  * pitch * actualSpeed * -1.25f* Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.forward * roll * actualSpeed * -1.25f* Time.fixedDeltaTime, ForceMode.Acceleration);
             //OnDrag();
         }
     }
