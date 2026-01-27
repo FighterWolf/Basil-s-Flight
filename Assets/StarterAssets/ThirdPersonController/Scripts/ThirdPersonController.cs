@@ -161,6 +161,8 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            StartInAircraft();
         }
 
         private void Update()
@@ -413,15 +415,7 @@ namespace StarterAssets
                     
                     if (i is Aircraft v && !v.TryGetComponent<AircraftAI>(out AircraftAI a))
                     {
-                        currentVehicle = v.GetComponent<Aircraft>();
-                        _playerInput.SwitchCurrentActionMap("Aircraft");
-                        GetComponent<CharacterController>().enabled = false;
-                        _animator.SetFloat(_animIDSpeed, 0f);
-                        _animator.SetBool(_animIDFreeFall, false);
-                        _animator.SetBool(_animIDJump, false);
-                        _animator.SetBool(_animIDGrounded, true);
-                        _animator.SetBool(animationSit,true);
-                        this.enabled = false;
+                        EnterAircraft(v);
                     }
                 }
                 
@@ -444,6 +438,28 @@ namespace StarterAssets
             enabled = true;
             pilotControls.dismount = false;
             _animator.SetBool(animationSit,false);
+        }
+
+        void EnterAircraft(Aircraft plane)
+        {
+            currentVehicle = plane.GetComponent<Aircraft>();
+            _playerInput.SwitchCurrentActionMap("Aircraft");
+            GetComponent<CharacterController>().enabled = false;
+            _animator.SetFloat(_animIDSpeed, 0f);
+            _animator.SetBool(_animIDFreeFall, false);
+            _animator.SetBool(_animIDJump, false);
+            _animator.SetBool(_animIDGrounded, true);
+            _animator.SetBool(animationSit, true);
+            this.enabled = false;
+        }
+
+        void StartInAircraft()
+        {
+            if(transform.root.TryGetComponent<Aircraft>(out Aircraft plane))
+            {
+                plane.Interact(gameObject);
+                EnterAircraft(plane);
+            }
         }
     }
 }

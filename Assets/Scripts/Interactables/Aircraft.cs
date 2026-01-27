@@ -55,14 +55,18 @@ public class Aircraft : MonoBehaviour, Interactable
     public bool dismount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        planeCam = EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
+        weaponSystem = GetComponent<PlaneWeaponSystem>();
+    }
+    
     void Start()
     {
-        planeCam= EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody>();
         entity=GetComponent<Entity>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");
-        weaponSystem = GetComponent<PlaneWeaponSystem>();
         cameraHolder = EssentialFunctions.FindDescendants(transform, "LookAtObject");
         if (isLeadPlane)
         {
@@ -138,7 +142,7 @@ public class Aircraft : MonoBehaviour, Interactable
         
     }
 
-    public void SwitchControls(bool turnOnPlane,string actionMap)
+    public void SwitchControls(bool turnOnPlane)
     {
 
         playerCam.enabled = !turnOnPlane;
@@ -164,7 +168,7 @@ public class Aircraft : MonoBehaviour, Interactable
             playerTransform.SetParent(EssentialFunctions.FindDescendants(transform, "Seat"));
             playerTransform.localPosition = Vector3.zero;
             playerTransform.localEulerAngles = Vector3.zero;
-            SwitchControls(true, "Aircraft");
+            SwitchControls(true);
             weaponSystem.SetPlayer(player.GetComponent<ThirdPersonController>());
         }
     }
@@ -188,7 +192,7 @@ public class Aircraft : MonoBehaviour, Interactable
             player.transform.rotation = spotToExit.rotation;
 
             player.transform.SetParent(null);
-            SwitchControls(false,"Player");
+            SwitchControls(false);
             player.GetComponent<CharacterController>().enabled = true;
             player.GetComponent<ThirdPersonController>().enabled = true;
             player.GetComponent<ThirdPersonController>().OnExitVehicle();
