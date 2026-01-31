@@ -105,6 +105,10 @@ public class Missile : MonoBehaviour
                     if (hitEntities.Add(entity))
                     {
                         entity.DecreaseHealth(150f);
+                        if(entity.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
+                        {
+                            planeAI.isHit = true;
+                        }
                     }
                 }
             }

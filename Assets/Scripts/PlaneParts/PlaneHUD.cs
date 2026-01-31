@@ -21,6 +21,7 @@ public class PlaneHUD : MonoBehaviour
     private TextMeshProUGUI planeThrottle;
     private TextMeshProUGUI planeSpeed;
     private TextMeshProUGUI currentWeaponSystem;
+    private TextMeshProUGUI altitude;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -106,6 +107,7 @@ public class PlaneHUD : MonoBehaviour
             planeThrottle = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ThrottleSpeed").GetComponent<TextMeshProUGUI>();
             planeSpeed = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ActualSpeed").GetComponent<TextMeshProUGUI>();
             currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
+            altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
 
             planeHealthBar.fillAmount = e.health / e.maxHealth;
 
@@ -139,7 +141,8 @@ public class PlaneHUD : MonoBehaviour
                     break;
             }
 
-            planeSpeed.text = plane.actualSpeed.ToString("F2");
+            altitude.text = plane.altitude.ToString("F2");
+            planeSpeed.text = plane.glideSpeed.ToString("F2");
         }
     }
 }

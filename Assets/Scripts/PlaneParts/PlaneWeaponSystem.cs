@@ -83,6 +83,10 @@ public class PlaneWeaponSystem : MonoBehaviour
                 {
                     Debug.Log("Hit Target: " + hitTarget + "!");
                     hitTarget.DecreaseHealth(gunDamage);
+                    if(hit.collider.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
+                    {
+                        planeAI.isHit = true;
+                    }
                 }
             }
             isReadyToFireGun = false;

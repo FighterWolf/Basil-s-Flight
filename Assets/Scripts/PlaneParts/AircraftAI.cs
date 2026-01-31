@@ -6,13 +6,24 @@ public class AircraftAI : MonoBehaviour
     Aircraft plane;
     Aircraft planeToFollow;
     VFormationSpot spotToFollow;
+
+    public string enemyTag;
+
+    public bool isHit;
+    public Vector3[] waypoints;
     private float distanceToSpotToFollow;
+
+    private List<Entity> listOfPotentialEnemies;
+    private Entity enemy;
+    private float enemyDistance;
     
     public enum State
     {
         Patroling,
         Following,
-        Attacking
+        Attacking,
+        Evading,
+        Disabled
     }
 
     public State state;
@@ -21,6 +32,7 @@ public class AircraftAI : MonoBehaviour
     void Start()
     {
         plane = GetComponent<Aircraft>();
+        this.planeToFollow = plane.planeToFollow;
     }
 
     // Update is called once per frame
@@ -34,8 +46,14 @@ public class AircraftAI : MonoBehaviour
                 break;
             case State.Following:
                 FollowAircraft();
+                SearchForClosestEnemy();
                 break;
             case State.Attacking:
+                break;
+            case State.Evading:
+                break;
+            case State.Disabled:
+                DisableSelf();
                 break;
         }
     }
@@ -46,20 +64,32 @@ public class AircraftAI : MonoBehaviour
     }
     State ChangeState()
     {
-        /*
-         If enemy aircraft nearby, attack enemy aircraft
+        if (GetComponent<Entity>().health <= 0)
+        {
+            return State.Disabled;
+        }
+        else if (isHit)
+        {
+            return State.Evading;
+        }
+        else if (enemy&&enemyDistance<500)
+        {
+            return State.Attacking;
+        }
+        else if (planeToFollow||spotToFollow)
+        {
+            return State.Following;
+        }
+        else if (waypoints.Length>0)
+        {
+            return State.Patroling;
+        }
 
-         If too far from squadron, follow aircraft
-
-         Default is patrolling
-         */
-        
-        return State.Following;
+        return State.Disabled;
     }
 
     void FollowAircraft()
     {
-        this.planeToFollow = plane.planeToFollow;
         plane.whichSpotToFollow = FindFirstEmptyFormationSpot();
         spotToFollow = plane.whichSpotToFollow;
         if (spotToFollow != null)
@@ -67,6 +97,45 @@ public class AircraftAI : MonoBehaviour
             float percentageOfWayToTarget = Mathf.InverseLerp(1, 1000, Vector3.Distance(transform.position, spotToFollow.transform.position));
             EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1f);
             HandleSpeed();
+        }
+    }
+
+    void DisableSelf()
+    {
+        plane.speed = 0;
+    }
+
+    void SearchForClosestEnemy()
+    {
+        if (gameObject.CompareTag("BluFor"))
+        {
+            listOfPotentialEnemies = Entity.opForEntity;
+        }
+        else if (gameObject.CompareTag("OpFor"))
+        {
+            listOfPotentialEnemies = Entity.bluForEntity;
+        }
+
+        if (enemy&&enemy.health <= 0)
+        {
+            enemy = null;
+            enemyDistance = Mathf.Infinity;
+        }
+
+        if (listOfPotentialEnemies.Count>0)
+        {
+            float closestDistance = Mathf.Infinity;
+            Entity closestEnemy=null;
+            foreach(Entity e in listOfPotentialEnemies)
+            {
+                float distance = Vector3.Distance(e.transform.position, transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                }
+            }
+            enemy = closestEnemy;
+            enemyDistance = closestDistance;
         }
     }
 
