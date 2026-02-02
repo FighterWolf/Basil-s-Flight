@@ -421,6 +421,7 @@ public class Aircraft : MonoBehaviour, Interactable
         rb.linearVelocity = new Vector3(0,0,0);
         speed = 0;
         glideSpeed = 0;
+        entity.health = 0;
         Debug.Log("Plane Exploded");
         //Destroys aircraft
     }

@@ -10,7 +10,10 @@ public class AircraftAI : MonoBehaviour
     public string enemyTag;
 
     public bool isHit;
-    public Vector3[] waypoints;
+    [SerializeField] private Transform[] waypoints;
+    private Transform currentWaypoint;
+    public int waypointsIterator = 0;
+    private float waypointDistanceThreshhold=10;
     private float distanceToSpotToFollow;
 
     private List<Entity> listOfPotentialEnemies;
@@ -43,6 +46,8 @@ public class AircraftAI : MonoBehaviour
         switch (state)
         {
             case State.Patroling:
+                Patrol();
+                //SearchForClosestEnemy();
                 break;
             case State.Following:
                 FollowAircraft();
@@ -51,6 +56,7 @@ public class AircraftAI : MonoBehaviour
             case State.Attacking:
                 break;
             case State.Evading:
+                //Evade();
                 break;
             case State.Disabled:
                 DisableSelf();
@@ -80,7 +86,7 @@ public class AircraftAI : MonoBehaviour
         {
             return State.Following;
         }
-        else if (waypoints.Length>0)
+        else if (waypoints.Length > 0)
         {
             return State.Patroling;
         }
@@ -88,6 +94,51 @@ public class AircraftAI : MonoBehaviour
         return State.Disabled;
     }
 
+    void Evade()
+    {
+        //Bank like far left or far right for a few seconds
+        //As in really sharp fucking turn
+        isHit = false;
+    }
+
+    void Patrol()
+    {
+        if (!currentWaypoint||ReachedWaypoint())
+        {
+            SearchNextWaypoint();
+        }
+
+        if (currentWaypoint)
+        {
+            EssentialFunctions.AimForTarget(transform, currentWaypoint, 1.5f);
+        }
+
+        bool ReachedWaypoint()
+        {
+            if (Vector3.Distance(transform.position, currentWaypoint.position) < waypointDistanceThreshhold)
+            {
+                if (waypointsIterator == waypoints.Length - 1)
+                {
+                    waypointsIterator = 0;
+                }
+                else
+                {
+                    waypointsIterator++;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        void SearchNextWaypoint()
+        {
+            if (waypoints.Length > 0)
+            {
+                currentWaypoint = waypoints[waypointsIterator];
+            }
+        }
+    }
+    
     void FollowAircraft()
     {
         plane.whichSpotToFollow = FindFirstEmptyFormationSpot();
@@ -95,7 +146,7 @@ public class AircraftAI : MonoBehaviour
         if (spotToFollow != null)
         {
             float percentageOfWayToTarget = Mathf.InverseLerp(1, 1000, Vector3.Distance(transform.position, spotToFollow.transform.position));
-            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1f);
+            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1.5f);
             HandleSpeed();
         }
     }

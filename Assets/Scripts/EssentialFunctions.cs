@@ -24,7 +24,7 @@ public class EssentialFunctions : MonoBehaviour
     public static void AimForTarget(Transform ownerTransform, Transform targetTransform, float rotationSpeed)
     {
         Vector3 desiredDirection = (targetTransform.position - ownerTransform.position).normalized;
-        Vector3 newDirection = Vector3.RotateTowards(ownerTransform.forward,desiredDirection,rotationSpeed*Mathf.Rad2Deg*Time.deltaTime,0f);
+        Vector3 newDirection = Vector3.RotateTowards(ownerTransform.forward,desiredDirection,rotationSpeed*Time.deltaTime,0f);
         ownerTransform.rotation = Quaternion.LookRotation(newDirection);
     }
 
