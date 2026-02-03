@@ -17,9 +17,11 @@ public class AircraftAI : MonoBehaviour
     private float distanceToSpotToFollow;
 
     private List<Entity> listOfPotentialEnemies;
-    private Entity enemy;
-    private float enemyDistance;
-    
+    [SerializeField] private Entity enemy;
+    [SerializeField] private float enemyDistance;
+
+    private PlaneWeaponSystem pws;
+
     public enum State
     {
         Patroling,
@@ -35,6 +37,8 @@ public class AircraftAI : MonoBehaviour
     void Start()
     {
         plane = GetComponent<Aircraft>();
+        pws = GetComponent<PlaneWeaponSystem>();
+        pws.weaponSystem = PlaneWeaponSystem.WeaponSystem.Missile;
         this.planeToFollow = plane.planeToFollow;
     }
 
@@ -47,16 +51,17 @@ public class AircraftAI : MonoBehaviour
         {
             case State.Patroling:
                 Patrol();
-                //SearchForClosestEnemy();
+                SearchForClosestEnemy();
                 break;
             case State.Following:
                 FollowAircraft();
                 SearchForClosestEnemy();
                 break;
             case State.Attacking:
+                Pursue();
                 break;
             case State.Evading:
-                //Evade();
+                Evade();
                 break;
             case State.Disabled:
                 DisableSelf();
@@ -74,7 +79,7 @@ public class AircraftAI : MonoBehaviour
         {
             return State.Disabled;
         }
-        else if (isHit)
+        else if (plane.altitude<25||isHit)
         {
             return State.Evading;
         }
@@ -92,6 +97,17 @@ public class AircraftAI : MonoBehaviour
         }
 
         return State.Disabled;
+    }
+
+    void Pursue()
+    {
+        EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
+
+        if (pws.isReadyToBomb)
+        {
+            Debug.Log("Enemy firing missile.");
+            pws.Fire(enemy);
+        }
     }
 
     void Evade()
@@ -177,16 +193,20 @@ public class AircraftAI : MonoBehaviour
         {
             float closestDistance = Mathf.Infinity;
             Entity closestEnemy=null;
-            foreach(Entity e in listOfPotentialEnemies)
+
+            foreach (Entity e in listOfPotentialEnemies)
             {
+                if (!e || e.health <= 0) continue;
+                
                 float distance = Vector3.Distance(e.transform.position, transform.position);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
+                    closestEnemy = e;
                 }
             }
-            enemy = closestEnemy;
             enemyDistance = closestDistance;
+            enemy = closestEnemy;
         }
     }
 

@@ -251,7 +251,7 @@ public class Aircraft : MonoBehaviour, Interactable
         }
         else
         {
-            altitude = -1;
+            altitude = Mathf.Infinity;
             whatIsBelowPlane = null;
         }
     }

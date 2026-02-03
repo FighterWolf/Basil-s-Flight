@@ -10,8 +10,8 @@ public class PlaneWeaponSystem : MonoBehaviour
     public float gunFireRate;
     public float missileReloadRate;
 
-    private bool isReadyToFireGun=true;
-    private bool isReadyToBomb=true;
+    public bool isReadyToFireGun=true;
+    public bool isReadyToBomb=true;
 
     public enum WeaponSystem {
         Gun,
@@ -56,7 +56,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         SwitchWeapon();
     }
 
-    public void Fire()
+    public void Fire(Entity target = null)
     {
         if (fire)
         {
@@ -98,6 +98,8 @@ public class PlaneWeaponSystem : MonoBehaviour
             Debug.Log("Firing Missile");
             GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation,missilePod.transform);
             if(GetComponent<PlaneHUD>().confirmedTarget != null) missile.GetComponent<Missile>().targetToStrike = GetComponent<PlaneHUD>().confirmedTarget.transform;
+            if(target != null) missile.GetComponent<Missile>().targetToStrike = target.transform;
+
             missile.GetComponent<Missile>().speedModifier = plane.speed;
             isReadyToBomb = false;
             pilotInput.fire = false;
