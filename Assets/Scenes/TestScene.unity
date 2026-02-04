@@ -678,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -363
+      value: 197.76001
       objectReference: {fileID: 0}
     - target: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_LocalPosition.y
@@ -829,6 +829,8 @@ MonoBehaviour:
   - {fileID: 1648563860}
   - {fileID: 972276777}
   waypointsIterator: 0
+  enemy: {fileID: 0}
+  enemyDistance: 0
   state: 0
 --- !u!114 &294981961
 MonoBehaviour:
@@ -883,7 +885,7 @@ Transform:
   m_GameObject: {fileID: 343390658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -189.6, y: 80, z: -225.8586}
+  m_LocalPosition: {x: 212, y: 80, z: -225.8586}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1164,15 +1166,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -987.04
+      value: -426.27997
       objectReference: {fileID: 0}
     - target: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.31
+      value: 54.7
       objectReference: {fileID: 0}
     - target: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -990.3
+      value: -1003
       objectReference: {fileID: 0}
     - target: {fileID: 4750847076759050104, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1208,15 +1210,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4955196284485647673, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4955196284485647673, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_TagString
       value: BluFor
       objectReference: {fileID: 0}
     - target: {fileID: 5578115157143983340, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: speed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578115157143983340, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578115157143983340, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: glideSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578115157143983340, guid: 9223d6844c65f35419aa956550937148, type: 3}
+      propertyPath: actualSpeed
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5578115157143983340, guid: 9223d6844c65f35419aa956550937148, type: 3}
       propertyPath: vehicleName
@@ -1305,7 +1319,7 @@ Transform:
   m_GameObject: {fileID: 451673923}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -917.56714, y: 80, z: -225.8586}
+  m_LocalPosition: {x: -515.96716, y: 80, z: -225.8586}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2060,7 +2074,7 @@ Transform:
   m_GameObject: {fileID: 972276776}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1168, y: 80, z: 380}
+  m_LocalPosition: {x: -766.4, y: 80, z: 380}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2189,7 +2203,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -215.69809, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2810,6 +2824,8 @@ MonoBehaviour:
   isHit: 0
   waypoints: []
   waypointsIterator: 0
+  enemy: {fileID: 0}
+  enemyDistance: 0
   state: 1
 --- !u!1 &1362019792
 GameObject:
@@ -3092,8 +3108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277.8689, y: 0}
-  m_SizeDelta: {x: 299.23, y: 50}
+  m_AnchoredPosition: {x: 351.87662, y: 0}
+  m_SizeDelta: {x: 447.2455, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515752951
 MonoBehaviour:
@@ -3371,7 +3387,7 @@ Transform:
   m_GameObject: {fileID: 1648563859}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -164, y: 80, z: 358}
+  m_LocalPosition: {x: 237.6, y: 80, z: 358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3697,8 +3713,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277.8689, y: 0}
-  m_SizeDelta: {x: 299.23, y: 50}
+  m_AnchoredPosition: {x: 351.87662, y: 0}
+  m_SizeDelta: {x: 447.2455, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1873110839
 MonoBehaviour:
@@ -3957,11 +3973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6549724294107592172, guid: ad89906d6116ea645a9d77321b863c8f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3749952
+      value: 1.3749981
       objectReference: {fileID: 0}
     - target: {fileID: 6549724294107592172, guid: ad89906d6116ea645a9d77321b863c8f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.9999676
+      value: -3.999967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4404,8 +4420,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277.8689, y: 0}
-  m_SizeDelta: {x: 299.23, y: 50}
+  m_AnchoredPosition: {x: 351.87662, y: 0}
+  m_SizeDelta: {x: 447.2455, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065709016
 MonoBehaviour:
@@ -7888,7 +7904,7 @@ Transform:
   m_GameObject: {fileID: 4955196284844404380}
   serializedVersion: 2
   m_LocalRotation: {x: -0.06540306, y: 0, z: 0, w: 0.99785894}
-  m_LocalPosition: {x: -973.76, y: 15.81, z: -946.7}
+  m_LocalPosition: {x: -413, y: 54.2, z: -946.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9246,6 +9262,8 @@ MonoBehaviour:
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 12
+  isReadyToFireGun: 1
+  isReadyToBomb: 1
   weaponSystem: 0
   gunPod: {fileID: 0}
   missilePod: {fileID: 5311091559603415910}

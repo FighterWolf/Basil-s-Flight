@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class AircraftAI : MonoBehaviour
@@ -19,6 +20,8 @@ public class AircraftAI : MonoBehaviour
     private List<Entity> listOfPotentialEnemies;
     [SerializeField] private Entity enemy;
     [SerializeField] private float enemyDistance;
+
+    private Coroutine manuverCoroutine;
 
     private PlaneWeaponSystem pws;
 
@@ -54,7 +57,7 @@ public class AircraftAI : MonoBehaviour
                 SearchForClosestEnemy();
                 break;
             case State.Following:
-                FollowAircraft();
+                FollowAlliedAircraft();
                 SearchForClosestEnemy();
                 break;
             case State.Attacking:
@@ -83,7 +86,7 @@ public class AircraftAI : MonoBehaviour
         {
             return State.Evading;
         }
-        else if (enemy&&enemyDistance<500)
+        else if (manuverCoroutine==null&&enemy&&enemyDistance<500)
         {
             return State.Attacking;
         }
@@ -103,18 +106,37 @@ public class AircraftAI : MonoBehaviour
     {
         EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
 
-        if (pws.isReadyToBomb)
+        if (enemy&&pws.isReadyToBomb&&enemyDistance>150)
         {
-            Debug.Log("Enemy firing missile.");
-            pws.Fire(enemy);
+            pws.FireMissile(enemy);
         }
     }
 
     void Evade()
     {
-        //Bank like far left or far right for a few seconds
-        //As in really sharp fucking turn
+        if (manuverCoroutine==null) manuverCoroutine = StartCoroutine(Manuver());
+    }
+
+    private IEnumerator Manuver()
+    {
+        plane.pitch = 1;
+
+        int random = Random.Range(0, 1);
+
+        if (plane.altitude > 25)
+        {
+            float whichTurn = 0;
+
+            whichTurn = random > 0.5 ? 1 : -1;
+
+            plane.roll = whichTurn;
+        }
+
+        yield return new WaitForSeconds(1f);
         isHit = false;
+        plane.pitch = 0;
+        plane.roll = 0;
+        manuverCoroutine = null;
     }
 
     void Patrol()
@@ -155,7 +177,7 @@ public class AircraftAI : MonoBehaviour
         }
     }
     
-    void FollowAircraft()
+    void FollowAlliedAircraft()
     {
         plane.whichSpotToFollow = FindFirstEmptyFormationSpot();
         spotToFollow = plane.whichSpotToFollow;

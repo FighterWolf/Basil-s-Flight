@@ -47,6 +47,8 @@ public class Aircraft : MonoBehaviour, Interactable
     public List<Aircraft> listOfLastTrailingPlanes = new List<Aircraft>();
     private HashSet<Aircraft> checkedList = new HashSet<Aircraft>();
 
+    private float steerModifier = 2;
+
     public Vector2 look;
     public float yaw;
     public float pitch;
@@ -208,6 +210,12 @@ public class Aircraft : MonoBehaviour, Interactable
         }
     }
 
+    public void HandleOnZeroHealth()
+    {
+        speed = 0;
+        steerModifier = 0.5f;
+    }
+
     public void OnSteer()
     {
         Accelerate(throttle*3);
@@ -228,9 +236,9 @@ public class Aircraft : MonoBehaviour, Interactable
                 rb.AddForce(transform.forward * speed*5, ForceMode.Force);
             }
             
-            rb.AddTorque(transform.up * yaw * actualSpeed * 1.25f*Time.fixedDeltaTime, ForceMode.Acceleration);
-            rb.AddTorque(transform.right  * pitch * actualSpeed * -1.25f* Time.fixedDeltaTime, ForceMode.Acceleration);
-            rb.AddTorque(transform.forward * roll * actualSpeed * -1.25f* Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.up * yaw * actualSpeed * steerModifier * Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.right  * pitch * actualSpeed * -1f* steerModifier *Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddTorque(transform.forward * roll * actualSpeed * -1f* steerModifier * Time.fixedDeltaTime, ForceMode.Acceleration);
             //OnDrag();
         }
     }

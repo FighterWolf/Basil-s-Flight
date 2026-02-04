@@ -47,7 +47,7 @@ public class PlaneHUD : MonoBehaviour
         float targetDistance = Mathf.Infinity;
         if (lockOnTarget) targetDistance=Vector3.Distance(lockOnTarget.transform.position, transform.position);
 
-        if (pilot != null&&planeWeaponSystem.weaponSystem==PlaneWeaponSystem.WeaponSystem.Missile&&lockOnTarget&& targetDistance <= 1000)
+        if (pilot != null&&lockOnTarget&& targetDistance <= 1000)
         {
             Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam);
 
@@ -120,25 +120,35 @@ public class PlaneHUD : MonoBehaviour
                 planeHealthBar.color = Color.green;
             }
 
-            if (plane.speed >= plane.maxSpeed)
+            if (e.health > 0)
             {
-                planeThrottle.color = Color.red;
-                planeThrottle.text = "WEP";
+                if (plane.speed >= plane.maxSpeed)
+                {
+                    planeThrottle.color = Color.red;
+                    planeThrottle.text = "WEP";
+                }
+                else
+                {
+                    planeThrottle.color = Color.white;
+                    planeThrottle.text = plane.speed.ToString("F2");
+                }
+
+                switch (planeWeaponSystem.weaponSystem)
+                {
+                    case PlaneWeaponSystem.WeaponSystem.Gun:
+                        currentWeaponSystem.text = "Machine Gun";
+                        break;
+                    case PlaneWeaponSystem.WeaponSystem.Missile:
+                        currentWeaponSystem.text = "Missile";
+                        break;
+                }
             }
             else
             {
-                planeThrottle.color = Color.white;
-                planeThrottle.text = plane.speed.ToString("F2");
-            }
-
-            switch (planeWeaponSystem.weaponSystem)
-            {
-                case PlaneWeaponSystem.WeaponSystem.Gun:
-                    currentWeaponSystem.text = "Machine Gun";
-                    break;
-                case PlaneWeaponSystem.WeaponSystem.Missile:
-                    currentWeaponSystem.text = "Missile";
-                    break;
+                currentWeaponSystem.text = "PLANE DISABLED";
+                currentWeaponSystem.color = Color.red;
+                planeThrottle.text = "PLANE DISABLED";
+                planeThrottle.color = Color.red;
             }
 
             altitude.text = plane.altitude.ToString("F2");

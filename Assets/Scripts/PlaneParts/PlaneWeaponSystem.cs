@@ -73,7 +73,7 @@ public class PlaneWeaponSystem : MonoBehaviour
 
         void FireGun()
         {
-            Debug.Log("Firing Gun");
+            Debug.Log(plane.name + ": Firing Gun");
             Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
             RaycastHit hit;
 
@@ -92,19 +92,26 @@ public class PlaneWeaponSystem : MonoBehaviour
             isReadyToFireGun = false;
             StartCoroutine(ResetGunShot());
         }
+    }
 
-        void FireMissile()
+    public void FireMissile(Entity target = null)
+    {
+        Debug.Log(plane.name + ": Firing Missile");
+        GameObject missile = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation, missilePod.transform);
+        if (TryGetComponent<PlaneHUD>(out PlaneHUD pHUD))
         {
-            Debug.Log("Firing Missile");
-            GameObject missile = Instantiate(this.missile.gameObject,missilePod.transform.position,transform.rotation,missilePod.transform);
-            if(GetComponent<PlaneHUD>().confirmedTarget != null) missile.GetComponent<Missile>().targetToStrike = GetComponent<PlaneHUD>().confirmedTarget.transform;
-            if(target != null) missile.GetComponent<Missile>().targetToStrike = target.transform;
-
-            missile.GetComponent<Missile>().speedModifier = plane.speed;
-            isReadyToBomb = false;
-            pilotInput.fire = false;
-            StartCoroutine(ResetMissileShot());
+            if(pHUD.confirmedTarget != null) missile.GetComponent<Missile>().targetToStrike = pHUD.confirmedTarget.transform;
         }
+        else if (target)
+        {
+            missile.GetComponent<Missile>().targetToStrike = target.transform;
+        }
+
+        missile.GetComponent<Missile>().speedModifier = plane.speed;
+        isReadyToBomb = false;
+        if(pilotInput) pilotInput.fire = false;
+        fire = false;
+        StartCoroutine(ResetMissileShot());
     }
 
     public IEnumerator ResetGunShot()
@@ -116,8 +123,8 @@ public class PlaneWeaponSystem : MonoBehaviour
     public IEnumerator ResetMissileShot()
     {
         yield return new WaitForSeconds(60 / missileReloadRate);
-        yield return new WaitUntil(() => !pilotInput.fire);
-        isReadyToBomb=true;
+        if(pilotInput) yield return new WaitUntil(() => !pilotInput.fire);
+        isReadyToBomb =true;
     }
 
     public void SwitchWeapon()
