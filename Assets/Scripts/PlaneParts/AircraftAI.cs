@@ -62,6 +62,7 @@ public class AircraftAI : MonoBehaviour
                 break;
             case State.Attacking:
                 Pursue();
+                ClearEnemyOnTakedown();
                 break;
             case State.Evading:
                 Evade();
@@ -109,6 +110,15 @@ public class AircraftAI : MonoBehaviour
         if (enemy&&pws.isReadyToBomb&&enemyDistance>150)
         {
             pws.FireMissile(enemy);
+        }
+    }
+
+    void ClearEnemyOnTakedown()
+    {
+        if (enemy.health <= 0)
+        {
+            enemy = null;
+            enemyDistance = Mathf.Infinity;
         }
     }
 
