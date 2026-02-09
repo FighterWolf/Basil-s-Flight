@@ -99,6 +99,11 @@ public class Aircraft : MonoBehaviour, Interactable
             AddAllLastTrailingAircraft(this,listOfLastTrailingPlanes);
         }
         OnDismount();
+
+        if (entity.health <= 0)
+        {
+            HandleOnZeroHealth();
+        }
     }
 
     void FixedUpdate()
@@ -115,13 +120,6 @@ public class Aircraft : MonoBehaviour, Interactable
     private void LateUpdate()
     {
         HandleCamera();
-    }
-
-    private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-    {
-        if (lfAngle < -360f) lfAngle += 360f;
-        if (lfAngle > 360f) lfAngle -= 360f;
-        return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
     public void Interact(GameObject player)

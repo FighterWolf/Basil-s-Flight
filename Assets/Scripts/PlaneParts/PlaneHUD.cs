@@ -9,11 +9,14 @@ public class PlaneHUD : MonoBehaviour
     public TextMeshProUGUI distanceCalculator;
     public GameObject pilot;
     public GameObject pilotCanvas;
+
+    public string enemyToSearch;
+
     private Aircraft plane;
     private PlaneWeaponSystem planeWeaponSystem;
     private Camera cam;
     private Transform cameraHolder;
-    public Entity[] potentialTargets;
+    public List<Entity> potentialTargets;
     public Entity lockOnTarget;
     public Entity confirmedTarget;
 
@@ -36,7 +39,6 @@ public class PlaneHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        potentialTargets = Entity.FindObjectsByType<Entity>(FindObjectsInactive.Exclude,FindObjectsSortMode.None);
         lockOnTarget = FindClosestTargetInScreen();
         HandleTargetLock();
         HandleDisplay();
@@ -76,6 +78,15 @@ public class PlaneHUD : MonoBehaviour
 
     public Entity FindClosestTargetInScreen()
     {
+        if (enemyToSearch.Equals("OpFor"))
+        {
+            potentialTargets = Entity.opForEntity;
+        }
+        else if (enemyToSearch.Equals("BluFor"))
+        {
+            potentialTargets = Entity.bluForEntity;
+        }
+
         Entity closest=null;
         float closestDistance = Mathf.Infinity;
         foreach (Entity e in potentialTargets)
