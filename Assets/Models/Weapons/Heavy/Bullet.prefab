@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2139486338262656015}
   - component: {fileID: 3306051540810345679}
   - component: {fileID: 3013843581764602348}
-  - component: {fileID: 2688189731839695459}
   - component: {fileID: 3773582429414321847}
+  - component: {fileID: 8816096203204802633}
   m_Layer: 0
-  m_Name: Missile
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -936.42, y: 20.52, z: -986.03}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 5.2450814}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7adb8ec820c3ac9429c22ed20ea9537b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,29 +110,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2688189731839695459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093667403972676158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e89cc0c9710e7f4b819d8d46b34840d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Missile
-  cruiseSpeed: 0
-  speedModifier: 150
-  explosionRadius: 32
-  fuel: 5
-  missileDamage: 0
-  targetToStrike: {fileID: 0}
-  distance: 0
 --- !u!54 &3773582429414321847
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -160,3 +141,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8816096203204802633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093667403972676158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0a13df9e73beb4d834cbfff6402f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bullet
+  speed: 0
+  speedModifier: 300
+  bulletTimer: 5
+  gunDamage: 0
+  owner: {fileID: 0}
+  rb: {fileID: 0}
+  col: {fileID: 0}

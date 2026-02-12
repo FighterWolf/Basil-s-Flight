@@ -212,6 +212,12 @@ public class Aircraft : MonoBehaviour, Interactable
     {
         speed = 0;
         steerModifier = 0.5f;
+        entity.isDisabled = true;
+    }
+
+    public bool IsDisabled()
+    {
+        return entity.isDisabled;
     }
 
     public void OnSteer()

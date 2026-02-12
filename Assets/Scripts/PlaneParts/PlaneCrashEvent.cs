@@ -17,7 +17,7 @@ public class PlaneCrashEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!IsColliderAPartOfThePlane(other)&&plane.actualSpeed>25f&&(other.GetType() != typeof(CharacterController)))
+        if (!IsColliderAPartOfThePlane(other)&&plane.actualSpeed>25f&&(other.GetType() != typeof(CharacterController))&&other.gameObject.GetComponent<Bullet>() == null && other.gameObject.GetComponent<Missile>() == null)
         {
             plane.Explode();
         }

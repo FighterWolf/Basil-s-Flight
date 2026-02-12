@@ -413,7 +413,7 @@ namespace StarterAssets
                 {
                     i.Interact(gameObject);
                     
-                    if (i is Aircraft v && !v.TryGetComponent<AircraftAI>(out AircraftAI a))
+                    if (i is Aircraft v && !(i is AircraftAI))
                     {
                         EnterAircraft(v);
                     }

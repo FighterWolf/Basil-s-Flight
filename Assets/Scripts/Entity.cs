@@ -8,7 +8,9 @@ public class Entity : MonoBehaviour
 
     public float health;
     public float maxHealth;
-    
+
+    public bool isDisabled;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

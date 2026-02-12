@@ -31,6 +31,7 @@ public class PlaneWeaponSystem : MonoBehaviour
 
     public GameObject missilePod;
     public Missile missile;
+    public Bullet bullet;
 
     public bool fire;
     public bool switchWeapon;
@@ -63,40 +64,47 @@ public class PlaneWeaponSystem : MonoBehaviour
             switch (weaponSystem)
             {
                 case WeaponSystem.Gun:
-                    if(isReadyToFireGun && !pilotInput.allowLook) FireGun();
+                    if(isReadyToFireGun /*&& !pilotInput.allowLook*/) FireGun();
                     break;
                 case WeaponSystem.Missile:
                     if(isReadyToBomb) FireMissile();
                     break;
             }
         }
+    }
 
-        void FireGun()
+    void FireGun()
+    {
+        //Debug.Log(plane.name + ": Firing Gun");
+
+        /*
+        Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(r, out hit, Mathf.Infinity))
         {
-            Debug.Log(plane.name + ": Firing Gun");
-            Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(r,out hit,Mathf.Infinity))
+            if (hit.collider.TryGetComponent<Entity>(out Entity hitTarget))
             {
-                if(hit.collider.TryGetComponent<Entity>(out Entity hitTarget))
+                Debug.Log("Hit Target: " + hitTarget + "!");
+                hitTarget.DecreaseHealth(gunDamage);
+                if (hit.collider.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
                 {
-                    Debug.Log("Hit Target: " + hitTarget + "!");
-                    hitTarget.DecreaseHealth(gunDamage);
-                    if(hit.collider.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
-                    {
-                        planeAI.isHit = true;
-                    }
+                    planeAI.isHit = true;
                 }
             }
-            isReadyToFireGun = false;
-            StartCoroutine(ResetGunShot());
-        }
+        }*/
+        GameObject shot = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
+        shot.GetComponent<Bullet>().owner=GetComponent<Entity>();
+        shot.GetComponent<Bullet>().speed = plane.speed;
+        shot.GetComponent<Bullet>().gunDamage = gunDamage;
+
+        isReadyToFireGun = false;
+        StartCoroutine(ResetGunShot());
     }
 
     public void FireMissile(Entity target = null)
     {
-        Debug.Log(plane.name + ": Firing Missile");
+        //Debug.Log(plane.name + ": Firing Missile");
         GameObject missile = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation, missilePod.transform);
         if (TryGetComponent<PlaneHUD>(out PlaneHUD pHUD))
         {
@@ -108,6 +116,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         }
 
         missile.GetComponent<Missile>().speedModifier = plane.speed;
+        missile.GetComponent<Missile>().missileDamage = missileDamage;
         isReadyToBomb = false;
         if(pilotInput) pilotInput.fire = false;
         fire = false;

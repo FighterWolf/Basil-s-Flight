@@ -31,7 +31,7 @@ public class AIHealthBar : MonoBehaviour
 
     void LateUpdate()
     {
-        if (entity.health > 0)
+        if (entity.health > 0 && !entity.isDisabled)
         {
             distance = Vector3.Distance(transform.position, cam.transform.position);
             distanceText.text = distance.ToString("F2") + "m";

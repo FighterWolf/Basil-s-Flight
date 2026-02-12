@@ -31,6 +31,7 @@ public class AircraftAI : MonoBehaviour
         Following,
         Attacking,
         Evading,
+        AvoidingGround,
         Disabled
     }
 
@@ -67,6 +68,9 @@ public class AircraftAI : MonoBehaviour
             case State.Evading:
                 Evade();
                 break;
+            case State.AvoidingGround:
+                AvoidGround();
+                break;
             case State.Disabled:
                 DisableSelf();
                 break;
@@ -79,19 +83,25 @@ public class AircraftAI : MonoBehaviour
     }
     State ChangeState()
     {
-        if (GetComponent<Entity>().health <= 0)
+        if (plane.IsDisabled())
         {
             return State.Disabled;
         }
-        else if (plane.altitude<25||isHit)
+        /*
+        else if (altitude<25)
+        {
+            return State.AvoidingGround;
+        }
+        */
+        else if (isHit)
         {
             return State.Evading;
         }
-        else if (manuverCoroutine==null&&enemy&&enemyDistance<500)
+        else if (manuverCoroutine == null && enemy && enemyDistance < 500)
         {
             return State.Attacking;
         }
-        else if (planeToFollow||spotToFollow)
+        else if (planeToFollow && !planeToFollow.IsDisabled())
         {
             return State.Following;
         }
@@ -125,6 +135,11 @@ public class AircraftAI : MonoBehaviour
     void Evade()
     {
         if (manuverCoroutine==null) manuverCoroutine = StartCoroutine(Manuver());
+    }
+
+    void AvoidGround()
+    {
+
     }
 
     private IEnumerator Manuver()

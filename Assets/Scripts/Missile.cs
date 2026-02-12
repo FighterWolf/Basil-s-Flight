@@ -8,6 +8,7 @@ public class Missile : MonoBehaviour
     public float speedModifier;
     public float explosionRadius;
     public float fuel;
+    public float missileDamage;
 
     public Transform targetToStrike;
     public float distance;
@@ -104,7 +105,7 @@ public class Missile : MonoBehaviour
                 {
                     if (hitEntities.Add(entity))
                     {
-                        entity.DecreaseHealth(150f);
+                        entity.DecreaseHealth(missileDamage);
                         if(entity.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
                         {
                             planeAI.isHit = true;
