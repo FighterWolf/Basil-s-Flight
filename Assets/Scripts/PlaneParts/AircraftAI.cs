@@ -22,6 +22,7 @@ public class AircraftAI : MonoBehaviour
     [SerializeField] private float enemyDistance;
 
     private Coroutine manuverCoroutine;
+    private Coroutine gunBurstCoroutine;
 
     private PlaneWeaponSystem pws;
 
@@ -117,10 +118,39 @@ public class AircraftAI : MonoBehaviour
     {
         EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
 
-        if (enemy&&pws.isReadyToBomb&&enemyDistance>150)
+        if (Physics.SphereCast(transform.position, 10, transform.forward, out RaycastHit hit, 500))
         {
-            pws.FireMissile(enemy);
+            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+            {
+                //Debug.Log(GetComponent<Entity>().killCreditName + " detected " + e.killCreditName);
+
+                if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 150)
+                {
+                    pws.FireMissile(enemy);
+                }
+                else if (pws.MachineGunOperational() && e != GetComponent<Entity>() && listOfPotentialEnemies.Contains(e))
+                {
+                    if (gunBurstCoroutine == null) gunBurstCoroutine = StartCoroutine(GunBurst());
+                }
+            }
         }
+    }
+
+    private IEnumerator GunBurst()
+    {
+        Debug.Log(GetComponent<Entity>().killCreditName + " is firing gun");
+        float timer = 0;
+        float duration = 0.5f;
+
+        while (timer < duration)
+        {
+            pws.FireGun();
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log(GetComponent<Entity>().killCreditName + " is on cooldown");
+        yield return new WaitForSeconds(3f);
+        gunBurstCoroutine = null;
     }
 
     void ClearEnemyOnTakedown()

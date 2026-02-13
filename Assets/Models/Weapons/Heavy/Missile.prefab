@@ -128,9 +128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Missile
   cruiseSpeed: 0
   speedModifier: 150
-  explosionRadius: 32
+  explosionRadius: 25
   fuel: 5
   missileDamage: 0
+  owner: {fileID: 0}
   targetToStrike: {fileID: 0}
   distance: 0
 --- !u!54 &3773582429414321847

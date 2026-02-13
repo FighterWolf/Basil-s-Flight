@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
             {
                 if (e != owner)
                 {
-                    e.DecreaseHealth(gunDamage);
+                    EssentialFunctions.OnSuccessfulHit(owner, e, gunDamage,"Machine Gun");
                 }
             }
             Destroy(gameObject);

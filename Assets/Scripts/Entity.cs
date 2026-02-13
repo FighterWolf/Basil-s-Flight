@@ -6,6 +6,8 @@ public class Entity : MonoBehaviour
     public static List<Entity> bluForEntity = new List<Entity>();
     public static List<Entity> opForEntity = new List<Entity>();
 
+    public string killCreditName;
+
     public float health;
     public float maxHealth;
 

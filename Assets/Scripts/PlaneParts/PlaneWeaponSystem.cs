@@ -28,10 +28,10 @@ public class PlaneWeaponSystem : MonoBehaviour
     private AircraftControls pilotInput;
 
     public GameObject gunPod;
+    public Bullet bullet;
 
     public GameObject missilePod;
     public Missile missile;
-    public Bullet bullet;
 
     public bool fire;
     public bool switchWeapon;
@@ -53,8 +53,23 @@ public class PlaneWeaponSystem : MonoBehaviour
             switchWeapon = pilotInput.switchWeapon;
         }
 
-        Fire();
-        SwitchWeapon();
+        if (!plane.IsDisabled())
+        {
+            Fire();
+            SwitchWeapon();
+        }
+    }
+
+    public bool MissileOperational()
+    {
+        if (missilePod && missile) return true;
+        return false;
+    }
+
+    public bool MachineGunOperational()
+    {
+        if (gunPod && bullet) return true;
+        return false;
     }
 
     public void Fire(Entity target = null)
@@ -73,9 +88,9 @@ public class PlaneWeaponSystem : MonoBehaviour
         }
     }
 
-    void FireGun()
+    public void FireGun()
     {
-        //Debug.Log(plane.name + ": Firing Gun");
+        //Debug.Log(GetComponent<Entity>().killCreditName + ": Firing Gun");
 
         /*
         Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
@@ -114,7 +129,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         {
             missile.GetComponent<Missile>().targetToStrike = target.transform;
         }
-
+        missile.GetComponent<Missile>().owner = GetComponent<Entity>();
         missile.GetComponent<Missile>().speedModifier = plane.speed;
         missile.GetComponent<Missile>().missileDamage = missileDamage;
         isReadyToBomb = false;

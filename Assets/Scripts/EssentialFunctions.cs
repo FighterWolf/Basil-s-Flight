@@ -33,4 +33,21 @@ public class EssentialFunctions : MonoBehaviour
         Vector3 screenCoords = camera.WorldToScreenPoint(objectPosition);
         return screenCoords - new Vector3(camera.pixelWidth / 2, camera.pixelHeight / 2);
     }
+
+    public static void OnSuccessfulHit(Entity killer,Entity target, float decreaseHealth, string weaponName)
+    {
+        if (!target.isDisabled)
+        {
+            target.DecreaseHealth(decreaseHealth);
+
+            if (target.health <= 0)
+            {
+                Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: "+weaponName);
+
+                //reward killer
+
+                //play sound for all, if player, display on screen.
+            }
+        }
+    }
 }
