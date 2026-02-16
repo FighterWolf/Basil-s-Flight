@@ -7030,6 +7030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAircraft
       objectReference: {fileID: 0}
+    - target: {fileID: 1725256736327083739, guid: 02699fe99f88e78428659e56ef35f282, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2657527843651668046, guid: 02699fe99f88e78428659e56ef35f282, type: 3}
       propertyPath: m_LocalPosition.x
       value: 197.76001
@@ -10088,7 +10092,7 @@ Transform:
   m_GameObject: {fileID: 4955196283078903359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 266.6, y: 248.1, z: -128}
+  m_LocalPosition: {x: 315.36, y: 248.1, z: -128}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

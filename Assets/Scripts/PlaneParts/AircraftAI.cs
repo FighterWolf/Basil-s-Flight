@@ -16,6 +16,7 @@ public class AircraftAI : MonoBehaviour
     public int waypointsIterator = 0;
     private float waypointDistanceThreshhold=10;
     private float distanceToSpotToFollow;
+    private int planeLayer;
 
     private List<Entity> listOfPotentialEnemies;
     [SerializeField] private Entity enemy;
@@ -41,6 +42,7 @@ public class AircraftAI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        planeLayer = LayerMask.GetMask("Plane Parts");
         plane = GetComponent<Aircraft>();
         pws = GetComponent<PlaneWeaponSystem>();
         pws.weaponSystem = PlaneWeaponSystem.WeaponSystem.Missile;
@@ -88,12 +90,10 @@ public class AircraftAI : MonoBehaviour
         {
             return State.Disabled;
         }
-        /*
-        else if (altitude<25)
+        else if (IsTooCloseToGround(150))
         {
             return State.AvoidingGround;
         }
-        */
         else if (isHit)
         {
             return State.Evading;
@@ -167,9 +167,34 @@ public class AircraftAI : MonoBehaviour
         if (manuverCoroutine==null) manuverCoroutine = StartCoroutine(Manuver());
     }
 
+    bool IsTooCloseToGround(float threshold)
+    {
+        Vector3 diagonal = (transform.forward + (Vector3.down * 0.5f)).normalized;
+
+        if (Physics.Raycast(transform.position, diagonal, out RaycastHit hit, Mathf.Infinity, ~planeLayer))
+        {
+            Debug.Log(hit.distance);
+            if (hit.distance < threshold)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     void AvoidGround()
     {
-
+        if (plane.transform.rotation.x > -25)
+        {
+            plane.pitch=1;
+        }
     }
 
     private IEnumerator Manuver()
