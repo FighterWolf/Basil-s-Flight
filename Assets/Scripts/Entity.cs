@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Entity : MonoBehaviour
@@ -12,6 +13,9 @@ public class Entity : MonoBehaviour
     public float maxHealth;
 
     public bool isDisabled;
+
+    private bool isOnHitCooldown;
+    private Coroutine hitCooldown;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,16 +50,31 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void DecreaseHealth(float health)
+    public void DecreaseHealth(bool ignoreCooldown,float health)
     {
-        if (this.health - health <= 0)
+        if (!isOnHitCooldown||ignoreCooldown)
         {
-            this.health = 0;
+            if (this.health - health <= 0)
+            {
+                this.health = 0;
+            }
+            else
+            {
+                this.health -= health;
+            }
         }
-        else
+        if (hitCooldown == null)
         {
-            this.health -= health;
+            hitCooldown = StartCoroutine(HitCooldown());
         }
+    }
+
+    private IEnumerator HitCooldown()
+    {
+        isOnHitCooldown = true;
+        yield return new WaitForSeconds(0.25f);
+        isOnHitCooldown = false;
+        hitCooldown = null;
     }
 
     public void IncreaseHealth(float health)

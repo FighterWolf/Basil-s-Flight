@@ -34,11 +34,11 @@ public class EssentialFunctions : MonoBehaviour
         return screenCoords - new Vector3(camera.pixelWidth / 2, camera.pixelHeight / 2);
     }
 
-    public static void OnSuccessfulHit(Entity killer,Entity target, float decreaseHealth, string weaponName)
+    public static void OnSuccessfulHit(Entity killer,Entity target, bool ignoreCooldown, float decreaseHealth, string weaponName)
     {
         if (!target.isDisabled)
         {
-            target.DecreaseHealth(decreaseHealth);
+            target.DecreaseHealth(ignoreCooldown,decreaseHealth);
 
             if (target.health <= 0)
             {

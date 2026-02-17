@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         {
             if (e != owner)
             {
-                e.DecreaseHealth(gunDamage);
+                e.DecreaseHealth(false,gunDamage);
             }
         }
         Destroy(gameObject);
@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
             {
                 if (e != owner)
                 {
-                    EssentialFunctions.OnSuccessfulHit(owner, e, gunDamage,"Machine Gun");
+                    EssentialFunctions.OnSuccessfulHit(owner, e,false, gunDamage,"Machine Gun");
                 }
             }
             Destroy(gameObject);

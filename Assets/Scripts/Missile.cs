@@ -94,7 +94,7 @@ public class Missile : MonoBehaviour
             {
                 if (hitEntities.Add(entity) && entity != owner)
                 {
-                    EssentialFunctions.OnSuccessfulHit(owner,entity,missileDamage, "Missile");
+                    EssentialFunctions.OnSuccessfulHit(owner,entity,true,missileDamage, "Missile");
 
                     if (entity.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
                     {

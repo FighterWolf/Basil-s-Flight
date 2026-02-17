@@ -34,7 +34,9 @@ public class AircraftAI : MonoBehaviour
         Attacking,
         Evading,
         AvoidingGround,
-        Disabled
+        AvoidingCollision,
+        Disabled,
+        Aimless
     }
 
     public State state;
@@ -74,8 +76,14 @@ public class AircraftAI : MonoBehaviour
             case State.AvoidingGround:
                 AvoidGround();
                 break;
+            case State.AvoidingCollision:
+                AvoidMidAirCollision();
+                break;
             case State.Disabled:
                 DisableSelf();
+                break;
+            case State.Aimless:
+                ResetRotation();
                 break;
         }
     }
@@ -94,6 +102,10 @@ public class AircraftAI : MonoBehaviour
         {
             return State.AvoidingGround;
         }
+        else if(IsTooCloseToAircraft())
+        {
+           return State.AvoidingCollision;
+        }
         else if (isHit)
         {
             return State.Evading;
@@ -111,27 +123,24 @@ public class AircraftAI : MonoBehaviour
             return State.Patroling;
         }
 
-        return State.Disabled;
+        return State.Aimless;
     }
 
     void Pursue()
     {
         EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
-
-        if (Physics.SphereCast(transform.position, 10, transform.forward, out RaycastHit hit, 500))
+        ResetRotation();
+        if (EntityInFront(10,500) is Entity e)
         {
-            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
-            {
-                //Debug.Log(GetComponent<Entity>().killCreditName + " detected " + e.killCreditName);
+            //Debug.Log(GetComponent<Entity>().killCreditName + " detected " + e.killCreditName);
 
-                if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 150)
-                {
-                    pws.FireMissile(enemy);
-                }
-                else if (pws.MachineGunOperational() && e != GetComponent<Entity>() && listOfPotentialEnemies.Contains(e))
-                {
-                    if (gunBurstCoroutine == null) gunBurstCoroutine = StartCoroutine(GunBurst());
-                }
+            if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 200)
+            {
+                pws.FireMissile(e);
+            }
+            else if (pws.MachineGunOperational() && e != GetComponent<Entity>() && listOfPotentialEnemies.Contains(e))
+            {
+                if (gunBurstCoroutine == null) gunBurstCoroutine = StartCoroutine(GunBurst());
             }
         }
     }
@@ -167,13 +176,59 @@ public class AircraftAI : MonoBehaviour
         if (manuverCoroutine==null) manuverCoroutine = StartCoroutine(Manuver());
     }
 
+    Entity EntityInFront(float radius,float distance)
+    {
+        if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, distance))
+        {
+            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+            {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    bool IsTooCloseToAircraft()
+    {
+        if (EntityInFront(50,100)) return true;
+        return false;
+    }
+
+    void AvoidMidAirCollision()
+    {
+        if (transform.position.z < 67)
+        {
+            plane.roll = 1;
+        }
+        else
+        {
+            plane.roll = 0;
+        }
+
+        if (transform.position.x < -45)
+        {
+            plane.pitch = 1;
+        }
+        else
+        {
+            plane.pitch = 0;
+        }
+    }
+
+    void ResetRotation()
+    {
+        plane.pitch = 0;
+        plane.yaw = 0;
+        plane.roll = 0;
+    }
+
     bool IsTooCloseToGround(float threshold)
     {
         Vector3 diagonal = (transform.forward + (Vector3.down * 0.5f)).normalized;
 
         if (Physics.Raycast(transform.position, diagonal, out RaycastHit hit, Mathf.Infinity, ~planeLayer))
         {
-            Debug.Log(hit.distance);
+            //Debug.Log(hit.distance);
             if (hit.distance < threshold)
             {
                 return true;
@@ -194,6 +249,10 @@ public class AircraftAI : MonoBehaviour
         if (plane.transform.rotation.x > -25)
         {
             plane.pitch=1;
+        }
+        else
+        {
+            plane.pitch = 0;
         }
     }
 
@@ -221,6 +280,7 @@ public class AircraftAI : MonoBehaviour
 
     void Patrol()
     {
+        ResetRotation();
         if (!currentWaypoint||ReachedWaypoint())
         {
             SearchNextWaypoint();
@@ -272,6 +332,10 @@ public class AircraftAI : MonoBehaviour
     void DisableSelf()
     {
         plane.speed = 0;
+        if (transform.rotation.x < 10)
+        {
+            plane.pitch = -1;
+        }
     }
 
     void SearchForClosestEnemy()
