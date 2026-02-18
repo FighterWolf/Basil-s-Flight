@@ -48,6 +48,10 @@ public class EssentialFunctions : MonoBehaviour
 
                 //play sound for all, if player, display on screen.
             }
+            else
+            {
+                Debug.Log(killer.killCreditName + " hit " + target.killCreditName + " using: " + weaponName);
+            }
         }
     }
 }
