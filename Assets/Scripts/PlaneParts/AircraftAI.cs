@@ -2,10 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class AircraftAI : MonoBehaviour
+public class AircraftAI : Aircraft
 {
-    Aircraft plane;
-    Aircraft planeToFollow;
     VFormationSpot spotToFollow;
 
     public string enemyTag;
@@ -42,18 +40,18 @@ public class AircraftAI : MonoBehaviour
     public State state;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
+        base.Start();
         planeLayer = LayerMask.GetMask("Plane Parts");
-        plane = GetComponent<Aircraft>();
         pws = GetComponent<PlaneWeaponSystem>();
         pws.weaponSystem = PlaneWeaponSystem.WeaponSystem.Missile;
-        this.planeToFollow = plane.planeToFollow;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         state = ChangeState();
 
         switch (state)
@@ -88,13 +86,19 @@ public class AircraftAI : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    public override void FixedUpdate()
     {
-        
+        base.FixedUpdate();
     }
+
+    public override void LateUpdate()
+    {
+        base.LateUpdate();
+    }
+
     State ChangeState()
     {
-        if (plane.IsDisabled())
+        if (IsDisabled())
         {
             return State.Disabled;
         }
@@ -132,7 +136,7 @@ public class AircraftAI : MonoBehaviour
         ResetRotation();
         if (EntityInFront(10,500) is Entity e)
         {
-            //Debug.Log(GetComponent<Entity>().killCreditName + " detected " + e.killCreditName);
+            //Debug.Log(killCreditName + " detected " + e.killCreditName);
 
             if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 200)
             {
@@ -147,7 +151,7 @@ public class AircraftAI : MonoBehaviour
 
     private IEnumerator GunBurst()
     {
-        Debug.Log(GetComponent<Entity>().killCreditName + " is firing gun");
+        Debug.Log(killCreditName + " is firing gun");
         float timer = 0;
         float duration = 0.5f;
 
@@ -157,7 +161,7 @@ public class AircraftAI : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        Debug.Log(GetComponent<Entity>().killCreditName + " is on cooldown");
+        Debug.Log(killCreditName + " is on cooldown");
         yield return new WaitForSeconds(3f);
         gunBurstCoroutine = null;
     }
@@ -198,28 +202,28 @@ public class AircraftAI : MonoBehaviour
     {
         if (transform.position.z < 67)
         {
-            plane.roll = 1;
+            roll = 1;
         }
         else
         {
-            plane.roll = 0;
+            roll = 0;
         }
 
         if (transform.position.x < -45)
         {
-            plane.pitch = 1;
+            pitch = 1;
         }
         else
         {
-            plane.pitch = 0;
+            pitch = 0;
         }
     }
 
     void ResetRotation()
     {
-        plane.pitch = 0;
-        plane.yaw = 0;
-        plane.roll = 0;
+        pitch = 0;
+        yaw = 0;
+        roll = 0;
     }
 
     bool IsTooCloseToGround(float threshold)
@@ -246,35 +250,35 @@ public class AircraftAI : MonoBehaviour
 
     void AvoidGround()
     {
-        if (plane.transform.rotation.x > -25)
+        if (transform.rotation.x > -25)
         {
-            plane.pitch=1;
+            pitch=1;
         }
         else
         {
-            plane.pitch = 0;
+            pitch = 0;
         }
     }
 
     private IEnumerator Manuver()
     {
-        plane.pitch = 1;
+        pitch = 1;
 
         int random = Random.Range(0, 1);
 
-        if (plane.altitude > 25)
+        if (altitude > 25)
         {
             float whichTurn = 0;
 
             whichTurn = random > 0.5 ? 1 : -1;
 
-            plane.roll = whichTurn;
+            roll = whichTurn;
         }
 
         yield return new WaitForSeconds(1f);
         isHit = false;
-        plane.pitch = 0;
-        plane.roll = 0;
+        pitch = 0;
+        roll = 0;
         manuverCoroutine = null;
     }
 
@@ -319,8 +323,8 @@ public class AircraftAI : MonoBehaviour
     
     void FollowAlliedAircraft()
     {
-        plane.whichSpotToFollow = FindFirstEmptyFormationSpot();
-        spotToFollow = plane.whichSpotToFollow;
+        whichSpotToFollow = FindFirstEmptyFormationSpot();
+        spotToFollow = whichSpotToFollow;
         if (spotToFollow != null)
         {
             float percentageOfWayToTarget = Mathf.InverseLerp(1, 1000, Vector3.Distance(transform.position, spotToFollow.transform.position));
@@ -331,10 +335,10 @@ public class AircraftAI : MonoBehaviour
 
     void DisableSelf()
     {
-        plane.speed = 0;
+        speed = 0;
         if (transform.rotation.x < 10)
         {
-            plane.pitch = -1;
+            pitch = -1;
         }
     }
 
@@ -385,13 +389,13 @@ public class AircraftAI : MonoBehaviour
 
     void ChangeSpeed(float desiredSpeed)
     {   
-        if (plane.glideSpeed<desiredSpeed)
+        if (glideSpeed<desiredSpeed)
         {
-            plane.Accelerate(1);
+            Accelerate(1);
         }
-        else if (plane.glideSpeed >desiredSpeed)
+        else if (glideSpeed >desiredSpeed)
         {
-            plane.Accelerate(-1);
+            Accelerate(-1);
         }
     }
 
@@ -409,10 +413,10 @@ public class AircraftAI : MonoBehaviour
             switch (position)
             {
                 case VFormationSpot.LeftORRight.Left:
-                    plane.formationPosition = Aircraft.FormationPosition.Left;
+                    formationPosition = Aircraft.FormationPosition.Left;
                     break;
                 case VFormationSpot.LeftORRight.Right:
-                    plane.formationPosition = Aircraft.FormationPosition.Right;
+                    formationPosition = Aircraft.FormationPosition.Right;
                     break;
             }
         }
@@ -424,7 +428,7 @@ public class AircraftAI : MonoBehaviour
             {
                 if (v.spot==direction)
                 {
-                    v.whoTakesTheSpot = plane;
+                    v.whoTakesTheSpot = this;
                     return v;
                 }
             }
@@ -443,7 +447,7 @@ public class AircraftAI : MonoBehaviour
                     {
                         //Is the plane on the lead plane's left or right?
                         ChooseFormationPosition(v.spot);
-                        v.whoTakesTheSpot = plane;
+                        v.whoTakesTheSpot = this;
                         return v;
                     }
                 }

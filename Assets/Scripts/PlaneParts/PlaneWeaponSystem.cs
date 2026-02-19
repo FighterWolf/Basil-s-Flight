@@ -91,25 +91,8 @@ public class PlaneWeaponSystem : MonoBehaviour
     public void FireGun()
     {
         //Debug.Log(GetComponent<Entity>().killCreditName + ": Firing Gun");
-
-        /*
-        Ray r = new Ray(planeCam.transform.position, planeCam.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(r, out hit, Mathf.Infinity))
-        {
-            if (hit.collider.TryGetComponent<Entity>(out Entity hitTarget))
-            {
-                Debug.Log("Hit Target: " + hitTarget + "!");
-                hitTarget.DecreaseHealth(gunDamage);
-                if (hit.collider.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
-                {
-                    planeAI.isHit = true;
-                }
-            }
-        }*/
         GameObject shot = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
-        shot.GetComponent<Bullet>().owner=GetComponent<Entity>();
+        shot.GetComponent<Bullet>().owner=plane;
         shot.GetComponent<Bullet>().speed = plane.speed;
         shot.GetComponent<Bullet>().gunDamage = gunDamage;
 
@@ -129,7 +112,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         {
             missile.GetComponent<Missile>().targetToStrike = target.transform;
         }
-        missile.GetComponent<Missile>().owner = GetComponent<Entity>();
+        missile.GetComponent<Missile>().owner = plane;
         missile.GetComponent<Missile>().speedModifier = plane.speed;
         missile.GetComponent<Missile>().missileDamage = missileDamage;
         isReadyToBomb = false;

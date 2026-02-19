@@ -3,9 +3,9 @@ using StarterAssets;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
-public class Aircraft : MonoBehaviour, Interactable
+public class Aircraft : Entity, Interactable
 {
-    public string vehicleName;
+    //public string vehicleName;
 
     public float speed;
     public float maxSpeed;
@@ -31,7 +31,6 @@ public class Aircraft : MonoBehaviour, Interactable
     private int planeLayer;
     private PlaneWeaponSystem weaponSystem;
     private Transform cameraHolder;
-    private Entity entity;
 
     public enum FormationPosition
     {
@@ -63,10 +62,10 @@ public class Aircraft : MonoBehaviour, Interactable
         weaponSystem = GetComponent<PlaneWeaponSystem>();
     }
     
-    void Start()
+    public override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody>();
-        entity=GetComponent<Entity>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");
         cameraHolder = EssentialFunctions.FindDescendants(transform, "LookAtObject");
@@ -77,8 +76,9 @@ public class Aircraft : MonoBehaviour, Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (pilotInput != null)
         {
             look = pilotInput.look;
@@ -100,13 +100,13 @@ public class Aircraft : MonoBehaviour, Interactable
         }
         OnDismount();
 
-        if (entity.health <= 0)
+        if (health <= 0)
         {
             HandleOnZeroHealth();
         }
     }
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         OnSteer();
         OnTakeOff();
@@ -117,7 +117,7 @@ public class Aircraft : MonoBehaviour, Interactable
         rb.angularVelocity *= 0.95f;
     }
 
-    private void LateUpdate()
+    public virtual void LateUpdate()
     {
         HandleCamera();
     }
@@ -129,7 +129,7 @@ public class Aircraft : MonoBehaviour, Interactable
 
     public string GetName()
     {
-        return "Enter " + vehicleName;
+        return "Enter ";// + vehicleName;
     }
 
     public bool IsHoldable()
@@ -212,12 +212,12 @@ public class Aircraft : MonoBehaviour, Interactable
     {
         speed = 0;
         steerModifier = 0.5f;
-        entity.isDisabled = true;
+        isDisabled = true;
     }
 
     public bool IsDisabled()
     {
-        return entity.isDisabled;
+        return isDisabled;
     }
 
     public void OnSteer()
@@ -433,7 +433,7 @@ public class Aircraft : MonoBehaviour, Interactable
         rb.linearVelocity = new Vector3(0,0,0);
         speed = 0;
         glideSpeed = 0;
-        entity.health = 0;
+        health = 0;
         Debug.Log("Plane Exploded");
         //Destroys aircraft
     }
