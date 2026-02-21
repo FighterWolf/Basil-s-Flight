@@ -28,7 +28,7 @@ public class Aircraft : Entity, Interactable
     private Camera planeCam;
     private Camera playerCam;
     private Rigidbody rb;
-    private int planeLayer;
+    protected int planeLayer;
     private PlaneWeaponSystem weaponSystem;
     private Transform cameraHolder;
 
@@ -434,7 +434,7 @@ public class Aircraft : Entity, Interactable
         speed = 0;
         glideSpeed = 0;
         health = 0;
-        Debug.Log("Plane Exploded");
+        Debug.Log(killCreditName+" exploded");
         //Destroys aircraft
     }
 }

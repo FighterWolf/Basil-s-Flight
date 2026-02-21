@@ -14,7 +14,6 @@ public class AircraftAI : Aircraft
     public int waypointsIterator = 0;
     private float waypointDistanceThreshhold=10;
     private float distanceToSpotToFollow;
-    private int planeLayer;
 
     private List<Entity> listOfPotentialEnemies;
     [SerializeField] private Entity enemy;
@@ -43,7 +42,6 @@ public class AircraftAI : Aircraft
     public override void Start()
     {
         base.Start();
-        planeLayer = LayerMask.GetMask("Plane Parts");
         pws = GetComponent<PlaneWeaponSystem>();
         pws.weaponSystem = PlaneWeaponSystem.WeaponSystem.Missile;
     }
@@ -102,7 +100,7 @@ public class AircraftAI : Aircraft
         {
             return State.Disabled;
         }
-        else if (IsTooCloseToGround(150))
+        else if (IsTooCloseToGround(250))
         {
             return State.AvoidingGround;
         }
@@ -132,13 +130,12 @@ public class AircraftAI : Aircraft
 
     void Pursue()
     {
-        EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
+        //EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
         ResetRotation();
+        if(enemy)NavigateToTarget(enemy.transform);
         if (EntityInFront(10,500) is Entity e)
         {
-            //Debug.Log(killCreditName + " detected " + e.killCreditName);
-
-            if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 200)
+            if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 150&& listOfPotentialEnemies.Contains(e))
             {
                 pws.FireMissile(e);
             }
@@ -153,7 +150,7 @@ public class AircraftAI : Aircraft
     {
         Debug.Log(killCreditName + " is firing gun");
         float timer = 0;
-        float duration = 0.5f;
+        float duration = 1f;
 
         while (timer < duration)
         {
@@ -162,7 +159,7 @@ public class AircraftAI : Aircraft
             yield return null;
         }
         Debug.Log(killCreditName + " is on cooldown");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         gunBurstCoroutine = null;
     }
 
@@ -323,18 +320,43 @@ public class AircraftAI : Aircraft
     
     void FollowAlliedAircraft()
     {
+        ResetRotation();
         whichSpotToFollow = FindFirstEmptyFormationSpot();
         spotToFollow = whichSpotToFollow;
         if (spotToFollow != null)
         {
             float percentageOfWayToTarget = Mathf.InverseLerp(1, 1000, Vector3.Distance(transform.position, spotToFollow.transform.position));
-            EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1.5f);
+            //EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1.5f);
+            NavigateToTarget(spotToFollow.transform);
             HandleSpeed();
+        }
+    }
+
+    void NavigateToTarget(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 localPosition = transform.InverseTransformDirection(direction);
+
+        //Debug.Log(localPosition);
+
+        float threshold = 0.05f;
+
+        pitch = Mathf.Clamp(localPosition.y, -1, 1);
+        yaw = Mathf.Clamp(localPosition.x, -1, 1);
+        if (Mathf.Abs(localPosition.x) > threshold)
+        {
+            roll = Mathf.Clamp(localPosition.x, -1, 1);
+        }
+        else
+        {
+            float bank = Vector3.Dot(transform.right, Vector3.up);
+            roll = Mathf.Clamp(bank, -1, 1);
         }
     }
 
     void DisableSelf()
     {
+        ResetRotation();
         speed = 0;
         if (transform.rotation.x < 10)
         {

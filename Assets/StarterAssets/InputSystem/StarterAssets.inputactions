@@ -386,17 +386,6 @@
                 },
                 {
                     "name": "negative",
-                    "id": "5ae3f9f0-cbe8-4ca8-91fc-81fa5476c588",
-                    "path": "<Mouse>/delta/down",
-                    "interactions": "",
-                    "processors": "Clamp(max=1)",
-                    "groups": ";KeyboardMouse",
-                    "action": "Pitch",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
                     "id": "f8cb79b9-1aef-448d-a9f7-7535045632d5",
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
@@ -412,17 +401,6 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardMouse",
-                    "action": "Pitch",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "2086f338-8a76-41be-8881-cdb69b870646",
-                    "path": "<Mouse>/delta/up",
-                    "interactions": "",
-                    "processors": "Clamp(max=1)",
                     "groups": ";KeyboardMouse",
                     "action": "Pitch",
                     "isComposite": false,
@@ -463,17 +441,6 @@
                 },
                 {
                     "name": "negative",
-                    "id": "5a23e36b-afb7-4a16-8acc-eb3b8c1bf4b4",
-                    "path": "<Mouse>/delta/left",
-                    "interactions": "",
-                    "processors": "Clamp(max=0.25)",
-                    "groups": ";KeyboardMouse",
-                    "action": "Yaw",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
                     "id": "7e69646e-4e00-4069-a4f7-2448dcfbae6f",
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
@@ -489,17 +456,6 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardMouse",
-                    "action": "Yaw",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "2f58ba54-233a-461d-9219-5856e857bd92",
-                    "path": "<Mouse>/delta/right",
-                    "interactions": "",
-                    "processors": "Clamp(max=0.5)",
                     "groups": ";KeyboardMouse",
                     "action": "Yaw",
                     "isComposite": false,
@@ -540,17 +496,6 @@
                 },
                 {
                     "name": "negative",
-                    "id": "bea2a547-ad33-46e0-87be-6fd577acfb75",
-                    "path": "<Mouse>/delta/left",
-                    "interactions": "",
-                    "processors": "Clamp(max=1)",
-                    "groups": ";KeyboardMouse",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
                     "id": "0ff5372b-75e9-4700-ba91-b4ca7d66b3d4",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
@@ -566,17 +511,6 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";KeyboardMouse",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "bda6f79a-ae03-4e44-8a66-5ddc14ded60e",
-                    "path": "<Mouse>/delta/right",
-                    "interactions": "",
-                    "processors": "Clamp(max=1)",
                     "groups": ";KeyboardMouse",
                     "action": "Roll",
                     "isComposite": false,
