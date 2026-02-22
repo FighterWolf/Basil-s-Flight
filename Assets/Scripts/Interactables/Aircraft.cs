@@ -98,7 +98,8 @@ public class Aircraft : Entity, Interactable
             listOfLastTrailingPlanes.Clear();
             AddAllLastTrailingAircraft(this,listOfLastTrailingPlanes);
         }
-        OnDismount();
+        //OnDismount();
+        LevelAircraft();
 
         if (health <= 0)
         {
@@ -245,6 +246,14 @@ public class Aircraft : Entity, Interactable
             rb.AddTorque(transform.forward * roll * actualSpeed * -1f* steerModifier * Time.fixedDeltaTime, ForceMode.Acceleration);
             //OnDrag();
         }
+    }
+
+    public void LevelAircraft()
+    {
+        if (pilotInput && pilotInput.roll != 0) return;
+
+        float bank = Vector3.Dot(transform.right, Vector3.up);
+        roll = Mathf.Clamp(bank, -1, 1);
     }
 
     public void OnTakeOff()

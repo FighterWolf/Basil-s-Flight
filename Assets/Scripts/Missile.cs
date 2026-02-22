@@ -12,6 +12,7 @@ public class Missile : MonoBehaviour
     public Entity owner;
 
     public Transform targetToStrike;
+
     public float distance;
 
     private Vector3 prediction;
@@ -24,6 +25,7 @@ public class Missile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+        if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Add(this);
     }
 
     // Update is called once per frame
@@ -103,6 +105,8 @@ public class Missile : MonoBehaviour
                 }
             }
         }
+
+        if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Remove(this);
 
         //Debug.Log("Exploded");
         Destroy(gameObject);

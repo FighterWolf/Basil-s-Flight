@@ -448,7 +448,7 @@ namespace StarterAssets
             _animator.SetFloat(_animIDSpeed, 0f);
             _animator.SetBool(_animIDFreeFall, false);
             _animator.SetBool(_animIDJump, false);
-            _animator.SetBool(_animIDGrounded, true);
+            _animator.SetBool(_animIDGrounded, false);
             _animator.SetBool(animationSit, true);
             this.enabled = false;
         }

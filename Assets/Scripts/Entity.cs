@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour
     public static List<Entity> bluForEntity = new List<Entity>();
     public static List<Entity> opForEntity = new List<Entity>();
 
+    public HashSet<Missile> missilesHeadingTowardsSelf = new HashSet<Missile>();
+
     public string killCreditName;
 
     public float health;
@@ -33,6 +35,7 @@ public class Entity : MonoBehaviour
     public virtual void Update()
     {
         OnZeroHealth();
+        ClearNullMissiles();
     }
 
     void OnZeroHealth()
@@ -86,6 +89,29 @@ public class Entity : MonoBehaviour
         else
         {
             this.health += health;
+        }
+    }
+
+    public bool IsBeingLockedOn()
+    {
+        if (missilesHeadingTowardsSelf.Count > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void ClearNullMissiles()
+    {
+        if (missilesHeadingTowardsSelf.Count > 0)
+        {
+           foreach(Missile m in missilesHeadingTowardsSelf)
+            {
+                if (m == null||!m)
+                {
+                    missilesHeadingTowardsSelf.Remove(m);
+                }
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine.UI;
 
@@ -25,6 +26,10 @@ public class PlaneHUD : MonoBehaviour
     private TextMeshProUGUI planeSpeed;
     private TextMeshProUGUI currentWeaponSystem;
     private TextMeshProUGUI altitude;
+    private GameObject missileWarning;
+    
+    private bool blinkActive = true;
+    private Coroutine blink;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,6 +39,13 @@ public class PlaneHUD : MonoBehaviour
         planeWeaponSystem = GetComponent<PlaneWeaponSystem>();
         cam = EssentialFunctions.FindDescendants(plane.transform,"Camera").GetComponent<Camera>();
         cameraHolder = EssentialFunctions.FindDescendants(plane.transform, "LookAtObject");
+
+        planeHealthBar = EssentialFunctions.FindDescendants(pilotCanvas.transform, "HealthBar").GetComponent<Image>();
+        planeThrottle = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ThrottleSpeed").GetComponent<TextMeshProUGUI>();
+        planeSpeed = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ActualSpeed").GetComponent<TextMeshProUGUI>();
+        currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
+        altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
+        missileWarning = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileWarning").gameObject;
     }
 
     // Update is called once per frame
@@ -112,17 +124,9 @@ public class PlaneHUD : MonoBehaviour
     {
         if (pilotCanvas)
         {
-            Aircraft plane = GetComponent<Aircraft>();
-            Entity e = GetComponent<Entity>();
-            planeHealthBar = EssentialFunctions.FindDescendants(pilotCanvas.transform,"HealthBar").GetComponent<Image>();
-            planeThrottle = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ThrottleSpeed").GetComponent<TextMeshProUGUI>();
-            planeSpeed = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ActualSpeed").GetComponent<TextMeshProUGUI>();
-            currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
-            altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
+            planeHealthBar.fillAmount = plane.health / plane.maxHealth;
 
-            planeHealthBar.fillAmount = e.health / e.maxHealth;
-
-            if (e.health <= (e.maxHealth * 0.33))
+            if (plane.health <= (plane.maxHealth * 0.33))
             {
                 planeHealthBar.color = Color.red;
             }
@@ -131,7 +135,16 @@ public class PlaneHUD : MonoBehaviour
                 planeHealthBar.color = Color.green;
             }
 
-            if (e.health > 0)
+            if (plane.altitude < 200)
+            {
+                altitude.color = Color.red;
+            }
+            else
+            {
+                altitude.color = Color.white;
+            }
+
+            if (plane.health > 0)
             {
                 if (plane.speed >= plane.maxSpeed)
                 {
@@ -162,8 +175,31 @@ public class PlaneHUD : MonoBehaviour
                 planeThrottle.color = Color.red;
             }
 
+            Debug.Log(plane.IsBeingLockedOn());
+
+            if (plane.IsBeingLockedOn())
+            {
+                if (blink == null) blink = StartCoroutine(FlickerText());
+            }
+            else
+            {
+                missileWarning.SetActive(false);
+                blink = null;
+            }
+
             altitude.text = plane.altitude.ToString("F2");
             planeSpeed.text = plane.glideSpeed.ToString("F2");
         }
+    }
+
+    IEnumerator FlickerText()
+    {
+        while (plane.IsBeingLockedOn())
+        {
+            blinkActive = !blinkActive;
+            missileWarning.SetActive(blinkActive);
+            yield return new WaitForSeconds(0.25f);
+        }
+        blink = null;
     }
 }

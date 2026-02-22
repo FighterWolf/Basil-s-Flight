@@ -42,7 +42,7 @@ public class AIHealthBar : MonoBehaviour
             alpha=Mathf.Clamp(alpha,0.1f,1);
             healthBar.color = new Color(healthBarColor.r, healthBarColor.g, healthBarColor.b, alpha);
             distanceText.color = new Color(distanceTextColor.r, distanceTextColor.g, distanceTextColor.b, alpha);
-            transform.localScale = Vector3.one * Mathf.Clamp(distance * 0.05f, 1f, 20);
+            transform.localScale = Vector3.one * Mathf.Clamp(distance * 0.05f, 0.75f, 20);
             //transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
             Quaternion cameraAngle = cam.transform.rotation;
             Vector3 angle = cameraAngle.eulerAngles;

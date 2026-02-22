@@ -108,7 +108,7 @@ public class AircraftAI : Aircraft
         {
            return State.AvoidingCollision;
         }
-        else if (isHit)
+        else if (isHit||IsBeingLockedOn())
         {
             return State.Evading;
         }
@@ -191,7 +191,7 @@ public class AircraftAI : Aircraft
 
     bool IsTooCloseToAircraft()
     {
-        if (EntityInFront(50,100)) return true;
+        if (EntityInFront(50,75)) return true;
         return false;
     }
 
@@ -289,7 +289,7 @@ public class AircraftAI : Aircraft
 
         if (currentWaypoint)
         {
-            EssentialFunctions.AimForTarget(transform, currentWaypoint, 1.5f);
+            NavigateToTarget(currentWaypoint);
         }
 
         bool ReachedWaypoint()
@@ -349,8 +349,7 @@ public class AircraftAI : Aircraft
         }
         else
         {
-            float bank = Vector3.Dot(transform.right, Vector3.up);
-            roll = Mathf.Clamp(bank, -1, 1);
+            LevelAircraft();
         }
     }
 
