@@ -175,8 +175,6 @@ public class PlaneHUD : MonoBehaviour
                 planeThrottle.color = Color.red;
             }
 
-            Debug.Log(plane.IsBeingLockedOn());
-
             if (plane.IsBeingLockedOn())
             {
                 if (blink == null) blink = StartCoroutine(FlickerText());

@@ -19,6 +19,8 @@ public class Entity : MonoBehaviour
     private bool isOnHitCooldown;
     private Coroutine hitCooldown;
 
+    private Marker marker;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
@@ -29,6 +31,7 @@ public class Entity : MonoBehaviour
         {
             opForEntity.Add(this);
         }
+        marker = EssentialFunctions.FindDescendants(transform, "Marker").GetComponent<Marker>();
     }
 
     // Update is called once per frame
@@ -50,6 +53,7 @@ public class Entity : MonoBehaviour
             {
                 opForEntity.Remove(this);
             }
+            if(marker&&!marker.isPlayer)Destroy(marker.gameObject);
         }
     }
 
