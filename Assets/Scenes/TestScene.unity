@@ -1224,6 +1224,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487720667}
   m_CullTransparentMesh: 1
+--- !u!1 &497833158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497833159}
+  m_Layer: 6
+  m_Name: FlareLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &497833159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497833158}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3565510584839979608}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &504792316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,7 +1572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 532317231}
   m_Layer: 6
-  m_Name: Gunpod
+  m_Name: GunPod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2005,6 +2036,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632361404}
   m_CullTransparentMesh: 1
+--- !u!1 &684204014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684204015}
+  m_Layer: 6
+  m_Name: FlareLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &684204015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684204014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 6419329722718806828}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &732953804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,6 +3048,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035037008}
   m_CullTransparentMesh: 1
+--- !u!1 &1041325309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041325310}
+  m_Layer: 6
+  m_Name: FlareLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1041325310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041325309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 326262556880126625}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1047764718
 GameObject:
   m_ObjectHideFlags: 0
@@ -5275,15 +5368,20 @@ MonoBehaviour:
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 12
+  flareReloadRate: 15
   isReadyToFireGun: 1
   isReadyToBomb: 1
+  isFlareReady: 1
   weaponSystem: 0
   gunPod: {fileID: 532317230}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 1626293092}
   missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  flareDeployer: {fileID: 1860641307}
+  flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
   switchWeapon: 0
+  flare: 0
 --- !u!114 &1555266084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5296,6 +5394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14377e3c699ac45972a6c3f81078f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
+  deployedFlares: []
   killCreditName: Enemy #2
   health: 250
   maxHealth: 250
@@ -5322,7 +5421,7 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   throttle: 0
-  dismount: 0
+  flare: 0
   whatIsBelowPlane: {fileID: 0}
   enemyTag: BluFor
   isHit: 0
@@ -5355,6 +5454,7 @@ Transform:
   - {fileID: 1680637393}
   - {fileID: 1047764719}
   - {fileID: 532317231}
+  - {fileID: 1860641308}
   - {fileID: 1898951562}
   - {fileID: 1224136142}
   - {fileID: 1927222954}
@@ -6103,6 +6203,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1860641307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860641308}
+  m_Layer: 6
+  m_Name: FlareLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860641308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860641307}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1555266085}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1865208741
 GameObject:
   m_ObjectHideFlags: 0
@@ -8049,6 +8180,7 @@ Transform:
   - {fileID: 7644572577979388505}
   - {fileID: 4046753099283125032}
   - {fileID: 1391022553528727024}
+  - {fileID: 1041325310}
   - {fileID: 4535854714898556079}
   - {fileID: 3679240040699127063}
   - {fileID: 1014374474733398909}
@@ -10017,7 +10149,7 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   throttle: 0
-  dismount: 0
+  flare: 0
   fire: 0
   switchWeapon: 0
   analogMovement: 0
@@ -10834,15 +10966,20 @@ MonoBehaviour:
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 12
+  flareReloadRate: 15
   isReadyToFireGun: 1
   isReadyToBomb: 1
+  isFlareReady: 1
   weaponSystem: 0
   gunPod: {fileID: 4668690936049924746}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 505956463782752782}
   missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  flareDeployer: {fileID: 497833158}
+  flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
   switchWeapon: 0
+  flare: 0
 --- !u!64 &1779179352614390337
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11854,6 +11991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3822219c052a743847733ff40b4040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vehicle
+  deployedFlares: []
   killCreditName: Basil Avery
   health: 250
   maxHealth: 250
@@ -11880,7 +12018,7 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   throttle: 0
-  dismount: 0
+  flare: 0
   whatIsBelowPlane: {fileID: 0}
 --- !u!137 &2350672260410294079
 SkinnedMeshRenderer:
@@ -13918,15 +14056,20 @@ MonoBehaviour:
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 12
+  flareReloadRate: 15
   isReadyToFireGun: 1
   isReadyToBomb: 1
+  isFlareReady: 1
   weaponSystem: 0
   gunPod: {fileID: 6479456152314254691}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 222840961066054642}
   missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  flareDeployer: {fileID: 684204014}
+  flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
   switchWeapon: 0
+  flare: 0
 --- !u!222 &3550936058035207684
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13955,6 +14098,7 @@ Transform:
   - {fileID: 6424969232782373607}
   - {fileID: 4358280368990172598}
   - {fileID: 8997754893561787580}
+  - {fileID: 497833159}
   - {fileID: 1935308558271257113}
   - {fileID: 6937966024477755465}
   - {fileID: 8629712937426717971}
@@ -16034,7 +16178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8997754893561787580}
   m_Layer: 6
-  m_Name: Gunpod
+  m_Name: GunPod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19474,6 +19618,7 @@ Transform:
   - {fileID: 3860444809560174841}
   - {fileID: 1384462160850755530}
   - {fileID: 7372936225251074420}
+  - {fileID: 684204015}
   - {fileID: 6848147734093709905}
   - {fileID: 1054269448465767990}
   - {fileID: 3751760373439476743}
@@ -19582,7 +19727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7372936225251074420}
   m_Layer: 6
-  m_Name: Gunpod
+  m_Name: GunPod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19970,6 +20115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14377e3c699ac45972a6c3f81078f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
+  deployedFlares: []
   killCreditName: Enemy #1
   health: 250
   maxHealth: 250
@@ -19996,7 +20142,7 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   throttle: 0
-  dismount: 0
+  flare: 0
   whatIsBelowPlane: {fileID: 0}
   enemyTag: BluFor
   isHit: 0
@@ -21049,15 +21195,20 @@ MonoBehaviour:
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 12
+  flareReloadRate: 15
   isReadyToFireGun: 1
   isReadyToBomb: 1
+  isFlareReady: 1
   weaponSystem: 0
   gunPod: {fileID: 9063232130073572153}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 5970495346323627516}
   missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  flareDeployer: {fileID: 1041325309}
+  flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
   switchWeapon: 0
+  flare: 0
 --- !u!4 &7372936225251074420
 Transform:
   m_ObjectHideFlags: 0
@@ -22614,6 +22765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14377e3c699ac45972a6c3f81078f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
+  deployedFlares: []
   killCreditName: Toshiko Suzuki
   health: 250
   maxHealth: 250
@@ -22640,7 +22792,7 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   throttle: 0
-  dismount: 0
+  flare: 0
   whatIsBelowPlane: {fileID: 0}
   enemyTag: OpFor
   isHit: 0
@@ -24260,7 +24412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1391022553528727024}
   m_Layer: 6
-  m_Name: Gunpod
+  m_Name: GunPod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

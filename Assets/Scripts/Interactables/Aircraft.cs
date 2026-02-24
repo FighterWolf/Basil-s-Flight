@@ -53,7 +53,7 @@ public class Aircraft : Entity, Interactable
     public float pitch;
     public float roll;
     public float throttle;
-    public bool dismount;
+    public bool flare;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -86,7 +86,7 @@ public class Aircraft : Entity, Interactable
             pitch = pilotInput.pitch;
             roll = pilotInput.roll;
             throttle = pilotInput.throttle;
-            dismount = pilotInput.dismount;
+            flare = pilotInput.flare;
         }
 
         CalculateAltitude();
@@ -174,41 +174,6 @@ public class Aircraft : Entity, Interactable
         }
     }
 
-    public void OnDismount()
-    {
-        if (dismount)
-        {
-            Transform spotToExit=null;
-
-            foreach(Transform o in exitSpots)
-            {
-                if (o)
-                {
-                    spotToExit = o;
-                    break;
-                }
-            }
-
-            player.transform.position = spotToExit.position;
-            player.transform.rotation = spotToExit.rotation;
-
-            player.transform.SetParent(null);
-            SwitchControls(false);
-            player.GetComponent<CharacterController>().enabled = true;
-            player.GetComponent<ThirdPersonController>().enabled = true;
-            player.GetComponent<ThirdPersonController>().OnExitVehicle();
-            pilotInput = null;
-            speed = 0;
-            weaponSystem.SetPlayer(null);
-            if (TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
-            {
-                planeHUD.pilot = null;
-                planeHUD.pilotCanvas = null;
-            }
-            dismount = false;
-        }
-    }
-
     public void HandleOnZeroHealth()
     {
         speed = 0;
@@ -253,7 +218,7 @@ public class Aircraft : Entity, Interactable
         if (pilotInput && pilotInput.roll != 0) return;
 
         float bank = Vector3.Dot(transform.right, Vector3.up);
-        roll = Mathf.Clamp(bank, -1, 1);
+        roll = Mathf.Clamp(bank, -0.5f, 0.5f);
     }
 
     public void OnTakeOff()

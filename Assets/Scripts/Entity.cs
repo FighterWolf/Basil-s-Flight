@@ -7,7 +7,8 @@ public class Entity : MonoBehaviour
     public static List<Entity> bluForEntity = new List<Entity>();
     public static List<Entity> opForEntity = new List<Entity>();
 
-    public HashSet<Missile> missilesHeadingTowardsSelf = new HashSet<Missile>();
+    public List<Missile> missilesHeadingTowardsSelf = new List<Missile>();
+    public List<Flare> deployedFlares = new List<Flare>();
 
     public string killCreditName;
 
@@ -15,6 +16,7 @@ public class Entity : MonoBehaviour
     public float maxHealth;
 
     public bool isDisabled;
+    protected float missileAwareness;
 
     private bool isOnHitCooldown;
     private Coroutine hitCooldown;
@@ -38,7 +40,7 @@ public class Entity : MonoBehaviour
     public virtual void Update()
     {
         OnZeroHealth();
-        ClearNullMissiles();
+        ClearNulls();
     }
 
     void OnZeroHealth()
@@ -54,6 +56,15 @@ public class Entity : MonoBehaviour
                 opForEntity.Remove(this);
             }
             if(marker&&!marker.isPlayer)Destroy(marker.gameObject);
+        }
+
+        if (missilesHeadingTowardsSelf.Count > 0 &&missileAwareness<5)
+        {
+            missileAwareness += Time.deltaTime;
+        }
+        else
+        {
+            missileAwareness = 0;
         }
     }
 
@@ -105,17 +116,9 @@ public class Entity : MonoBehaviour
         return false;
     }
 
-    void ClearNullMissiles()
+    void ClearNulls()
     {
-        if (missilesHeadingTowardsSelf.Count > 0)
-        {
-           foreach(Missile m in missilesHeadingTowardsSelf)
-            {
-                if (m == null||!m)
-                {
-                    missilesHeadingTowardsSelf.Remove(m);
-                }
-            }
-        }
+        missilesHeadingTowardsSelf.RemoveAll(m => m == null);
+        deployedFlares.RemoveAll(f => f == null);
     }
 }

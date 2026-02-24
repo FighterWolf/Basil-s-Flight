@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Missile : MonoBehaviour
+public class Missile : Entity
 {
 
     public float cruiseSpeed;
@@ -18,19 +18,25 @@ public class Missile : MonoBehaviour
     private Vector3 prediction;
 
     private Rigidbody rb;
-    private Collider col;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
+        base.Start();
+
+        EssentialFunctions.FindDescendants(transform, "Marker").GetComponent<Canvas>().worldCamera = GameObject.Find("MinimapCamera").GetComponent<Camera>();
+
         rb = GetComponent<Rigidbody>();
-        col = GetComponent<Collider>();
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Add(this);
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
+        CheckHeatSignature();
+        
         if(targetToStrike) distance = Vector3.Distance(transform.position, targetToStrike.position);
 
         if (fuel >= 0)
@@ -82,6 +88,14 @@ public class Missile : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(coordsToStrike);
         rb.MoveRotation(Quaternion.RotateTowards(transform.rotation,rotation,120*Time.deltaTime));
+    }
+
+    void CheckHeatSignature()
+    {
+        if (EssentialFunctions.EntityInFront(transform, 40, 350) is Flare f)
+        {
+            this.targetToStrike = f.transform;
+        }
     }
 
     public void Explode()

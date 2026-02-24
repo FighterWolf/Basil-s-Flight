@@ -14,7 +14,7 @@ namespace StarterAssets
 		public float pitch;
 		public float roll;
 		public float throttle;
-		public bool dismount;
+		public bool flare;
 		public bool fire;
 		public bool switchWeapon;
 		
@@ -59,9 +59,9 @@ namespace StarterAssets
 			ThrottleInput(v.Get<float>());
 		}
 
-		public void OnDismount(InputValue v)
+		public void OnFlare(InputValue v)
         {
-			DismountInput(v.isPressed);
+			FlareInput(v.isPressed);
         }
 
 		public void OnFire(InputValue v)
@@ -104,9 +104,9 @@ namespace StarterAssets
 			throttle = i;
 		}
 
-		private void DismountInput(bool b)
+		private void FlareInput(bool b)
         {
-			dismount = b;
+			flare = b;
         }
 
 		private void FireInput(bool b)

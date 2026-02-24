@@ -54,4 +54,16 @@ public class EssentialFunctions : MonoBehaviour
             }
         }
     }
+
+    public static Entity EntityInFront(Transform owner,float radius, float distance)
+    {
+        if (Physics.SphereCast(owner.position, radius, owner.forward, out RaycastHit hit, distance))
+        {
+            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+            {
+                return e;
+            }
+        }
+        return null;
+    }
 }

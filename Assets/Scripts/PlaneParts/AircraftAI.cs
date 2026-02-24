@@ -52,6 +52,11 @@ public class AircraftAI : Aircraft
         base.Update();
         state = ChangeState();
 
+        if (missilesHeadingTowardsSelf.Count > 0 && missileAwareness>0.75f && pws.isFlareReady)
+        {
+            pws.DeployFlare();
+        }
+
         switch (state)
         {
             case State.Patroling:
@@ -133,7 +138,7 @@ public class AircraftAI : Aircraft
         //EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
         ResetRotation();
         if(enemy)NavigateToTarget(enemy.transform);
-        if (EntityInFront(10,500) is Entity e)
+        if (EssentialFunctions.EntityInFront(transform, 10,500) is Entity e)
         {
             if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 150&& listOfPotentialEnemies.Contains(e))
             {
@@ -177,27 +182,15 @@ public class AircraftAI : Aircraft
         if (manuverCoroutine==null) manuverCoroutine = StartCoroutine(Manuver());
     }
 
-    Entity EntityInFront(float radius,float distance)
-    {
-        if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, distance))
-        {
-            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
-            {
-                return e;
-            }
-        }
-        return null;
-    }
-
     bool IsTooCloseToAircraft()
     {
-        if (EntityInFront(50,75)) return true;
+        if (EssentialFunctions.EntityInFront(transform,50,75)) return true;
         return false;
     }
 
     void AvoidMidAirCollision()
     {
-        if (transform.position.z < 67)
+        if (transform.position.z < 45)
         {
             roll = 1;
         }
@@ -206,7 +199,7 @@ public class AircraftAI : Aircraft
             roll = 0;
         }
 
-        if (transform.position.x < -45)
+        if (transform.position.x < -33)
         {
             pitch = 1;
         }

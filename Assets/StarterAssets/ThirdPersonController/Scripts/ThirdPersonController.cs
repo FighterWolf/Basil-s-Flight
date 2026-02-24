@@ -436,7 +436,7 @@ namespace StarterAssets
             currentVehicle = null;
             _playerInput.SwitchCurrentActionMap("Player");
             enabled = true;
-            pilotControls.dismount = false;
+            //pilotControls.dismount = false;
             _animator.SetBool(animationSit,false);
         }
 

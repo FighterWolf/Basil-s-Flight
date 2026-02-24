@@ -312,7 +312,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Dismount",
+                    "name": "Flare",
                     "type": "PassThrough",
                     "id": "5792a5a6-bbb2-4e9f-804c-ad8ca062eb61",
                     "expectedControlType": "",
@@ -347,7 +347,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
-                    "action": "Dismount",
+                    "action": "Flare",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -358,7 +358,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad;Xbox Controller;PS4 Controller",
-                    "action": "Dismount",
+                    "action": "Flare",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -10,8 +10,11 @@ public class PlaneWeaponSystem : MonoBehaviour
     public float gunFireRate;
     public float missileReloadRate;
 
+    public float flareReloadRate;
+
     public bool isReadyToFireGun=true;
     public bool isReadyToBomb=true;
+    public bool isFlareReady = true;
 
     public enum WeaponSystem {
         Gun,
@@ -33,14 +36,21 @@ public class PlaneWeaponSystem : MonoBehaviour
     public GameObject missilePod;
     public Missile missile;
 
+    public GameObject flareDeployer;
+    public Flare flareObject;
+
     public bool fire;
     public bool switchWeapon;
+    public bool flare;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         plane = GetComponent<Aircraft>();
         planeCam = EssentialFunctions.FindDescendants(transform,"Camera").GetComponent<Camera>();
+        gunPod = EssentialFunctions.FindDescendants(transform, "GunPod").gameObject;
+        missilePod = EssentialFunctions.FindDescendants(transform, "MissileLauncher").gameObject;
+        flareDeployer = EssentialFunctions.FindDescendants(transform, "FlareLauncher").gameObject;
         weaponSystemSize = System.Enum.GetNames(typeof(WeaponSystem)).Length;
     }
 
@@ -51,6 +61,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         {
             fire = pilotInput.fire;
             switchWeapon = pilotInput.switchWeapon;
+            flare = pilotInput.flare;
         }
 
         if (!plane.IsDisabled())
@@ -86,6 +97,11 @@ public class PlaneWeaponSystem : MonoBehaviour
                     break;
             }
         }
+
+        if (flare && isFlareReady)
+        {
+            DeployFlare();
+        }
     }
 
     public void FireGun()
@@ -115,10 +131,23 @@ public class PlaneWeaponSystem : MonoBehaviour
         missile.GetComponent<Missile>().owner = plane;
         missile.GetComponent<Missile>().speedModifier = plane.speed;
         missile.GetComponent<Missile>().missileDamage = missileDamage;
+        missile.tag = plane.tag;
         isReadyToBomb = false;
         if(pilotInput) pilotInput.fire = false;
         fire = false;
         StartCoroutine(ResetMissileShot());
+    }
+
+    public void DeployFlare()
+    {
+        GameObject flare = Instantiate(this.flareObject.gameObject, flareDeployer.transform.position, flareDeployer.transform.rotation);
+        flare.GetComponent<Flare>().owner=plane;
+        flare.tag = plane.tag;
+        plane.deployedFlares.Add(flare.GetComponent<Flare>());
+
+        isFlareReady = false;
+        if (pilotInput) pilotInput.flare = false;
+        StartCoroutine(ResetFlare());
     }
 
     public IEnumerator ResetGunShot()
@@ -134,6 +163,12 @@ public class PlaneWeaponSystem : MonoBehaviour
         isReadyToBomb =true;
     }
 
+    public IEnumerator ResetFlare()
+    {
+        yield return new WaitForSeconds(60 / flareReloadRate);
+        if (pilotInput) yield return new WaitUntil(() => !pilotInput.flare);
+        isFlareReady = true;
+    }
     public void SwitchWeapon()
     {
         if (switchWeapon)
