@@ -5376,7 +5376,7 @@ MonoBehaviour:
   gunPod: {fileID: 532317230}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 1626293092}
-  missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 1860641307}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
@@ -5394,6 +5394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14377e3c699ac45972a6c3f81078f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
+  missilesHeadingTowardsSelf: []
   deployedFlares: []
   killCreditName: Enemy #2
   health: 250
@@ -10974,7 +10975,7 @@ MonoBehaviour:
   gunPod: {fileID: 4668690936049924746}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 505956463782752782}
-  missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 497833158}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
@@ -11991,6 +11992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3822219c052a743847733ff40b4040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vehicle
+  missilesHeadingTowardsSelf: []
   deployedFlares: []
   killCreditName: Basil Avery
   health: 250
@@ -14064,7 +14066,7 @@ MonoBehaviour:
   gunPod: {fileID: 6479456152314254691}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 222840961066054642}
-  missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 684204014}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
@@ -20115,6 +20117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14377e3c699ac45972a6c3f81078f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
+  missilesHeadingTowardsSelf: []
   deployedFlares: []
   killCreditName: Enemy #1
   health: 250
@@ -21203,7 +21206,7 @@ MonoBehaviour:
   gunPod: {fileID: 9063232130073572153}
   bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
   missilePod: {fileID: 5970495346323627516}
-  missile: {fileID: 2688189731839695459, guid: 228a01ca7dcb16a4d8e60c0df9256bc7, type: 3}
+  missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 1041325309}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
   fire: 0
@@ -22765,6 +22768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca14377e3c699ac45972a6c3f81078f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
+  missilesHeadingTowardsSelf: []
   deployedFlares: []
   killCreditName: Toshiko Suzuki
   health: 250

@@ -42,7 +42,10 @@ public class EssentialFunctions : MonoBehaviour
 
             if (target.health <= 0)
             {
-                Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: "+weaponName);
+                if(!(target is Flare))
+                {
+                    Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
+                }
 
                 //reward killer
 
@@ -50,7 +53,10 @@ public class EssentialFunctions : MonoBehaviour
             }
             else
             {
-                Debug.Log(killer.killCreditName + " hit " + target.killCreditName + " using: " + weaponName);
+                if (!(target is Flare))
+                {
+                    Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
+                }
             }
         }
     }

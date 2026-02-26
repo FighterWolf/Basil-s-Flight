@@ -12,7 +12,7 @@ public class AircraftAI : Aircraft
     [SerializeField] private Transform[] waypoints;
     private Transform currentWaypoint;
     public int waypointsIterator = 0;
-    private float waypointDistanceThreshhold=10;
+    private float waypointDistanceThreshhold=50;
     private float distanceToSpotToFollow;
 
     private List<Entity> listOfPotentialEnemies;

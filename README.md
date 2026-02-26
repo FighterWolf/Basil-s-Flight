@@ -29,8 +29,10 @@ itch.io link: TBA
 - Basil Avery
 <img src="/Assets/Models/Characters/Basil/BasilThumbnail.png" alt="Portrait of Basil Avery" style="width:15%; height:auto;">
 
-- Toshiko Suzuki/鈴木敏子/スズキトシコ
+- Toshiko Suzuki/鈴木敏子
 <img src="/Assets/Models/Characters/Toshiko/ToshikoThumbnail.png" alt="Portrait of Toshiko Suzuki" style="width:15%; height:auto;">
 
 WIP:
 - Lieke	Meijsing (Captain of the N.Y.M.S. Orange/Oranje)
+- Stefaan Katou/加藤ステファン (N.Y. Air National-Kindergarde squad leader/ground crew)
+- Unnamed Bostonian girl (N.Y. Air National-Kindergarde pilot trainee)
