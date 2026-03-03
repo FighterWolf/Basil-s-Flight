@@ -63,7 +63,7 @@ public class PlaneHUD : MonoBehaviour
 
         if (pilot != null&&lockOnTarget&& targetDistance <= 1000)
         {
-            Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam);
+            Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(GameObject.Find("Canvas").GetComponent<Canvas>(),lockOnTarget.transform.position, cam);
 
             float angle = Vector3.Angle(transform.forward,cameraHolder.forward);
             bool isLookingForward = angle < 45;

@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
     public void CheckForSurroundings()
     {
         RaycastHit hit;
-        if(Physics.SphereCast(transform.position,2,transform.forward,out hit))
+        if(Physics.SphereCast(transform.position,3,transform.forward,out hit))
         {
             if(hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
             {

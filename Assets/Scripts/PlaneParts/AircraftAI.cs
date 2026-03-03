@@ -155,7 +155,7 @@ public class AircraftAI : Aircraft
     {
         Debug.Log(killCreditName + " is firing gun");
         float timer = 0;
-        float duration = 1f;
+        float duration = 2f;
 
         while (timer < duration)
         {

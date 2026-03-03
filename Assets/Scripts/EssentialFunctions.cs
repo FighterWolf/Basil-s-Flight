@@ -28,10 +28,13 @@ public class EssentialFunctions : MonoBehaviour
         ownerTransform.rotation = Quaternion.LookRotation(newDirection);
     }
 
-    public static Vector3 TransformWorldCoordsToScreen(Vector3 objectPosition,Camera camera)
+    public static Vector3 TransformWorldCoordsToScreen(Canvas canvas, Vector3 objectPosition,Camera camera)
     {
         Vector3 screenCoords = camera.WorldToScreenPoint(objectPosition);
-        return screenCoords - new Vector3(camera.pixelWidth / 2, camera.pixelHeight / 2);
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(),screenCoords,null,out Vector2 localPoint);
+
+        return new Vector3(localPoint.x,localPoint.y,screenCoords.z);
     }
 
     public static void OnSuccessfulHit(Entity killer,Entity target, bool ignoreCooldown, float decreaseHealth, string weaponName)
@@ -50,13 +53,6 @@ public class EssentialFunctions : MonoBehaviour
                 //reward killer
 
                 //play sound for all, if player, display on screen.
-            }
-            else
-            {
-                if (!(target is Flare))
-                {
-                    Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
-                }
             }
         }
     }
