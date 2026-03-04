@@ -64,7 +64,7 @@ public class PlaneWeaponSystem : MonoBehaviour
             flare = pilotInput.flare;
         }
 
-        if (!plane.IsDisabled())
+        if (!PauseMenu.isPaused&&!plane.IsDisabled())
         {
             Fire();
             SwitchWeapon();

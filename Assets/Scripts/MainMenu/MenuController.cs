@@ -8,12 +8,11 @@ public class MenuController : MonoBehaviour
 {
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullScreen;
-
-    int selectedResolution;
+    static int selectedResolution;
 
     Resolution[] resolutions;
 
-    public bool isFullScreen=true;
+    public static bool isFullScreen=true;
 
     void Start()
     {
@@ -39,6 +38,7 @@ public class MenuController : MonoBehaviour
 
         resolutions = filteredResolutions.ToArray();
 
+        /*
         Resolution current = Screen.currentResolution;
         for(int i = 0; i < resolutions.Length; i++)
         {
@@ -48,6 +48,14 @@ public class MenuController : MonoBehaviour
                 break;
             }
         }
+        */
+
+        ChangeIcon();
+    }
+
+    private void Update()
+    {
+        Debug.Log(isFullScreen+" | "+selectedResolution);
     }
 
     public void OnStart()
@@ -70,5 +78,20 @@ public class MenuController : MonoBehaviour
     {
         isFullScreen = fullScreen.isOn;
         Screen.SetResolution(resolutions[selectedResolution].width, resolutions[selectedResolution].height, isFullScreen);
+    }
+
+    void ChangeIcon()
+    {
+        fullScreen.isOn = isFullScreen;
+        resolutionDropdown.value = selectedResolution;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            {
+                resolutionDropdown.value = i;
+                break;
+            }
+        }
     }
 }

@@ -78,32 +78,35 @@ public class Aircraft : Entity, Interactable
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();
-        if (pilotInput != null)
+        if (!PauseMenu.isPaused)
         {
-            look = pilotInput.look;
-            yaw = pilotInput.yaw;
-            pitch = pilotInput.pitch;
-            roll = pilotInput.roll;
-            throttle = pilotInput.throttle;
-            flare = pilotInput.flare;
-        }
+            base.Update();
+            if (pilotInput != null)
+            {
+                look = pilotInput.look;
+                yaw = pilotInput.yaw;
+                pitch = pilotInput.pitch;
+                roll = pilotInput.roll;
+                throttle = pilotInput.throttle;
+                flare = pilotInput.flare;
+            }
 
-        CalculateAltitude();
-        HandleGlideSpeed();
-        RemoveMissingAircraftFromTrailingList();
-        if (isLeadPlane)
-        {
-            checkedList.Clear();
-            listOfLastTrailingPlanes.Clear();
-            AddAllLastTrailingAircraft(this,listOfLastTrailingPlanes);
-        }
-        //OnDismount();
-        LevelAircraft();
+            CalculateAltitude();
+            HandleGlideSpeed();
+            RemoveMissingAircraftFromTrailingList();
+            if (isLeadPlane)
+            {
+                checkedList.Clear();
+                listOfLastTrailingPlanes.Clear();
+                AddAllLastTrailingAircraft(this, listOfLastTrailingPlanes);
+            }
+            //OnDismount();
+            LevelAircraft();
 
-        if (health <= 0)
-        {
-            HandleOnZeroHealth();
+            if (health <= 0)
+            {
+                HandleOnZeroHealth();
+            }
         }
     }
 
@@ -120,7 +123,7 @@ public class Aircraft : Entity, Interactable
 
     public virtual void LateUpdate()
     {
-        HandleCamera();
+        if(!PauseMenu.isPaused) HandleCamera();
     }
 
     public void Interact(GameObject player)
