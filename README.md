@@ -15,7 +15,7 @@ Player's Aircraft Controls:
 - A/D - Bank Left/Right
 - Q/E - Turn Left/Right
 - F - Deploy Flares
-- Left-Click - Use Plane Gun
+- Left-Click - Use Plane's Active Weapon
 - Space - Switch Weapon Type
 
 Plot:\
@@ -24,6 +24,8 @@ Plot:\
 *"Turns out... many things..." - Captain Lieke Meijsing, 2124 A.D.*
 
 itch.io link: TBA
+
+PROTOTYPE LINK TO BE RELEASED SOON.
 
 ## Characters
 - Basil Avery

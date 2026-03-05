@@ -9,10 +9,6 @@ public class AircraftAI : Aircraft
     public string enemyTag;
 
     public bool isHit;
-    [SerializeField] private Transform[] waypoints;
-    private Transform currentWaypoint;
-    public int waypointsIterator = 0;
-    private float waypointDistanceThreshhold=50;
     private float distanceToSpotToFollow;
 
     private List<Entity> listOfPotentialEnemies;

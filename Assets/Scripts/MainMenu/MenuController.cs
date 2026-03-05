@@ -53,11 +53,6 @@ public class MenuController : MonoBehaviour
         ChangeIcon();
     }
 
-    private void Update()
-    {
-        Debug.Log(isFullScreen+" | "+selectedResolution);
-    }
-
     public void OnStart()
     {
         SceneManager.LoadScene("TestScene");

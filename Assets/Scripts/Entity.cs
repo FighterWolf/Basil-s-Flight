@@ -23,6 +23,12 @@ public class Entity : MonoBehaviour
 
     private Marker marker;
 
+    //Waypoint system only if entity is AI
+    public Transform[] waypoints;
+    protected Transform currentWaypoint;
+    public int waypointsIterator = 0;
+    protected float waypointDistanceThreshhold = 50;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {

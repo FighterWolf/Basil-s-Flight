@@ -18,12 +18,13 @@ public class PauseMenu : MonoBehaviour
     {
         userInput.FindActionMap("GameSystem").Enable();
         pause = userInput.FindAction("Pause");
+        HandlePlayerDeath.isPlayerDead = false;
         Resume();
     }
 
     void Update()
     {
-        if (pause.WasPressedThisFrame())
+        if (pause.WasPressedThisFrame()&&!HandlePlayerDeath.isPlayerDead)
         {
             if (isPaused)
             {
@@ -33,6 +34,17 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+        if (HandlePlayerDeath.isPlayerDead)
+        {
+            pauseMenu.SetActive(false);
+            foreach (Transform t in pauseMenu.transform.parent)
+            {
+                t.gameObject.SetActive(false);
+            }
+            isPaused = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -52,6 +64,10 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenu.SetActive(false);
+        foreach(Transform t in pauseMenu.transform.parent)
+        {
+            t.gameObject.SetActive(false);
+        }
         isPaused = false;
     }
 
