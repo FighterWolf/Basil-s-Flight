@@ -100,7 +100,6 @@ public class Aircraft : Entity, Interactable
                 listOfLastTrailingPlanes.Clear();
                 AddAllLastTrailingAircraft(this, listOfLastTrailingPlanes);
             }
-            //OnDismount();
             LevelAircraft();
 
             if (health <= 0)
@@ -212,7 +211,6 @@ public class Aircraft : Entity, Interactable
             rb.AddTorque(transform.up * yaw * actualSpeed * steerModifier * Time.fixedDeltaTime, ForceMode.Acceleration);
             rb.AddTorque(transform.right  * pitch * actualSpeed * -1f* steerModifier *Time.fixedDeltaTime, ForceMode.Acceleration);
             rb.AddTorque(transform.forward * roll * actualSpeed * -1f* steerModifier * Time.fixedDeltaTime, ForceMode.Acceleration);
-            //OnDrag();
         }
     }
 
@@ -252,7 +250,6 @@ public class Aircraft : Entity, Interactable
             if (altitude > maxHeightLimit)
             {
                 float excessHeight = altitude - maxHeightLimit;
-                //rb.MoveRotation(Quaternion.Euler(0,transform.rotation.y,0));
                 rb.AddForce(Vector3.down*5, ForceMode.Force);
             }
         }

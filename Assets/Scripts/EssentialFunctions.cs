@@ -28,11 +28,13 @@ public class EssentialFunctions : MonoBehaviour
         ownerTransform.rotation = Quaternion.LookRotation(newDirection);
     }
 
-    public static Vector3 TransformWorldCoordsToScreen(Canvas canvas, Vector3 objectPosition,Camera camera)
+    public static Vector3 TransformWorldCoordsToScreen(Vector3 objectPosition,Camera camera)
     {
         Vector3 screenCoords = camera.WorldToScreenPoint(objectPosition);
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(),screenCoords,null,out Vector2 localPoint);
+        RectTransform rt = GameObject.Find("Canvas").GetComponent<RectTransform>();
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rt,screenCoords,null,out Vector2 localPoint);
 
         return new Vector3(localPoint.x,localPoint.y,screenCoords.z);
     }

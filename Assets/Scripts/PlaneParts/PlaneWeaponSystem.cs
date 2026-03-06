@@ -107,10 +107,11 @@ public class PlaneWeaponSystem : MonoBehaviour
     public void FireGun()
     {
         //Debug.Log(GetComponent<Entity>().killCreditName + ": Firing Gun");
-        GameObject shot = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
-        shot.GetComponent<Bullet>().owner=plane;
-        shot.GetComponent<Bullet>().speed = plane.speed;
-        shot.GetComponent<Bullet>().gunDamage = gunDamage;
+        GameObject o = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
+        Bullet bullet = o.GetComponent<Bullet>();
+        bullet.owner=plane;
+        bullet.speed = plane.speed;
+        bullet.gunDamage = gunDamage;
 
         isReadyToFireGun = false;
         StartCoroutine(ResetGunShot());
@@ -119,18 +120,19 @@ public class PlaneWeaponSystem : MonoBehaviour
     public void FireMissile(Entity target = null)
     {
         //Debug.Log(plane.name + ": Firing Missile");
-        GameObject missile = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation, missilePod.transform);
+        GameObject o = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation, missilePod.transform);
+        Missile missile = o.GetComponent<Missile>();
         if (TryGetComponent<PlaneHUD>(out PlaneHUD pHUD))
         {
-            if(pHUD.confirmedTarget != null) missile.GetComponent<Missile>().targetToStrike = pHUD.confirmedTarget.transform;
+            if(pHUD.confirmedTarget != null) missile.targetToStrike = pHUD.confirmedTarget.transform;
         }
         else if (target)
         {
-            missile.GetComponent<Missile>().targetToStrike = target.transform;
+            missile.targetToStrike = target.transform;
         }
-        missile.GetComponent<Missile>().owner = plane;
-        missile.GetComponent<Missile>().speedModifier = plane.speed;
-        missile.GetComponent<Missile>().missileDamage = missileDamage;
+        missile.owner = plane;
+        missile.speedModifier = plane.speed;
+        missile.missileDamage = missileDamage;
         missile.tag = plane.tag;
         isReadyToBomb = false;
         if(pilotInput) pilotInput.fire = false;

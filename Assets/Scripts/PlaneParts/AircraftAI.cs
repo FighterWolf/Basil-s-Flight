@@ -131,7 +131,6 @@ public class AircraftAI : Aircraft
 
     void Pursue()
     {
-        //EssentialFunctions.AimForTarget(transform, enemy.transform, 0.5f);
         ResetRotation();
         if(enemy)NavigateToTarget(enemy.transform);
         if (EssentialFunctions.EntityInFront(transform, 10,500) is Entity e)
@@ -218,7 +217,6 @@ public class AircraftAI : Aircraft
 
         if (Physics.Raycast(transform.position, diagonal, out RaycastHit hit, Mathf.Infinity, ~planeLayer))
         {
-            //Debug.Log(hit.distance);
             if (hit.distance < threshold)
             {
                 return true;
@@ -314,8 +312,6 @@ public class AircraftAI : Aircraft
         spotToFollow = whichSpotToFollow;
         if (spotToFollow != null)
         {
-            float percentageOfWayToTarget = Mathf.InverseLerp(1, 1000, Vector3.Distance(transform.position, spotToFollow.transform.position));
-            //EssentialFunctions.AimForTarget(transform, spotToFollow.transform, 1.5f);
             NavigateToTarget(spotToFollow.transform);
             HandleSpeed();
         }
@@ -325,8 +321,6 @@ public class AircraftAI : Aircraft
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Vector3 localPosition = transform.InverseTransformDirection(direction);
-
-        //Debug.Log(localPosition);
 
         float threshold = 0.05f;
 

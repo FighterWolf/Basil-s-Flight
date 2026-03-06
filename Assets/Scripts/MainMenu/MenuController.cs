@@ -20,14 +20,12 @@ public class MenuController : MonoBehaviour
 
         List<string> resolutionStrings = new List<string>();
         List<Resolution> filteredResolutions = new List<Resolution>();
-        HashSet<string> uniqueResolutions = new HashSet<string>();
 
         foreach (Resolution r in resolutions)
         {
             string res = r.width.ToString() + " x " + r.height.ToString();
-            if (!uniqueResolutions.Contains(res))
+            if (!resolutionStrings.Contains(res))
             {
-                uniqueResolutions.Add(res);
                 resolutionStrings.Add(res);
                 filteredResolutions.Add(r);
             }
@@ -37,18 +35,6 @@ public class MenuController : MonoBehaviour
         resolutionDropdown.AddOptions(resolutionStrings);
 
         resolutions = filteredResolutions.ToArray();
-
-        /*
-        Resolution current = Screen.currentResolution;
-        for(int i = 0; i < resolutions.Length; i++)
-        {
-            if(resolutions[i].width==current.width&& resolutions[i].height == current.height)
-            {
-                resolutionDropdown.value = i;
-                break;
-            }
-        }
-        */
 
         ChangeIcon();
     }
