@@ -54,6 +54,7 @@ MonoBehaviour:
   health: 5
   maxHealth: 5
   isDisabled: 0
+  missileWarning: {fileID: 0}
   waypoints: []
   waypointsIterator: 0
   cruiseSpeed: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   distance: 0
   missileSound: {fileID: 8300000, guid: c88e638b76c6d2a4a90f45ebe431c166, type: 3}
   launchMissileSound: {fileID: 8300000, guid: 66d6dcc71a5a5c146b502b0bdd4c88aa, type: 3}
-  explosion: {fileID: 8300000, guid: b2edac7c47dace44db83e8753d113735, type: 3}
+  explosion: {fileID: 8300000, guid: 55336ff3b34cb5941ad3f531c946dd45, type: 3}
 --- !u!54 &3773582429414321847
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

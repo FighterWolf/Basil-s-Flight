@@ -23,6 +23,9 @@ public class Entity : MonoBehaviour
 
     private Marker marker;
 
+    protected AudioSource source;
+    public AudioClip missileWarning;
+
     //Waypoint system only if entity is AI
     public Transform[] waypoints;
     protected Transform currentWaypoint;
@@ -40,6 +43,7 @@ public class Entity : MonoBehaviour
             opForEntity.Add(this);
         }
         marker = EssentialFunctions.FindDescendants(transform, "Marker").GetComponent<Marker>();
+        if(TryGetComponent<AudioSource>(out AudioSource a)) source = a;
     }
 
     // Update is called once per frame
@@ -47,6 +51,11 @@ public class Entity : MonoBehaviour
     {
         OnZeroHealth();
         ClearNulls();
+        if (source)
+        {
+            source.clip = missileWarning;
+            EssentialFunctions.HandleSound(source, !IsBeingLockedOn());
+        }
     }
 
     void OnZeroHealth()

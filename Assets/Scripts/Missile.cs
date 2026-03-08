@@ -18,7 +18,6 @@ public class Missile : Entity
     private Vector3 prediction;
 
     private Rigidbody rb;
-    private AudioSource source;
 
     public AudioClip missileSound;
     public AudioClip launchMissileSound;
@@ -34,7 +33,6 @@ public class Missile : Entity
         rb = GetComponent<Rigidbody>();
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Add(this);
 
-        source = GetComponent<AudioSource>();
         source.clip = missileSound;
     }
 
@@ -61,7 +59,7 @@ public class Missile : Entity
             Explode();
         }
 
-        //EssentialFunctions.HandleSound(source,PauseMenu.isPaused);
+        EssentialFunctions.HandleSound(source,PauseMenu.isPaused);
     }
 
     void FixedUpdate()
