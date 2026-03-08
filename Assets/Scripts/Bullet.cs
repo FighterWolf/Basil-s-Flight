@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     public Rigidbody rb;
     public Collider col;
 
+    public AudioClip bulletSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

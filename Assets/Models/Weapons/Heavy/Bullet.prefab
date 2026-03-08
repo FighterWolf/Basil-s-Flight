@@ -160,3 +160,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   rb: {fileID: 0}
   col: {fileID: 0}
+  bulletSound: {fileID: 8300000, guid: f406b00c2003d514b80a7f9be0c95709, type: 3}

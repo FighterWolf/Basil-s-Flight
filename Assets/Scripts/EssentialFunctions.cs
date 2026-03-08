@@ -70,4 +70,17 @@ public class EssentialFunctions : MonoBehaviour
         }
         return null;
     }
+
+    public static void HandleSound(AudioSource source,bool stopLoop)
+    {
+        if (!source.loop&&!stopLoop)
+        {
+            source.loop = true;
+            source.Play();
+        }else if (stopLoop)
+        {
+            source.loop = false;
+            source.Stop();
+        }
+    }
 }

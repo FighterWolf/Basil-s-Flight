@@ -18,6 +18,11 @@ public class Missile : Entity
     private Vector3 prediction;
 
     private Rigidbody rb;
+    private AudioSource source;
+
+    public AudioClip missileSound;
+    public AudioClip launchMissileSound;
+    public AudioClip explosion;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
@@ -28,6 +33,9 @@ public class Missile : Entity
 
         rb = GetComponent<Rigidbody>();
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Add(this);
+
+        source = GetComponent<AudioSource>();
+        source.clip = missileSound;
     }
 
     // Update is called once per frame
@@ -52,6 +60,8 @@ public class Missile : Entity
         {
             Explode();
         }
+
+        //EssentialFunctions.HandleSound(source,PauseMenu.isPaused);
     }
 
     void FixedUpdate()
@@ -121,6 +131,8 @@ public class Missile : Entity
         }
 
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Remove(this);
+
+        AudioSource.PlayClipAtPoint(explosion, transform.position);
 
         //Debug.Log("Exploded");
         Destroy(gameObject);

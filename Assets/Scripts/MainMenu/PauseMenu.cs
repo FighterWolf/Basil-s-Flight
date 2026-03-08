@@ -78,5 +78,11 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         pauseMenu.SetActive(true);
         isPaused = true;
+        AudioSource[] allAudio = GameObject.FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+
+        foreach(AudioSource a in allAudio)
+        {
+            a.Stop();
+        }
     }
 }

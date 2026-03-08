@@ -110,6 +110,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         GameObject o = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
         Bullet bullet = o.GetComponent<Bullet>();
         bullet.owner=plane;
+        AudioSource.PlayClipAtPoint(bullet.bulletSound, gunPod.transform.position);
         bullet.speed = plane.speed;
         bullet.gunDamage = gunDamage;
 
@@ -130,6 +131,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         {
             missile.targetToStrike = target.transform;
         }
+        AudioSource.PlayClipAtPoint(missile.missileSound, missilePod.transform.position);
         missile.owner = plane;
         missile.speedModifier = plane.speed;
         missile.missileDamage = missileDamage;
