@@ -57,6 +57,11 @@ public class PlaneWeaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.isGameOver)
+        {
+            pilotInput = null;
+        }
+        
         if (pilotInput != null)
         {
             fire = pilotInput.fire;
@@ -69,6 +74,8 @@ public class PlaneWeaponSystem : MonoBehaviour
             Fire();
             SwitchWeapon();
         }
+
+        EssentialFunctions.HandleSound(gunPod.GetComponent<AudioSource>(), bullet.bulletSound, !fire || PauseMenu.isPaused);
     }
 
     public bool MissileOperational()
@@ -90,7 +97,7 @@ public class PlaneWeaponSystem : MonoBehaviour
             switch (weaponSystem)
             {
                 case WeaponSystem.Gun:
-                    if(isReadyToFireGun /*&& !pilotInput.allowLook*/) FireGun();
+                    if (isReadyToFireGun /*&& !pilotInput.allowLook*/) FireGun();
                     break;
                 case WeaponSystem.Missile:
                     if(isReadyToBomb) FireMissile();
@@ -110,7 +117,6 @@ public class PlaneWeaponSystem : MonoBehaviour
         GameObject o = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
         Bullet bullet = o.GetComponent<Bullet>();
         bullet.owner=plane;
-        AudioSource.PlayClipAtPoint(bullet.bulletSound, gunPod.transform.position);
         bullet.speed = plane.speed;
         bullet.gunDamage = gunDamage;
 

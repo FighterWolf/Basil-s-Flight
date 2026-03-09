@@ -78,6 +78,11 @@ public class Aircraft : Entity, Interactable
     // Update is called once per frame
     public override void Update()
     {
+        if (PauseMenu.isGameOver)
+        {
+            pilotInput = null;
+        }
+
         if (!PauseMenu.isPaused)
         {
             base.Update();
@@ -190,7 +195,7 @@ public class Aircraft : Entity, Interactable
 
     public void OnSteer()
     {
-        Accelerate(throttle*3);
+        if(!IsDisabled()) Accelerate(throttle*3);
 
         if (speed < 0)
         {
@@ -280,18 +285,17 @@ public class Aircraft : Entity, Interactable
             return;
         }
 
-        
-        if (throttle < 0 && speed<=0)
+        if (glideSpeed > speed || IsDisabled())
+        {
+            glideSpeed -= Time.deltaTime * 5;
+        }
+        else if (throttle < 0 && speed<=0)
         {
             glideSpeed += throttle;
         }
         else if (speed < 0)
         {
             glideSpeed -= speed;
-        }
-        else if (glideSpeed > speed)
-        {
-            glideSpeed -= Time.deltaTime * 5;
         }
     }
     public Aircraft GetLeadAircraft()

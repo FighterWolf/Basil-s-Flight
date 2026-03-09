@@ -16,6 +16,8 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        PauseMenu.isGameOver = false;
+
         resolutions = Screen.resolutions;
 
         List<string> resolutionStrings = new List<string>();

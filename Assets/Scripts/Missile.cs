@@ -108,6 +108,8 @@ public class Missile : Entity
 
     public void Explode()
     {
+        EssentialFunctions.CreateSound(explosion, transform.position);
+
         Collider[] affectedColliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
         HashSet<Entity> hitEntities = new HashSet<Entity>();
@@ -129,8 +131,6 @@ public class Missile : Entity
         }
 
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Remove(this);
-
-        AudioSource.PlayClipAtPoint(explosion, transform.position);
 
         //Debug.Log("Exploded");
         Destroy(gameObject);

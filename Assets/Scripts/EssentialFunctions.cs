@@ -83,4 +83,31 @@ public class EssentialFunctions : MonoBehaviour
             source.Stop();
         }
     }
+
+    public static void HandleSound(AudioSource source, AudioClip clip,bool stopLoop)
+    {
+        source.clip = clip;
+        if (!source.loop && !stopLoop)
+        {
+            source.loop = true;
+            source.Play();
+        }
+        else if (stopLoop)
+        {
+            source.loop = false;
+            source.Stop();
+        }
+    }
+
+    public static void CreateSound(AudioClip clip, Vector3 position)
+    {
+        AudioSource source = new GameObject("Sound").AddComponent<AudioSource>();
+        source.transform.position = position;
+        source.clip = clip;
+        source.spatialBlend = 1;
+        source.maxDistance = 1500f;
+        source.minDistance = 50f;
+        source.Play();
+        Destroy(source.gameObject,clip.length);
+    }
 }

@@ -51,7 +51,7 @@ public class Entity : MonoBehaviour
     {
         OnZeroHealth();
         ClearNulls();
-        if (source)
+        if (source&&missileWarning)
         {
             source.clip = missileWarning;
             EssentialFunctions.HandleSound(source, !IsBeingLockedOn());

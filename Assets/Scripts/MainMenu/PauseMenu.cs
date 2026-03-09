@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    public static bool isGameOver;
     public static bool isPaused;
 
     void Start()
@@ -20,6 +21,7 @@ public class PauseMenu : MonoBehaviour
         pause = userInput.FindAction("Pause");
         HandlePlayerDeath.isPlayerDead = false;
         Resume();
+        isGameOver = false;
     }
 
     void Update()
@@ -42,7 +44,7 @@ public class PauseMenu : MonoBehaviour
             {
                 t.gameObject.SetActive(false);
             }
-            isPaused = true;
+            isGameOver = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
