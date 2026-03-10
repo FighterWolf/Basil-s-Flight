@@ -21053,6 +21053,8 @@ MonoBehaviour:
   potentialTargets: []
   lockOnTarget: {fileID: 0}
   confirmedTarget: {fileID: 0}
+  missileCooldown: 0
+  flareCooldown: 0
 --- !u!4 &6143726845281149705
 Transform:
   m_ObjectHideFlags: 0
