@@ -284,8 +284,8 @@ MonoBehaviour:
   gunDamage: 10
   missileDamage: 75
   gunFireRate: 3900
-  missileReloadRate: 12
-  flareReloadRate: 15
+  missileReloadRate: 6
+  flareReloadRate: 7
   isReadyToFireGun: 1
   isReadyToBomb: 1
   isFlareReady: 1

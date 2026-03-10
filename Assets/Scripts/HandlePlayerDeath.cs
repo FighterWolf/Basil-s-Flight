@@ -22,5 +22,16 @@ public class HandlePlayerDeath : MonoBehaviour
             gameOverScreen.SetActive(true);
             isPlayerDead = true;
         }
+
+        if (PauseMenu.isGameOver)
+        {
+            if(player is Aircraft a)
+            {
+                PlaneWeaponSystem pws = a.GetComponent<PlaneWeaponSystem>();
+                pws.fire=false;
+                pws.flare = false;
+                pws.switchWeapon = false;
+            }
+        }
     }
 }

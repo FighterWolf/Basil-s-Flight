@@ -29,6 +29,7 @@ public class PlaneWeaponSystem : MonoBehaviour
     private Camera planeCam;
     private ThirdPersonController player;
     private AircraftControls pilotInput;
+    private PlaneHUD pHUD;
 
     public GameObject gunPod;
     public Bullet bullet;
@@ -52,6 +53,8 @@ public class PlaneWeaponSystem : MonoBehaviour
         missilePod = EssentialFunctions.FindDescendants(transform, "MissileLauncher").gameObject;
         flareDeployer = EssentialFunctions.FindDescendants(transform, "FlareLauncher").gameObject;
         weaponSystemSize = System.Enum.GetNames(typeof(WeaponSystem)).Length;
+
+        if (TryGetComponent<PlaneHUD>(out PlaneHUD pHUD)) this.pHUD = pHUD;
     }
 
     // Update is called once per frame
@@ -75,7 +78,7 @@ public class PlaneWeaponSystem : MonoBehaviour
             SwitchWeapon();
         }
 
-        EssentialFunctions.HandleSound(gunPod.GetComponent<AudioSource>(), bullet.bulletSound, !fire || PauseMenu.isPaused);
+        EssentialFunctions.HandleSound(gunPod.GetComponent<AudioSource>(), bullet.bulletSound, (!fire || weaponSystem!=WeaponSystem.Gun) || PauseMenu.isPaused);
     }
 
     public bool MissileOperational()
@@ -129,7 +132,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         //Debug.Log(plane.name + ": Firing Missile");
         GameObject o = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation, missilePod.transform);
         Missile missile = o.GetComponent<Missile>();
-        if (TryGetComponent<PlaneHUD>(out PlaneHUD pHUD))
+        if (pHUD)
         {
             if(pHUD.confirmedTarget != null) missile.targetToStrike = pHUD.confirmedTarget.transform;
         }
@@ -168,14 +171,16 @@ public class PlaneWeaponSystem : MonoBehaviour
 
     public IEnumerator ResetMissileShot()
     {
-        yield return new WaitForSeconds(60 / missileReloadRate);
+        if (pHUD) pHUD.missileCooldown = 0;
+        yield return new WaitForSeconds(missileReloadRate);
         if(pilotInput) yield return new WaitUntil(() => !pilotInput.fire);
         isReadyToBomb =true;
     }
 
     public IEnumerator ResetFlare()
     {
-        yield return new WaitForSeconds(60 / flareReloadRate);
+        if (pHUD) pHUD.flareCooldown = 0;
+        yield return new WaitForSeconds(flareReloadRate);
         if (pilotInput) yield return new WaitUntil(() => !pilotInput.flare);
         isFlareReady = true;
     }

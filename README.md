@@ -28,10 +28,10 @@ itch.io link: TBA
 PROTOTYPE LINK TO BE RELEASED SOON.
 
 ## Characters
-- Basil Avery
+- 2nd Lieutenant Basil Avery
 <img src="/Assets/Models/Characters/Basil/BasilThumbnail.png" alt="Portrait of Basil Avery" style="width:15%; height:auto;">
 
-- Toshiko Suzuki/鈴木敏子
+- 2nd Lieutenant Toshiko Suzuki/鈴木敏子
 <img src="/Assets/Models/Characters/Toshiko/ToshikoThumbnail.png" alt="Portrait of Toshiko Suzuki" style="width:15%; height:auto;">
 
 WIP:

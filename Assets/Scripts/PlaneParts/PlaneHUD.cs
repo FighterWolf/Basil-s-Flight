@@ -27,7 +27,16 @@ public class PlaneHUD : MonoBehaviour
     private TextMeshProUGUI currentWeaponSystem;
     private TextMeshProUGUI altitude;
     private GameObject missileWarning;
-    
+
+    private Image planeMissileReloadStatus;
+    private Image planeFlareReloadStatus;
+
+    private float missileReloadRate;
+    public float missileCooldown;
+
+    private float flareReloadRate;
+    public float flareCooldown;
+
     private bool blinkActive = true;
     private Coroutine blink;
 
@@ -46,6 +55,15 @@ public class PlaneHUD : MonoBehaviour
         currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
         altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
         missileWarning = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileWarning").gameObject;
+
+        planeMissileReloadStatus = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileReloadBar").GetComponent<Image>();
+        planeFlareReloadStatus = EssentialFunctions.FindDescendants(pilotCanvas.transform, "FlareReloadBar").GetComponent<Image>();
+
+        missileReloadRate = planeWeaponSystem.missileReloadRate;
+        flareReloadRate = planeWeaponSystem.flareReloadRate;
+
+        missileCooldown = missileReloadRate;
+        flareCooldown = flareReloadRate;
     }
 
     // Update is called once per frame
@@ -187,6 +205,30 @@ public class PlaneHUD : MonoBehaviour
 
             altitude.text = plane.altitude.ToString("F2");
             planeSpeed.text = plane.glideSpeed.ToString("F2");
+
+            if (missileCooldown<missileReloadRate)
+            {
+                missileCooldown += Time.deltaTime;
+                planeMissileReloadStatus.fillAmount = missileCooldown / missileReloadRate;
+                planeMissileReloadStatus.color = Color.red;
+            }
+            else if (planeWeaponSystem.isReadyToBomb||missileCooldown>=missileReloadRate)
+            {
+                planeMissileReloadStatus.fillAmount = 1;
+                planeMissileReloadStatus.color = Color.green;
+            }
+
+            if (flareCooldown < flareReloadRate)
+            {
+                flareCooldown += Time.deltaTime;
+                planeFlareReloadStatus.fillAmount = flareCooldown / flareReloadRate;
+                planeFlareReloadStatus.color = Color.red;
+            }
+            else if (planeWeaponSystem.isFlareReady||flareCooldown>=flareReloadRate)
+            {
+                planeFlareReloadStatus.fillAmount = 1;
+                planeFlareReloadStatus.color = Color.green;
+            }
         }
     }
 
