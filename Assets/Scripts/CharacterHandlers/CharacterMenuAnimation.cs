@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterLookAt : MonoBehaviour
+public class CharacterMenuAnimation : PilotModel
 {
     public bool isSitting;
 
@@ -8,20 +8,10 @@ public class CharacterLookAt : MonoBehaviour
     public float headWeight;
 
     public Transform lookAtObject;
-    private Animator anim;
-    int animationSit;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
-        anim = GetComponent<Animator>();
-        animationSit = Animator.StringToHash("Sitting");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        anim.SetBool(animationSit,isSitting);
+        base.Start();
     }
 
     private void OnAnimatorIK(int layerIndex)

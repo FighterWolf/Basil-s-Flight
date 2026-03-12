@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PilotModel : MonoBehaviour
 {
-    Animator anim;
-    int animationSit;
-    int animationGrounded;
+    protected Animator anim;
+    protected int animationSit;
+    protected int animationGrounded;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
         anim = GetComponent<Animator>();
         animationSit= Animator.StringToHash("Sitting");
