@@ -110,4 +110,16 @@ public class EssentialFunctions : MonoBehaviour
         source.Play();
         Destroy(source.gameObject,clip.length);
     }
+
+    public static void CreateParticle(GameObject particle,Vector3 position)
+    {
+        GameObject explosionObj = Instantiate(particle, position, Quaternion.identity);
+        explosionObj.transform.localScale = new Vector3(2, 2, 2);
+    }
+
+    public static void CreateExplosion(GameObject particle, AudioClip clip, Vector3 position)
+    {
+        CreateSound(clip,position);
+        CreateParticle(particle,position);
+    }
 }

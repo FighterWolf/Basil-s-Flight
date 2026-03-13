@@ -412,7 +412,9 @@ public class Aircraft : Entity, Interactable
         speed = 0;
         glideSpeed = 0;
         health = 0;
+
+        EssentialFunctions.CreateExplosion(explosionParticle, explosionSound, transform.position);
+
         Debug.Log(killCreditName+" exploded");
-        //Destroys aircraft
     }
 }

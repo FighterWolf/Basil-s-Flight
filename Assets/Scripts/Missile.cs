@@ -21,7 +21,6 @@ public class Missile : Entity
 
     public AudioClip missileSound;
     public AudioClip launchMissileSound;
-    public AudioClip explosion;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
@@ -108,7 +107,7 @@ public class Missile : Entity
 
     public void Explode()
     {
-        EssentialFunctions.CreateSound(explosion, transform.position);
+        EssentialFunctions.CreateExplosion(explosionParticle,explosionSound,transform.position);
 
         Collider[] affectedColliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
@@ -131,8 +130,7 @@ public class Missile : Entity
         }
 
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Remove(this);
-
-        //Debug.Log("Exploded");
+        
         Destroy(gameObject);
     }
 }

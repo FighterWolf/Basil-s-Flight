@@ -26,6 +26,9 @@ public class Entity : MonoBehaviour
     protected AudioSource source;
     public AudioClip missileWarning;
 
+    public GameObject explosionParticle;
+    public AudioClip explosionSound;
+
     //Waypoint system only if entity is AI
     public Transform[] waypoints;
     protected Transform currentWaypoint;
