@@ -260,11 +260,6 @@ public class Aircraft : Entity, Interactable
         }
     }
 
-    public void OnDrag()
-    {
-        rb.AddForce(transform.forward * actualSpeed * -0.25f, ForceMode.Force);
-    }
-
     public void Accelerate(float speed)
     {
         this.speed += speed; 

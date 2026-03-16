@@ -19,7 +19,7 @@ public class HandleMinimap : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x,10000,player.position.z);
+        transform.position = new Vector3(player.position.x,5000,player.position.z);
         transform.rotation.Normalize();
         transform.rotation = Quaternion.Euler(90, player.rotation.eulerAngles.y, 0);
     }

@@ -119,10 +119,9 @@ public class PlaneWeaponSystem : MonoBehaviour
         //Debug.Log(GetComponent<Entity>().killCreditName + ": Firing Gun");
         GameObject o = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
         Bullet bullet = o.GetComponent<Bullet>();
-        bullet.owner=plane;
-        bullet.speed = plane.speed;
         bullet.gunDamage = gunDamage;
-
+        bullet.owner = plane;
+        bullet.speed = plane.speed;
         isReadyToFireGun = false;
         StartCoroutine(ResetGunShot());
     }
@@ -141,9 +140,7 @@ public class PlaneWeaponSystem : MonoBehaviour
             missile.targetToStrike = target.transform;
         }
         AudioSource.PlayClipAtPoint(missile.missileSound, missilePod.transform.position);
-        missile.owner = plane;
-        missile.speedModifier = plane.speed;
-        missile.missileDamage = missileDamage;
+        missile.AssignStats(missileDamage, plane, missile.speed, plane.speed);
         missile.tag = plane.tag;
         isReadyToBomb = false;
         if(pilotInput) pilotInput.fire = false;
@@ -154,7 +151,7 @@ public class PlaneWeaponSystem : MonoBehaviour
     public void DeployFlare()
     {
         GameObject flare = Instantiate(this.flareObject.gameObject, flareDeployer.transform.position, flareDeployer.transform.rotation);
-        flare.GetComponent<Flare>().owner=plane;
+        flare.GetComponent<Flare>().AssignStats(0,plane);
         flare.tag = plane.tag;
         plane.deployedFlares.Add(flare.GetComponent<Flare>());
 

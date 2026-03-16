@@ -81,7 +81,7 @@ public class PlaneHUD : MonoBehaviour
 
         if (pilot != null&&lockOnTarget&& targetDistance <= 1000)
         {
-            Vector3 targetPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam);
+            Vector3 targetPositionInScreen = planeWeaponSystem.weaponSystem==PlaneWeaponSystem.WeaponSystem.Missile ? EssentialFunctions.TransformWorldCoordsToScreen(lockOnTarget.transform.position, cam) : EssentialFunctions.TransformWorldCoordsToScreen(EstimatedTargetFutureCoordinates(lockOnTarget), cam);
 
             float angle = Vector3.Angle(transform.forward,cameraHolder.forward);
             bool isLookingForward = angle < 45;
@@ -136,6 +136,13 @@ public class PlaneHUD : MonoBehaviour
             }
         }
         return closest;
+    }
+
+    Vector3 EstimatedTargetFutureCoordinates(Entity e)
+    {
+        Rigidbody targetRigidBody = e.GetComponent<Rigidbody>();
+
+        return targetRigidBody.position + targetRigidBody.linearVelocity *0.5f;
     }
 
     void HandleDisplay()

@@ -1,15 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Missile : Entity
+public class Missile : Projectile
 {
-
-    public float cruiseSpeed;
-    public float speedModifier;
     public float explosionRadius;
-    public float fuel;
-    public float missileDamage;
-    public Entity owner;
 
     public Transform targetToStrike;
 
@@ -63,8 +57,8 @@ public class Missile : Entity
 
     void FixedUpdate()
     {
-        rb.AddForce(transform.forward * (cruiseSpeed + speedModifier), ForceMode.VelocityChange);
-        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, cruiseSpeed+speedModifier);
+        rb.AddForce(transform.forward * (speed + speedModifier), ForceMode.VelocityChange);
+        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, speed + speedModifier);
 
         if (targetToStrike != null) {
             float percentageOfWayToTarget = Mathf.InverseLerp(1,1000,Vector3.Distance(transform.position,targetToStrike.position));
@@ -119,7 +113,7 @@ public class Missile : Entity
             {
                 if (hitEntities.Add(entity) && entity != owner)
                 {
-                    EssentialFunctions.OnSuccessfulHit(owner,entity,true,missileDamage, "Missile");
+                    EssentialFunctions.OnSuccessfulHit(owner,entity,true,damage, "Missile");
 
                     if (entity.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
                     {

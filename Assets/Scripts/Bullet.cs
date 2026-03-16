@@ -15,18 +15,24 @@ public class Bullet : MonoBehaviour
 
     public AudioClip bulletSound;
 
+    private Vector3 lastPosition;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
+
+        rb.linearVelocity = transform.forward * (speed + speedModifier);
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(transform.forward * (speed + speedModifier), ForceMode.VelocityChange);
+        //rb.AddForce(transform.forward * (speed + speedModifier), ForceMode.VelocityChange);
         CheckForSurroundings();
+        HandleTunneling();
         if (bulletTimer >= 0)
         {
             bulletTimer -= Time.deltaTime;
@@ -52,16 +58,36 @@ public class Bullet : MonoBehaviour
     public void CheckForSurroundings()
     {
         RaycastHit hit;
-        if(Physics.SphereCast(transform.position,3,transform.forward,out hit))
+        if (Physics.SphereCast(transform.position, 1.5f, transform.forward, out hit, 32f))
         {
-            if(hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
-            {
-                if (e != owner)
-                {
-                    EssentialFunctions.OnSuccessfulHit(owner, e,false, gunDamage,"Machine Gun");
-                }
-            }
-            Destroy(gameObject);
+            OnHitTarget(hit);
         }
+    }
+
+    public void HandleTunneling()
+    {
+        RaycastHit hit;
+
+        Vector3 distance = transform.position - lastPosition;
+        lastPosition = transform.position;
+
+        Ray r = new Ray(lastPosition,distance.normalized);
+
+        if (Physics.SphereCast(r,1.5f,out hit, distance.magnitude))
+        {
+            OnHitTarget(hit);
+        }
+    }
+
+    public void OnHitTarget(RaycastHit hit)
+    {
+        if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+        {
+            if (e != owner)
+            {
+                EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, "Machine Gun");
+            }
+        }
+        Destroy(gameObject);
     }
 }

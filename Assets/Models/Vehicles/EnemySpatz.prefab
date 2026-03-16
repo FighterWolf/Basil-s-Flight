@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110d5286b8d5e94786c488ed2ff0029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneWeaponSystem
-  gunDamage: 10
+  gunDamage: 25
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 6
@@ -2182,8 +2182,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 0.25}
-  m_Center: {x: -2.0311347e-16, y: 0, z: 0.048207145}
+  m_Size: {x: 2, y: 2, z: 0.40837166}
+  m_Center: {x: 0, y: 5.805001e-11, z: 0.12739319}
 --- !u!114 &5327855611252203394
 MonoBehaviour:
   m_ObjectHideFlags: 0

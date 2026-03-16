@@ -370,7 +370,7 @@ public class AircraftAI : Aircraft
 
             foreach (Entity e in listOfPotentialEnemies)
             {
-                if (!e || e.health <= 0) continue;
+                if (!e || e.GetComponent<Projectile>() != null || e.health <= 0) continue;
                 
                 float distance = Vector3.Distance(e.transform.position, transform.position);
                 if (distance < closestDistance)

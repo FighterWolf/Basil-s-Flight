@@ -755,7 +755,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 73}
-  m_SizeDelta: {x: 352.5, y: 76}
+  m_SizeDelta: {x: 446.13, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219533054
 MonoBehaviour:
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You got shot down!
+  m_text: Your plane got disabled!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16462,8 +16462,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 0.25}
-  m_Center: {x: -2.0311347e-16, y: 0, z: 0.048207145}
+  m_Size: {x: 2, y: 2, z: 0.40837166}
+  m_Center: {x: 0, y: 5.805001e-11, z: 0.12739319}
 --- !u!1 &2599170847777567432
 GameObject:
   m_ObjectHideFlags: 0
@@ -17896,7 +17896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110d5286b8d5e94786c488ed2ff0029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneWeaponSystem
-  gunDamage: 10
+  gunDamage: 25
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 6
@@ -23928,7 +23928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9110d5286b8d5e94786c488ed2ff0029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneWeaponSystem
-  gunDamage: 10
+  gunDamage: 25
   missileDamage: 75
   gunFireRate: 3900
   missileReloadRate: 6
@@ -26090,8 +26090,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1.5, z: 0.25}
-  m_Center: {x: -2.0311347e-16, y: 0, z: 0.048207145}
+  m_Size: {x: 2, y: 2, z: 0.40837166}
+  m_Center: {x: 0, y: 5.805001e-11, z: 0.12739319}
 --- !u!1 &8697758040864753740
 GameObject:
   m_ObjectHideFlags: 0

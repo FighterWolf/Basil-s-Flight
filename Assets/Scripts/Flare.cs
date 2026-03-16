@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class Flare : Entity
+public class Flare : Projectile
 {
-
-    public Entity owner;
-    public float fuel;
     public GameObject flareParticle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
