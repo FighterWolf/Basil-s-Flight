@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
     {
         //rb.AddForce(transform.forward * (speed + speedModifier), ForceMode.VelocityChange);
         CheckForSurroundings();
-        HandleTunneling();
         if (bulletTimer >= 0)
         {
             bulletTimer -= Time.deltaTime;
@@ -45,12 +44,9 @@ public class Bullet : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+        if (collision.collider.transform.root.TryGetComponent<Entity>(out Entity e) && e!=owner)
         {
-            if (e != owner)
-            {
-                e.DecreaseHealth(false,gunDamage);
-            }
+            e.DecreaseHealth(false,gunDamage);
         }
         Destroy(gameObject);
     }
@@ -58,22 +54,13 @@ public class Bullet : MonoBehaviour
     public void CheckForSurroundings()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 32f))
-        {
-            OnHitTarget(hit);
-        }
-    }
-
-    public void HandleTunneling()
-    {
-        RaycastHit hit;
 
         Vector3 distance = transform.position - lastPosition;
         lastPosition = transform.position;
 
-        Ray r = new Ray(lastPosition,distance.normalized);
+        Ray r = new Ray(lastPosition, distance.normalized);
 
-        if (Physics.SphereCast(r,2f,out hit, distance.magnitude))
+        if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 32f) || Physics.SphereCast(r, 2f, out hit, distance.magnitude))
         {
             OnHitTarget(hit);
         }
@@ -83,12 +70,9 @@ public class Bullet : MonoBehaviour
     {
         if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
         {
-            if(!(e is Projectile p && p.tag == owner.tag))
+            if(!(e is Projectile p && p.tag == owner.tag) && e != owner)
             {
-                if (e != owner)
-                {
-                    EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, "Machine Gun");
-                }
+                EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, "Machine Gun");
             }
         }
         Destroy(gameObject);

@@ -47,7 +47,7 @@ public class EssentialFunctions : MonoBehaviour
 
             if (target.health <= 0)
             {
-                if(!(target is Flare))
+                if(!(target is Projectile))
                 {
                     Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
                 }
