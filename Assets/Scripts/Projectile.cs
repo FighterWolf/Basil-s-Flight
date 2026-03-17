@@ -26,5 +26,6 @@ public class Projectile : Entity
         this.owner = owner;
         this.speed = speed;
         this.speedModifier = speedModifier;
+        tag = owner.tag;
     }
 }

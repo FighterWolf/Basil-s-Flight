@@ -16,6 +16,7 @@ public class Missile : Projectile
     public AudioClip missileSound;
     public AudioClip launchMissileSound;
 
+    private Vector3 lastPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
@@ -26,6 +27,7 @@ public class Missile : Projectile
         rb = GetComponent<Rigidbody>();
         if (targetToStrike) targetToStrike.GetComponent<Entity>().missilesHeadingTowardsSelf.Add(this);
 
+        lastPosition = transform.position;
         source.clip = missileSound;
     }
 
@@ -52,6 +54,8 @@ public class Missile : Projectile
             Explode();
         }
 
+        HandleTunneling();
+
         EssentialFunctions.HandleSound(source,PauseMenu.isPaused);
     }
 
@@ -69,9 +73,9 @@ public class Missile : Projectile
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Explode();
+        if (other.TryGetComponent<Bullet>(out Bullet b) && b.owner.tag != tag) Explode();
     }
 
     void PredictMovement(float percentageOfWayToTarget)
@@ -99,6 +103,32 @@ public class Missile : Projectile
         }
     }
 
+    public void HandleTunneling()
+    {
+        RaycastHit hit;
+
+        Vector3 distance = transform.position - lastPosition;
+        lastPosition = transform.position;
+
+        Ray r = new Ray(lastPosition, distance.normalized);
+
+        if (Physics.SphereCast(r, 2f, out hit, distance.magnitude))
+        {
+            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+            {
+                if(e!=owner) Explode();
+            }
+            else if (hit.collider.TryGetComponent<Bullet>(out Bullet b))
+            {
+                if(b.owner.tag != tag) Explode();
+            }
+            else
+            {
+                Explode();
+            }
+        }
+    }
+
     public void Explode()
     {
         EssentialFunctions.CreateExplosion(explosionParticle,explosionSound,transform.position);
@@ -111,7 +141,7 @@ public class Missile : Projectile
         {
             if (collider.TryGetComponent<Entity>(out Entity entity) || collider.transform.root.TryGetComponent<Entity>(out entity))
             {
-                if (hitEntities.Add(entity) && entity != owner)
+                if (hitEntities.Add(entity) && entity != owner && entity != this)
                 {
                     EssentialFunctions.OnSuccessfulHit(owner,entity,true,damage, "Missile");
 

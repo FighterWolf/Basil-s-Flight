@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2688189731839695459}
   - component: {fileID: 3773582429414321847}
   - component: {fileID: 7853537690033895961}
+  - component: {fileID: 5410083287953815695}
   m_Layer: 0
   m_Name: AIM9Sidewinder
   m_TagString: Untagged
@@ -60,12 +61,12 @@ MonoBehaviour:
   explosionSound: {fileID: 8300000, guid: 55336ff3b34cb5941ad3f531c946dd45, type: 3}
   waypoints: []
   waypointsIterator: 0
-  cruiseSpeed: 0
-  speedModifier: 150
-  explosionRadius: 25
   fuel: 5
-  missileDamage: 0
+  damage: 0
+  speed: 0
+  speedModifier: 150
   owner: {fileID: 0}
+  explosionRadius: 25
   targetToStrike: {fileID: 0}
   distance: 0
   missileSound: {fileID: 8300000, guid: c88e638b76c6d2a4a90f45ebe431c166, type: 3}
@@ -194,6 +195,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &5410083287953815695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093667403972676158}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 2}
+  m_Center: {x: 0, y: 0, z: 1.91}
 --- !u!1 &3878947712183761705
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +227,6 @@ GameObject:
   - component: {fileID: 4512354798442815891}
   - component: {fileID: 662241751938477622}
   - component: {fileID: 3374381483315256060}
-  - component: {fileID: 620784849099470804}
   m_Layer: 0
   m_Name: AIM9Sidewinder
   m_TagString: Untagged
@@ -285,28 +306,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &620784849099470804
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3878947712183761705}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4436863061088633788, guid: f58b78810d83ceb45bee63e45cfabf7f, type: 3}
 --- !u!1 &5672780414477450121
 GameObject:
   m_ObjectHideFlags: 0

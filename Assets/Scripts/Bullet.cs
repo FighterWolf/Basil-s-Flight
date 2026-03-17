@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour
     public void CheckForSurroundings()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 1.5f, transform.forward, out hit, 32f))
+        if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 32f))
         {
             OnHitTarget(hit);
         }
@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour
 
         Ray r = new Ray(lastPosition,distance.normalized);
 
-        if (Physics.SphereCast(r,1.5f,out hit, distance.magnitude))
+        if (Physics.SphereCast(r,2f,out hit, distance.magnitude))
         {
             OnHitTarget(hit);
         }
@@ -83,9 +83,12 @@ public class Bullet : MonoBehaviour
     {
         if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
         {
-            if (e != owner)
+            if(!(e is Projectile p && p.tag == owner.tag))
             {
-                EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, "Machine Gun");
+                if (e != owner)
+                {
+                    EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, "Machine Gun");
+                }
             }
         }
         Destroy(gameObject);

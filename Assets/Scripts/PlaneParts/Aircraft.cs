@@ -280,7 +280,7 @@ public class Aircraft : Entity, Interactable
             return;
         }
 
-        if (glideSpeed > speed || IsDisabled())
+        if (glideSpeed > speed || (IsDisabled()&& glideSpeed>0))
         {
             glideSpeed -= Time.deltaTime * 5;
         }
@@ -390,7 +390,7 @@ public class Aircraft : Entity, Interactable
     {
         if (pilotInput != null)
         {
-            if (pilotInput.allowLook)
+            if (pilotInput.allowLook && !IsDisabled())
             {
                 cameraHolder.rotation *= Quaternion.Euler(pilotInput.look.y * 3 * Time.fixedDeltaTime, pilotInput.look.x * 3 * Time.fixedDeltaTime, 0f);
             }

@@ -9,6 +9,7 @@ public class AircraftAI : Aircraft
     public string enemyTag;
 
     public bool isHit;
+    private bool awaitingMissileClearance;
     private float distanceToSpotToFollow;
 
     private List<Entity> listOfPotentialEnemies;
@@ -17,6 +18,7 @@ public class AircraftAI : Aircraft
 
     private Coroutine manuverCoroutine;
     private Coroutine gunBurstCoroutine;
+    private Coroutine missileClearanceCoroutine;
 
     private PlaneWeaponSystem pws;
 
@@ -138,8 +140,9 @@ public class AircraftAI : Aircraft
             if (pws.MissileOperational() && enemy && pws.isReadyToBomb && enemyDistance > 150&& listOfPotentialEnemies.Contains(e))
             {
                 pws.FireMissile(e);
+                if(missileClearanceCoroutine!=null) missileClearanceCoroutine = StartCoroutine(WaitForMissileClearance());
             }
-            else if (pws.MachineGunOperational() && e != GetComponent<Entity>() && listOfPotentialEnemies.Contains(e))
+            else if (pws.MachineGunOperational() && e != GetComponent<Entity>() && listOfPotentialEnemies.Contains(e) && !awaitingMissileClearance)
             {
                 if (gunBurstCoroutine == null) gunBurstCoroutine = StartCoroutine(GunBurst());
             }
@@ -148,7 +151,7 @@ public class AircraftAI : Aircraft
 
     private IEnumerator GunBurst()
     {
-        Debug.Log(killCreditName + " is firing gun");
+        //Debug.Log(killCreditName + " is firing gun");
         float timer = 0;
         float duration = 2f;
 
@@ -158,9 +161,17 @@ public class AircraftAI : Aircraft
             timer += Time.deltaTime;
             yield return null;
         }
-        Debug.Log(killCreditName + " is on cooldown");
+        //Debug.Log(killCreditName + " is on cooldown");
         yield return new WaitForSeconds(1f);
         gunBurstCoroutine = null;
+    }
+
+    private IEnumerator WaitForMissileClearance()
+    {
+        awaitingMissileClearance = true;
+        yield return new WaitForSeconds(1f);
+        awaitingMissileClearance = false;
+        missileClearanceCoroutine = null;
     }
 
     void ClearEnemyOnTakedown()

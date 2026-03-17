@@ -129,7 +129,7 @@ public class PlaneWeaponSystem : MonoBehaviour
     public void FireMissile(Entity target = null)
     {
         //Debug.Log(plane.name + ": Firing Missile");
-        GameObject o = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation, missilePod.transform);
+        GameObject o = Instantiate(this.missile.gameObject, missilePod.transform.position, transform.rotation);
         Missile missile = o.GetComponent<Missile>();
         if (pHUD)
         {
@@ -141,7 +141,6 @@ public class PlaneWeaponSystem : MonoBehaviour
         }
         AudioSource.PlayClipAtPoint(missile.missileSound, missilePod.transform.position);
         missile.AssignStats(missileDamage, plane, missile.speed, plane.speed);
-        missile.tag = plane.tag;
         isReadyToBomb = false;
         if(pilotInput) pilotInput.fire = false;
         fire = false;
@@ -152,7 +151,6 @@ public class PlaneWeaponSystem : MonoBehaviour
     {
         GameObject flare = Instantiate(this.flareObject.gameObject, flareDeployer.transform.position, flareDeployer.transform.rotation);
         flare.GetComponent<Flare>().AssignStats(0,plane);
-        flare.tag = plane.tag;
         plane.deployedFlares.Add(flare.GetComponent<Flare>());
 
         isFlareReady = false;
