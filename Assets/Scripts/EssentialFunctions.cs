@@ -50,6 +50,10 @@ public class EssentialFunctions : MonoBehaviour
                 if(!(target is Projectile))
                 {
                     Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
+                    if(killer.TryGetComponent<HandlePlayer>(out HandlePlayer player))
+                    {
+                        player.currentKillPoints++;
+                    }
                 }
 
                 //reward killer
@@ -121,5 +125,18 @@ public class EssentialFunctions : MonoBehaviour
     {
         CreateSound(clip,position);
         CreateParticle(particle,position);
+    }
+
+    public static void GameOver()
+    {
+        GameObject pauseMenu = FindDescendants(GameObject.Find("Canvas").transform,"PauseMenu").gameObject;
+        pauseMenu.SetActive(false);
+        foreach (Transform t in pauseMenu.transform.parent)
+        {
+            t.gameObject.SetActive(false);
+        }
+        PauseMenu.isGameOver = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

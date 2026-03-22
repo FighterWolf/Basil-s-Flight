@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Marker : MonoBehaviour
 {
-
     public bool isPlayer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

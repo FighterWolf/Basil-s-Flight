@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class HandlePlayerDeath : MonoBehaviour
+public class HandlePlayer : MonoBehaviour
 {
     public GameObject gameOverScreen;
 
     public Entity player;
+
+    public float currentKillPoints;
+    public float currentRingPoints;
 
     public static bool isPlayerDead;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentKillPoints = 0;
+        currentRingPoints = 0;
         if (TryGetComponent<Entity>(out Entity e)) player = e;
     }
 
@@ -32,6 +37,18 @@ public class HandlePlayerDeath : MonoBehaviour
                 pws.flare = false;
                 pws.switchWeapon = false;
             }
+        }
+
+        if (LevelHandler.isLevelComplete)
+        {
+            ResetPlayer();
+        }
+    }
+    public void ResetPlayer()
+    {
+        if(player is Aircraft a)
+        {
+            a.Patrol();
         }
     }
 }

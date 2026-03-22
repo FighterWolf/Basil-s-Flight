@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.transform.root.TryGetComponent<Entity>(out Entity e) && e!=owner)
+        if (!collision.collider.isTrigger && collision.collider.transform.root.TryGetComponent<Entity>(out Entity e) && e!=owner)
         {
             e.DecreaseHealth(false,gunDamage);
         }
@@ -62,13 +62,13 @@ public class Bullet : MonoBehaviour
 
         if (Physics.SphereCast(transform.position, 2f, transform.forward, out hit, 32f) || Physics.SphereCast(r, 2f, out hit, distance.magnitude))
         {
-            OnHitTarget(hit);
+            if(!hit.collider.isTrigger) OnHitTarget(hit);
         }
     }
 
     public void OnHitTarget(RaycastHit hit)
     {
-        if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+        if (!hit.collider.isTrigger && hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
         {
             if(!(e is Projectile p && p.tag == owner.tag) && e != owner)
             {

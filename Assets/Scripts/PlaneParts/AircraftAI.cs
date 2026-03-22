@@ -215,13 +215,6 @@ public class AircraftAI : Aircraft
         }
     }
 
-    void ResetRotation()
-    {
-        pitch = 0;
-        yaw = 0;
-        roll = 0;
-    }
-
     bool IsTooCloseToGround(float threshold)
     {
         Vector3 diagonal = (transform.forward + (Vector3.down * 0.5f)).normalized;
@@ -276,45 +269,6 @@ public class AircraftAI : Aircraft
         roll = 0;
         manuverCoroutine = null;
     }
-
-    void Patrol()
-    {
-        ResetRotation();
-        if (!currentWaypoint||ReachedWaypoint())
-        {
-            SearchNextWaypoint();
-        }
-
-        if (currentWaypoint)
-        {
-            NavigateToTarget(currentWaypoint);
-        }
-
-        bool ReachedWaypoint()
-        {
-            if (Vector3.Distance(transform.position, currentWaypoint.position) < waypointDistanceThreshhold)
-            {
-                if (waypointsIterator == waypoints.Length - 1)
-                {
-                    waypointsIterator = 0;
-                }
-                else
-                {
-                    waypointsIterator++;
-                }
-                return true;
-            }
-            return false;
-        }
-
-        void SearchNextWaypoint()
-        {
-            if (waypoints.Length > 0)
-            {
-                currentWaypoint = waypoints[waypointsIterator];
-            }
-        }
-    }
     
     void FollowAlliedAircraft()
     {
@@ -328,24 +282,6 @@ public class AircraftAI : Aircraft
         }
     }
 
-    void NavigateToTarget(Transform target)
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Vector3 localPosition = transform.InverseTransformDirection(direction);
-
-        float threshold = 0.05f;
-
-        pitch = Mathf.Clamp(localPosition.y, -1, 1);
-        yaw = Mathf.Clamp(localPosition.x, -1, 1);
-        if (Mathf.Abs(localPosition.x) > threshold)
-        {
-            roll = Mathf.Clamp(localPosition.x, -1, 1);
-        }
-        else
-        {
-            LevelAircraft();
-        }
-    }
 
     void DisableSelf()
     {

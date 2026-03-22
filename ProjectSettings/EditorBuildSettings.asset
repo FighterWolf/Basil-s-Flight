@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 371e0c623ad0ef849b8dfc3ab561136e
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/TestSceneFlight.unity
+    guid: 9e2394526a1727d40bcb63a693525d37
+  - enabled: 1
+    path: Assets/Scenes/TestSceneCombat.unity
     guid: 5a417719f0f8c7740b746e4c451d703a
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}

@@ -43,7 +43,7 @@ public class MenuController : MonoBehaviour
 
     public void OnStart()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("TestSceneFlight");
     }
 
     public void OnExit()

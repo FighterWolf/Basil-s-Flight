@@ -75,7 +75,7 @@ public class Missile : Projectile
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Bullet>(out Bullet b) && b.owner.tag != tag) Explode();
+        if (!other.isTrigger && other.TryGetComponent<Bullet>(out Bullet b) && b.owner.tag != tag) Explode();
     }
 
     void PredictMovement(float percentageOfWayToTarget)
@@ -114,7 +114,7 @@ public class Missile : Projectile
 
         if (Physics.SphereCast(r, 2f, out hit, distance.magnitude))
         {
-            if (hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
+            if (!hit.collider.isTrigger && hit.collider.transform.root.TryGetComponent<Entity>(out Entity e))
             {
                 if(e!=owner) Explode();
             }
@@ -122,7 +122,7 @@ public class Missile : Projectile
             {
                 if(b.owner.tag != tag) Explode();
             }
-            else
+            else if (!hit.collider.isTrigger)
             {
                 Explode();
             }

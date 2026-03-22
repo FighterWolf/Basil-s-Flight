@@ -62,7 +62,7 @@ ModelImporter:
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -637,17 +637,17 @@ ModelImporter:
       parentName: BackHair2_L
       position: {x: -5.0291415e-10, y: 0.00092320656, z: 3.7252902e-11}
       rotation: {x: -0.07204765, y: 0.013838091, z: 0.13524354, w: 0.9880926}
-      scale: {x: 1.0000011, y: 1.0000038, z: 1.0000004}
+      scale: {x: 1.0000014, y: 1.0000035, z: 1.0000004}
     - name: BackHair4_L
       parentName: BackHair3_L
-      position: {x: -0, y: 0.000977898, z: -1.4901161e-10}
-      rotation: {x: -0.014838468, y: 0.0001288559, z: 0.06399109, w: 0.9978402}
-      scale: {x: 1.0000027, y: 1.0000077, z: 1.0000056}
+      position: {x: 4.0978193e-10, y: 0.0009778984, z: -1.8626451e-11}
+      rotation: {x: -0.014838424, y: 0.0001288587, z: 0.06399112, w: 0.9978402}
+      scale: {x: 1.0000015, y: 1.000008, z: 1.0000055}
     - name: BackHair5_L
       parentName: BackHair4_L
-      position: {x: -3.4458936e-10, y: 0.0011799865, z: -6.519258e-11}
-      rotation: {x: -0.026369384, y: -0.0046341545, z: 0.08918406, w: 0.9956553}
-      scale: {x: 0.9999996, y: 1.0000119, z: 1.0000013}
+      position: {x: -8.381903e-11, y: 0.0011799873, z: -2.2351741e-10}
+      rotation: {x: -0.026369426, y: -0.004634149, z: 0.08918403, w: 0.9956553}
+      scale: {x: 1.0000011, y: 1.0000125, z: 1.0000023}
     - name: BackHair5_L_end
       parentName: BackHair5_L
       position: {x: -0, y: 0.0012592014, z: 0}
@@ -661,13 +661,13 @@ ModelImporter:
     - name: FrontHair2_L
       parentName: FrontHair1_L
       position: {x: 1.6763806e-10, y: 0.0005028665, z: 0}
-      rotation: {x: -0.06380392, y: 0.049636103, z: 0.023833923, w: 0.9964424}
-      scale: {x: 1.0000079, y: 1.0000103, z: 1.0000025}
+      rotation: {x: -0.06380392, y: 0.049636137, z: 0.023833942, w: 0.9964423}
+      scale: {x: 1.0000044, y: 1.0000064, z: 1.0000024}
     - name: FrontHair3_L
       parentName: FrontHair2_L
-      position: {x: -1.5832484e-10, y: 0.0005346502, z: 2.7939677e-11}
-      rotation: {x: -0.15681155, y: -0.0047969925, z: -0.059560932, w: 0.9858193}
-      scale: {x: 1.0000029, y: 1.0000036, z: 0.999998}
+      position: {x: 3.7252902e-11, y: 0.0005346476, z: 1.11758706e-10}
+      rotation: {x: -0.15681155, y: -0.0047968924, z: -0.059560955, w: 0.98581934}
+      scale: {x: 1.0000082, y: 1.0000107, z: 0.99999875}
     - name: FrontHair3_L_end
       parentName: FrontHair3_L
       position: {x: -0, y: 0.0005503402, z: 0}
@@ -687,17 +687,17 @@ ModelImporter:
       parentName: BackHair2_R
       position: {x: 1.862645e-10, y: 0.0009232047, z: -1.862645e-10}
       rotation: {x: -0.07204753, y: -0.013837151, z: -0.13524355, w: 0.98809254}
-      scale: {x: 1.0000014, y: 1.0000043, z: 1.0000005}
+      scale: {x: 1.0000018, y: 1.0000046, z: 1.0000013}
     - name: BackHair4_R
       parentName: BackHair3_R
-      position: {x: 2.4214386e-10, y: 0.0009778986, z: 2.2351741e-10}
+      position: {x: 7.4505804e-11, y: 0.0009778981, z: -1.3038516e-10}
       rotation: {x: -0.014830401, y: -0.00012886802, z: -0.06399112, w: 0.9978403}
-      scale: {x: 1.0000014, y: 1.0000088, z: 1.0000025}
+      scale: {x: 1.0000011, y: 1.0000087, z: 1.0000019}
     - name: BackHair5_R
       parentName: BackHair4_R
-      position: {x: 4.5634804e-10, y: 0.0011799857, z: 1.0244548e-10}
+      position: {x: 2.8871e-10, y: 0.0011799863, z: 1.4901161e-10}
       rotation: {x: -0.026371447, y: 0.0046332967, z: -0.08918402, w: 0.9956552}
-      scale: {x: 0.99999803, y: 1.0000069, z: 1.0000025}
+      scale: {x: 0.99999875, y: 1.0000076, z: 1.0000032}
     - name: BackHair5_R_end
       parentName: BackHair5_R
       position: {x: -0, y: 0.0012592014, z: 0}

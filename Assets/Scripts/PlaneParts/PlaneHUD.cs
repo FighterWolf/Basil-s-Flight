@@ -17,6 +17,8 @@ public class PlaneHUD : MonoBehaviour
     private PlaneWeaponSystem planeWeaponSystem;
     private Camera cam;
     private Transform cameraHolder;
+    private HandlePlayer player;
+    private LevelHandler level;
     public List<Entity> potentialTargets;
     public Entity lockOnTarget;
     public Entity confirmedTarget;
@@ -27,6 +29,7 @@ public class PlaneHUD : MonoBehaviour
     private TextMeshProUGUI currentWeaponSystem;
     private TextMeshProUGUI altitude;
     private GameObject missileWarning;
+    private TextMeshProUGUI pointsCounter;
 
     private Image planeMissileReloadStatus;
     private Image planeFlareReloadStatus;
@@ -55,6 +58,9 @@ public class PlaneHUD : MonoBehaviour
         currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
         altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
         missileWarning = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileWarning").gameObject;
+        pointsCounter = EssentialFunctions.FindDescendants(pilotCanvas.transform, "PointCounter").GetComponent<TextMeshProUGUI>();
+        player = GetComponent<HandlePlayer>();
+        level = pilotCanvas.GetComponent<LevelHandler>();
 
         planeMissileReloadStatus = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileReloadBar").GetComponent<Image>();
         planeFlareReloadStatus = EssentialFunctions.FindDescendants(pilotCanvas.transform, "FlareReloadBar").GetComponent<Image>();
@@ -236,6 +242,8 @@ public class PlaneHUD : MonoBehaviour
                 planeFlareReloadStatus.fillAmount = 1;
                 planeFlareReloadStatus.color = Color.green;
             }
+
+            pointsCounter.text = (player.currentKillPoints + player.currentRingPoints) + " / " + (level.numberOfKillsNeeded + level.numberOfRingsToFlyThrough);
         }
     }
 

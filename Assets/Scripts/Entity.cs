@@ -59,6 +59,11 @@ public class Entity : MonoBehaviour
             source.clip = missileWarning;
             EssentialFunctions.HandleSound(source, !IsBeingLockedOn());
         }
+
+        if (LevelHandler.isLevelComplete && gameObject.CompareTag("OpFor"))
+        {
+            health = 0;
+        }
     }
 
     void OnZeroHealth()

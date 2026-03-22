@@ -27,15 +27,18 @@ public class Spawner : MonoBehaviour
     {
         CleanListOfDestroyedEntity();
 
-        if (stopwatch < timeBetweenEntitySpawn && entitiesLinkedToSpawner.Count<maxNumberOfEntities)
+        if (!LevelHandler.isLevelComplete)
         {
-            stopwatch += Time.deltaTime;
-        }
+            if (stopwatch < timeBetweenEntitySpawn && entitiesLinkedToSpawner.Count < maxNumberOfEntities)
+            {
+                stopwatch += Time.deltaTime;
+            }
 
-        if (stopwatch >= timeBetweenEntitySpawn && entitiesLinkedToSpawner.Count < maxNumberOfEntities)
-        {
-            SpawnEntity();
-            stopwatch = 0;
+            if (stopwatch >= timeBetweenEntitySpawn && entitiesLinkedToSpawner.Count < maxNumberOfEntities)
+            {
+                SpawnEntity();
+                stopwatch = 0;
+            }
         }
     }
 
