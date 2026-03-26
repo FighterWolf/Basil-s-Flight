@@ -58,7 +58,10 @@ public class PlaneHUD : MonoBehaviour
         currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
         altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
         missileWarning = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileWarning").gameObject;
-        pointsCounter = EssentialFunctions.FindDescendants(pilotCanvas.transform, "PointCounter").GetComponent<TextMeshProUGUI>();
+        Transform pc =EssentialFunctions.FindDescendants(pilotCanvas.transform, "PointCounter");
+
+        if(pc) pointsCounter = pc.GetComponent<TextMeshProUGUI>();
+
         player = GetComponent<HandlePlayer>();
         level = pilotCanvas.GetComponent<LevelHandler>();
 
@@ -243,7 +246,7 @@ public class PlaneHUD : MonoBehaviour
                 planeFlareReloadStatus.color = Color.green;
             }
 
-            pointsCounter.text = (player.currentKillPoints + player.currentRingPoints) + " / " + (level.numberOfKillsNeeded + level.numberOfRingsToFlyThrough);
+            if(pointsCounter) pointsCounter.text = (player.currentKillPoints + player.currentRingPoints) + " / " + (level.numberOfKillsNeeded + level.numberOfRingsToFlyThrough);
         }
     }
 
