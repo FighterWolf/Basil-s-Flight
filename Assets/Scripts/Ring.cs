@@ -27,7 +27,9 @@ public class Ring : MonoBehaviour
         if (other.transform.root.TryGetComponent<HandlePlayer>(out HandlePlayer player))
         {
             if (isCollected) return;
-            player.currentRingPoints++;
+            
+            if(!LevelHandler.isLevelComplete)player.currentRingPoints++;
+
             if (collectedParticle)
             {
                 isCollected = true;

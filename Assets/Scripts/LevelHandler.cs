@@ -13,6 +13,13 @@ public class LevelHandler : MonoBehaviour
 
     public HandlePlayer player;
 
+    public bool mustExitThroughRing;
+    public GameObject exitRing;
+    public Vector3 exitRingCoordinates;
+    public GameObject finalInstruction;
+    private bool isExitRingGenerated;
+    private GameObject exitRingObject;
+
     public static bool isLevelComplete;
 
     public string nextLevel;
@@ -28,6 +35,7 @@ public class LevelHandler : MonoBehaviour
         {
             currentCheckpoint = currentLevelStoryMode;
         }
+        finalInstruction = EssentialFunctions.FindDescendants(transform,"MustGoThroughExitRing").gameObject;
     }
 
     // Update is called once per frame
@@ -52,9 +60,31 @@ public class LevelHandler : MonoBehaviour
     {
         if (currentKillPoints >= numberOfKillsNeeded && currentRingPoints >= numberOfRingsToFlyThrough)
         {
-            levelCompleteHUD.SetActive(true);
-            EssentialFunctions.GameOver();
-            isLevelComplete = true;
+            if (mustExitThroughRing)
+            {
+                if (!isExitRingGenerated)
+                {
+                    exitRingObject = Instantiate(exitRing, exitRingCoordinates, Quaternion.identity);
+                    isExitRingGenerated = true;
+                    finalInstruction.SetActive(true);
+                }
+                if (exitRingObject == null)
+                {
+                    GameOver();
+                }
+            }
+            else
+            {
+                GameOver();
+            }
         }
+    }
+
+    public void GameOver()
+    {
+        if (finalInstruction != null) finalInstruction.SetActive(false);
+        levelCompleteHUD.SetActive(true);
+        EssentialFunctions.GameOver();
+        isLevelComplete = true;
     }
 }

@@ -12131,7 +12131,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.2
-  far clip plane: 1500
+  far clip plane: 3000
   field of view: 40
   orthographic: 0
   orthographic size: 10
@@ -19506,8 +19506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8f03e73f38d1948941f14c5a21210d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
-  healthBarColor: {r: 0.048089504, g: 1, b: 0, a: 1}
   distanceTextColor: {r: 0, g: 0.015195131, b: 1, a: 1}
+  healthBarColor: {r: 0.048089504, g: 1, b: 0, a: 1}
 --- !u!4 &4535854714898556079
 Transform:
   m_ObjectHideFlags: 0
