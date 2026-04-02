@@ -40,6 +40,10 @@ public class PlaneHUD : MonoBehaviour
     private float flareReloadRate;
     public float flareCooldown;
 
+    private GameObject currentRing;
+    private Transform objectivePointer;
+    private GameObject objectiveDistance;
+
     private bool blinkActive = true;
     private Coroutine blink;
 
@@ -58,6 +62,8 @@ public class PlaneHUD : MonoBehaviour
         currentWeaponSystem = EssentialFunctions.FindDescendants(pilotCanvas.transform, "WeaponSystem").GetComponent<TextMeshProUGUI>();
         altitude = EssentialFunctions.FindDescendants(pilotCanvas.transform, "Altitude").GetComponent<TextMeshProUGUI>();
         missileWarning = EssentialFunctions.FindDescendants(pilotCanvas.transform, "MissileWarning").gameObject;
+        objectivePointer = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ObjectivePointer");
+        objectiveDistance = EssentialFunctions.FindDescendants(pilotCanvas.transform, "ObjectiveDistance").gameObject;
         Transform pc =EssentialFunctions.FindDescendants(pilotCanvas.transform, "PointCounter");
 
         if(pc) pointsCounter = pc.GetComponent<TextMeshProUGUI>();
@@ -80,6 +86,7 @@ public class PlaneHUD : MonoBehaviour
     {
         lockOnTarget = FindClosestTargetInScreen();
         HandleTargetLock();
+        HandleObjectiveArrow();
         HandleDisplay();
     }
 
@@ -246,7 +253,28 @@ public class PlaneHUD : MonoBehaviour
                 planeFlareReloadStatus.color = Color.green;
             }
 
-            if(pointsCounter) pointsCounter.text = (player.currentKillPoints + player.currentRingPoints) + " / " + (level.numberOfKillsNeeded + level.numberOfRingsToFlyThrough);
+            if(pointsCounter) pointsCounter.text = (level.currentKillPoints + level.currentRingPoints) + " / " + (level.numberOfKillsNeeded + level.numberOfRingsToFlyThrough);
+        }
+    }
+
+    void HandleObjectiveArrow()
+    {
+        Ring ring = FindFirstObjectByType<Ring>();
+        currentRing = ring!=null ? ring.gameObject : null;
+
+        if (currentRing != null)
+        {
+            objectivePointer.gameObject.SetActive(true);
+            objectiveDistance.gameObject.SetActive(true);
+            Vector3 ringPositionInScreen = EssentialFunctions.TransformWorldCoordsToScreen(currentRing.transform.position,cam);
+            float isBehind = ringPositionInScreen.z > 0 ? 0 : 180;
+            objectivePointer.localEulerAngles=new Vector3(0,0, isBehind+Vector2.SignedAngle(Vector2.up, new Vector2(ringPositionInScreen.x, ringPositionInScreen.y)));
+            objectiveDistance.GetComponent<TextMeshProUGUI>().text = "Objective Distance: " + EssentialFunctions.FindDescendants(ring.transform.parent,"Distance").GetComponent<TextMeshProUGUI>().text;
+        }
+        else
+        {
+            objectivePointer.gameObject.SetActive(false);
+            objectiveDistance.gameObject.SetActive(false);
         }
     }
 

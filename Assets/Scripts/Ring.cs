@@ -5,6 +5,9 @@ public class Ring : MonoBehaviour
 {
     public GameObject collectedParticle;
 
+    public Ring ringToActivateOnCollect;
+    public bool doNotAddPoint;
+
     private bool isCollected;
     private Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,13 +31,16 @@ public class Ring : MonoBehaviour
         {
             if (isCollected) return;
             
-            if(!LevelHandler.isLevelComplete)player.currentRingPoints++;
+            if(!LevelHandler.isLevelComplete && !doNotAddPoint)player.currentRingPoints++;
 
             if (collectedParticle)
             {
                 isCollected = true;
                 GameObject particle = Instantiate(collectedParticle, transform.position, Quaternion.identity);
             }
+
+            if (ringToActivateOnCollect) ringToActivateOnCollect.transform.root.gameObject.SetActive(true);
+
             Destroy(transform.root.gameObject);
         }
     }

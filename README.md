@@ -23,9 +23,7 @@ Plot:\
 
 *"Turns out... many things..." - Captain Lieke Meijsing, 2124 A.D.*
 
-itch.io link: TBA
-
-PROTOTYPE LINK TO BE RELEASED SOON.
+itch.io link: https://fighterwolfmc.itch.io/basils-flight
 
 ## Characters
 - 2nd Lieutenant Basil Avery
