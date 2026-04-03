@@ -169,15 +169,30 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
-            OnInteract();
+            if (!PauseMenu.isPaused)
+            {
+                JumpAndGravity();
+
+                if (!PauseMenu.isGameOver)
+                {
+                    Move();
+                    OnInteract();
+                    GroundedCheck();
+                }
+                else
+                {
+                    CancelMovementAnimation();
+                }
+            }
+            else 
+            {
+                //CancelMovementAnimation();
+            }
         }
 
         private void LateUpdate()
         {
-            CameraRotation();
+            if (!PauseMenu.isPaused && !PauseMenu.isGameOver) CameraRotation();
         }
 
         private void AssignAnimationIDs()
@@ -451,6 +466,12 @@ namespace StarterAssets
             _animator.SetBool(_animIDGrounded, false);
             _animator.SetBool(animationSit, true);
             this.enabled = false;
+        }
+
+        void CancelMovementAnimation()
+        {
+            _animator.SetFloat(_animIDSpeed, 0);
+            _animator.SetFloat(_animIDMotionSpeed, 0);
         }
 
         void StartInAircraft()

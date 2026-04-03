@@ -10814,7 +10814,7 @@ MonoBehaviour:
   mustExitThroughRing: 1
   exitRing: {fileID: 1395453848}
   finalInstruction: {fileID: 0}
-  nextLevel: MainMenu
+  nextLevel: TestSceneStory
   isLevelCheckpoint: 0
 --- !u!1 &1825730330
 GameObject:
@@ -19673,19 +19673,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3437217186098946752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934678758288062254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf3677373ccb004e8f5106b864ce911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  canvas: {fileID: 1823870978}
 --- !u!1 &3440292303653151674
 GameObject:
   m_ObjectHideFlags: 0
@@ -22063,7 +22050,6 @@ GameObject:
   - component: {fileID: 1646955281023328024}
   - component: {fileID: 1251899805543840116}
   - component: {fileID: 8339967927494266932}
-  - component: {fileID: 3437217186098946752}
   - component: {fileID: 8339967927494266933}
   m_Layer: 8
   m_Name: PlayerArmature
@@ -26710,6 +26696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HandlePlayerDeath
   gameOverScreen: {fileID: 1124706970}
   player: {fileID: 0}
+  pilotCanvas: {fileID: 1823870981}
   currentKillPoints: 0
   currentRingPoints: 0
 --- !u!82 &8007809138760203612

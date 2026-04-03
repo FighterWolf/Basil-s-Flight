@@ -5,6 +5,7 @@ public class HandlePlayer : MonoBehaviour
     public GameObject gameOverScreen;
 
     public Entity player;
+    public Canvas pilotCanvas;
 
     public float currentKillPoints;
     public float currentRingPoints;

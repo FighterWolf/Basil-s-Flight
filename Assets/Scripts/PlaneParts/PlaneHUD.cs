@@ -51,6 +51,7 @@ public class PlaneHUD : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        pilotCanvas = GetComponent<HandlePlayer>().pilotCanvas.gameObject;
         plane = GetComponent<Aircraft>();
         planeWeaponSystem = GetComponent<PlaneWeaponSystem>();
         cam = EssentialFunctions.FindDescendants(plane.transform,"Camera").GetComponent<Camera>();

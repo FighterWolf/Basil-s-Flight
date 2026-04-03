@@ -168,7 +168,6 @@ public class Aircraft : Entity, Interactable
             if (TryGetComponent<PlaneHUD>(out PlaneHUD planeHUD))
             {
                 planeHUD.pilot = player;
-                planeHUD.pilotCanvas = player.GetComponent<CanvasHolder>().canvas;
             }
 
             pilotInput = player.GetComponent<AircraftControls>();
