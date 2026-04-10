@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: caa0873dd16107046b97926399f93a2a
+guid: d90e3706a68add94eb1d2311a5fe88a1
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,18 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Frame
-    second: {fileID: 2100000, guid: fce1907cd54ca444ab2ddf769732b368, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Glass
-    second: {fileID: 2100000, guid: fa45c91c9e6fb384680898f8f8ab8e69, type: 2}
+    second: {fileID: 2100000, guid: 138c5c33a588fce4d992f4e281287853, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lights
-    second: {fileID: 2100000, guid: 0b9ec2e32fd5627489bceeb86e1dbffc, type: 2}
+    second: {fileID: 2100000, guid: 7954a16f757ca6b45844b152db3fb612, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schwalbe
+    second: {fileID: 2100000, guid: f4f31161d55e7f24389e3d159b220ec1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

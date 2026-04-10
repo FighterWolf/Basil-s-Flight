@@ -8,6 +8,10 @@ public class Ring : MonoBehaviour
     public Ring ringToActivateOnCollect;
     public bool doNotAddPoint;
 
+    public GameObject[] objectsToActivate;
+
+    public MonoBehaviour[] scriptsToActivate;
+
     private bool isCollected;
     private Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,6 +44,22 @@ public class Ring : MonoBehaviour
             }
 
             if (ringToActivateOnCollect) ringToActivateOnCollect.transform.root.gameObject.SetActive(true);
+
+            if (scriptsToActivate.Length > 0)
+            {
+                foreach(MonoBehaviour mb in scriptsToActivate)
+                {
+                    mb.enabled = true;
+                }
+            }
+
+            if (objectsToActivate.Length > 0)
+            {
+                foreach (GameObject o in objectsToActivate)
+                {
+                    o.SetActive(true);
+                }
+            }
 
             Destroy(transform.root.gameObject);
         }

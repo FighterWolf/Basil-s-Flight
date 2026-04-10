@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestSceneEndless.unity
     guid: 0643dae0f3e4d5f42a712e5162f0290e
+  - enabled: 1
+    path: Assets/Scenes/TestSceneStory.unity
+    guid: a9c444a3289649646ace745d8e1568f3
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

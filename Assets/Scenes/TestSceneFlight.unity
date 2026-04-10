@@ -11128,6 +11128,7 @@ MonoBehaviour:
   mustExitThroughRing: 1
   exitRing: {fileID: 2035073254}
   finalInstruction: {fileID: 0}
+  isStory: 0
   nextLevel: TestSceneCombat
   isLevelCheckpoint: 0
 --- !u!1 &1825730330
@@ -14846,7 +14847,7 @@ Transform:
   m_GameObject: {fileID: 461835097251550322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2000122, y: 1.3749981, z: -3.999967}
+  m_LocalPosition: {x: 0.2000122, y: 1.3749958, z: -3.999957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14870,7 +14871,7 @@ Transform:
   m_GameObject: {fileID: 5560979154606114524}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.99, z: 0.375}
+  m_LocalPosition: {x: 0, y: 1.15, z: 0.375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27142,7 +27143,7 @@ Transform:
   m_GameObject: {fileID: 6853438288820002957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.99, z: 0.375}
+  m_LocalPosition: {x: 0, y: 1.15, z: 0.375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -166,24 +166,30 @@ public class PlaneHUD : MonoBehaviour
     {
         if (pilotCanvas)
         {
-            planeHealthBar.fillAmount = plane.health / plane.maxHealth;
+            if (planeHealthBar)
+            {
+                planeHealthBar.fillAmount = plane.health / plane.maxHealth;
 
-            if (plane.health <= (plane.maxHealth * 0.33))
-            {
-                planeHealthBar.color = Color.red;
-            }
-            else
-            {
-                planeHealthBar.color = Color.green;
+                if (plane.health <= (plane.maxHealth * 0.33))
+                {
+                    planeHealthBar.color = Color.red;
+                }
+                else
+                {
+                    planeHealthBar.color = Color.green;
+                }
             }
 
-            if (plane.altitude < 200)
+            if (altitude)
             {
-                altitude.color = Color.red;
-            }
-            else
-            {
-                altitude.color = Color.white;
+                if (plane.altitude < 200)
+                {
+                    altitude.color = Color.red;
+                }
+                else
+                {
+                    altitude.color = Color.white;
+                }
             }
 
             if (plane.health > 0)

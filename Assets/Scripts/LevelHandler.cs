@@ -18,6 +18,8 @@ public class LevelHandler : MonoBehaviour
     public GameObject finalInstruction;
     private bool isExitRingGenerated;
 
+    public bool isStory;
+
     public static bool isLevelComplete;
 
     public string nextLevel;
