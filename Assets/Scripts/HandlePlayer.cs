@@ -5,19 +5,26 @@ public class HandlePlayer : MonoBehaviour
     public GameObject gameOverScreen;
 
     public Entity player;
+    public PlaneWeaponSystem pws;
     public Canvas pilotCanvas;
 
     public float currentKillPoints;
     public float currentRingPoints;
 
     public static bool isPlayerDead;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        if (TryGetComponent<Entity>(out Entity e)) player = e;
+        if (TryGetComponent<PlaneWeaponSystem>(out PlaneWeaponSystem pws)) this.pws = pws;
+        SummonAircraft();
+    }
+
     void Start()
     {
         currentKillPoints = 0;
         currentRingPoints = 0;
-        if (TryGetComponent<Entity>(out Entity e)) player = e;
     }
 
     // Update is called once per frame
@@ -45,6 +52,14 @@ public class HandlePlayer : MonoBehaviour
             ResetPlayer();
         }
     }
+
+    public void SummonAircraft()
+    {
+        Instantiate(PlaneSelector.planeToSummon,transform,false);
+        player.Start();
+        pws.Start();
+    }
+
     public void ResetPlayer()
     {
         if(player is Aircraft a)

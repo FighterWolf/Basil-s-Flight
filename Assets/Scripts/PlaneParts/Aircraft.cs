@@ -56,15 +56,22 @@ public class Aircraft : Entity, Interactable
     public bool flare;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    public void Awake()
     {
-        planeCam = EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
-        weaponSystem = GetComponent<PlaneWeaponSystem>();
+
     }
     
     public override void Start()
     {
         base.Start();
+        //No idea why the next 4 lines were in Awake()
+        planeCam = EssentialFunctions.FindDescendants(transform, "Camera").GetComponent<Camera>();
+        weaponSystem = GetComponent<PlaneWeaponSystem>();
+        vFormations[0] = EssentialFunctions.FindDescendants(transform, "VFormationLeft").GetComponent<VFormationSpot>();
+        vFormations[1] = EssentialFunctions.FindDescendants(transform, "VFormationRight").GetComponent<VFormationSpot>();
+
+        //
+        
         rb = GetComponent<Rigidbody>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
         planeLayer = LayerMask.GetMask("Plane Parts");

@@ -5,6 +5,8 @@ public class PilotModel : MonoBehaviour
     protected Animator anim;
     protected int animationSit;
     protected int animationGrounded;
+    Transform plane;
+    Transform seat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
@@ -14,6 +16,9 @@ public class PilotModel : MonoBehaviour
         animationGrounded= Animator.StringToHash("Grounded");
         anim.SetBool(animationGrounded, false);
         anim.SetBool(animationSit, true);
+        plane = transform.root;
+        seat = EssentialFunctions.FindDescendants(plane,"Seat");
+        transform.SetParent(seat);
     }
 
     // Update is called once per frame
