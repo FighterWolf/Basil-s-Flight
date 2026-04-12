@@ -2364,7 +2364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandlePlayer
   gameOverScreen: {fileID: 0}
+  isStoryMode: 1
   player: {fileID: 318579503}
+  pws: {fileID: 0}
   pilotCanvas: {fileID: 1823870981}
   currentKillPoints: 0
   currentRingPoints: 0

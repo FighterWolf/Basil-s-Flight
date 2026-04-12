@@ -4,6 +4,8 @@ public class HandlePlayer : MonoBehaviour
 {
     public GameObject gameOverScreen;
 
+    public bool isStoryMode;
+
     public Entity player;
     public PlaneWeaponSystem pws;
     public Canvas pilotCanvas;
@@ -18,7 +20,7 @@ public class HandlePlayer : MonoBehaviour
     {
         if (TryGetComponent<Entity>(out Entity e)) player = e;
         if (TryGetComponent<PlaneWeaponSystem>(out PlaneWeaponSystem pws)) this.pws = pws;
-        SummonAircraft();
+        if(!isStoryMode) SummonAircraft();
     }
 
     void Start()

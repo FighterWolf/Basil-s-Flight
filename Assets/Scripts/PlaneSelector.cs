@@ -38,7 +38,7 @@ public class PlaneSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(planeToSummon);
+
     }
 
     public void ChangeAircraftModel()
