@@ -9,7 +9,7 @@ public class PlaneSelector : MonoBehaviour
     public static bool setDefault;
 
     public TMP_Dropdown dropdown;
-    int selectValue;
+    static int selectValue;
     public GameObject[] listOfPlanesToSelect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +33,7 @@ public class PlaneSelector : MonoBehaviour
             planeToSummon = listOfPlanesToSelect[0];
             setDefault = true;
         }
+        dropdown.value = selectValue;
     }
 
     // Update is called once per frame

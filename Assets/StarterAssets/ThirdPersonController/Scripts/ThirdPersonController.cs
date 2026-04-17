@@ -172,12 +172,12 @@ namespace StarterAssets
             if (!PauseMenu.isPaused)
             {
                 JumpAndGravity();
+                GroundedCheck();
+                Move();
 
                 if (!PauseMenu.isGameOver)
                 {
-                    Move();
                     OnInteract();
-                    GroundedCheck();
                 }
                 else
                 {
@@ -186,13 +186,15 @@ namespace StarterAssets
             }
             else 
             {
+                _input.jump = false;
+                _input.interact = false;
                 //CancelMovementAnimation();
             }
         }
 
         private void LateUpdate()
         {
-            if (!PauseMenu.isPaused && !PauseMenu.isGameOver) CameraRotation();
+            if (EssentialFunctions.AllowPlayerMovement()) CameraRotation();
         }
 
         private void AssignAnimationIDs()
@@ -249,7 +251,7 @@ namespace StarterAssets
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.move == Vector2.zero || !EssentialFunctions.AllowPlayerMovement()) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -282,7 +284,7 @@ namespace StarterAssets
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
-            if (_input.move != Vector2.zero)
+            if (_input.move != Vector2.zero && EssentialFunctions.AllowPlayerMovement())
             {
                 _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
                                   _mainCamera.transform.eulerAngles.y;
@@ -329,7 +331,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f && EssentialFunctions.AllowPlayerMovement())
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -339,6 +341,11 @@ namespace StarterAssets
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
+                }
+
+                if (!EssentialFunctions.AllowPlayerMovement())
+                {
+                    _input.jump = false;
                 }
 
                 // jump timeout
@@ -422,51 +429,19 @@ namespace StarterAssets
         {
             Ray interactRay = new Ray(_mainCamera.transform.position, _mainCamera.transform.forward);
 
-            if (_input.interact)
+            if (_input.interact && EssentialFunctions.AllowPlayerMovement())
             {
-                void InteractAction(Interactable i)
-                {
-                    i.Interact(gameObject);
-                    
-                    if (i is Aircraft v && !(i is AircraftAI))
-                    {
-                        EnterAircraft(v);
-                    }
-                }
-                
                 if (Physics.Raycast(interactRay, out RaycastHit hit, 8)) 
                 { 
                     if(hit.collider.TryGetComponent<Interactable>(out Interactable i)|| hit.collider.transform.root.TryGetComponent<Interactable>(out i))
                     {
-                        InteractAction(i);
+                        i.Interact(gameObject);
                     }
                 }
                 _input.interact = false;
             }
         }
 
-        public void OnExitVehicle()
-        {
-            Debug.Log("Exting Vehicle");
-            currentVehicle = null;
-            _playerInput.SwitchCurrentActionMap("Player");
-            enabled = true;
-            //pilotControls.dismount = false;
-            _animator.SetBool(animationSit,false);
-        }
-
-        void EnterAircraft(Aircraft plane)
-        {
-            currentVehicle = plane.GetComponent<Aircraft>();
-            _playerInput.SwitchCurrentActionMap("Aircraft");
-            GetComponent<CharacterController>().enabled = false;
-            _animator.SetFloat(_animIDSpeed, 0f);
-            _animator.SetBool(_animIDFreeFall, false);
-            _animator.SetBool(_animIDJump, false);
-            _animator.SetBool(_animIDGrounded, false);
-            _animator.SetBool(animationSit, true);
-            this.enabled = false;
-        }
 
         void CancelMovementAnimation()
         {
@@ -479,7 +454,6 @@ namespace StarterAssets
             if(transform.root.TryGetComponent<Aircraft>(out Aircraft plane))
             {
                 plane.Interact(gameObject);
-                EnterAircraft(plane);
             }
         }
     }

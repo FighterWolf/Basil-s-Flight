@@ -139,4 +139,16 @@ public class EssentialFunctions : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    public static bool AllowPlayerMovement()
+    {
+        if(!PauseMenu.isPaused && !PauseMenu.isGameOver && !Dialogue.isInDialogue)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

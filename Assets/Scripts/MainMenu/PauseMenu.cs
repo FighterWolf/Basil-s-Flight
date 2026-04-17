@@ -34,12 +34,21 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                Pause();
+                if (!Dialogue.isInDialogue) Pause();
             }
         }
         if (HandlePlayer.isPlayerDead)
         {
             EssentialFunctions.GameOver();
+        }
+
+        if (!EssentialFunctions.AllowPlayerMovement())
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
