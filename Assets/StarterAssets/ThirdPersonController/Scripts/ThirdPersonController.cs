@@ -449,11 +449,25 @@ namespace StarterAssets
             _animator.SetFloat(_animIDMotionSpeed, 0);
         }
 
+        void EnterAircraft(Aircraft plane)
+        {
+            currentVehicle = plane.GetComponent<Aircraft>();
+            _playerInput.SwitchCurrentActionMap("Aircraft");
+            GetComponent<CharacterController>().enabled = false;
+            _animator.SetFloat(_animIDSpeed, 0f);
+            _animator.SetBool(_animIDFreeFall, false);
+            _animator.SetBool(_animIDJump, false);
+            _animator.SetBool(_animIDGrounded, false);
+            _animator.SetBool(animationSit, true);
+            this.enabled = false;
+        }
+
         void StartInAircraft()
         {
             if(transform.root.TryGetComponent<Aircraft>(out Aircraft plane))
             {
                 plane.Interact(gameObject);
+                EnterAircraft(plane);
             }
         }
     }

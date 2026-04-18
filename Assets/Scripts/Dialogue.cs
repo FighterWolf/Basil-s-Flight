@@ -56,7 +56,6 @@ public class Dialogue : MonoBehaviour
             {
                 characterName.text = currentLines[iterator].speakerName;
                 if (characterPortrait != null) characterPortrait.sprite = currentLines[iterator].speakerPFP;
-                Debug.Log("Playing line at index: "+iterator);
                 dialogueText.text = "";
                 StartCoroutine(Type(currentLines[iterator].dialogue));
             }
@@ -70,13 +69,17 @@ public class Dialogue : MonoBehaviour
     public IEnumerator Type(string line)
     {
         isTextDone = false;
-        Debug.Log("Typing...");
         foreach (char c in line.ToCharArray())
         {
             dialogueText.text += c;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.005f);
         }
         isTextDone = true;
+        if (!isSceneCutscene)
+        {
+            yield return new WaitForSeconds(1.5f);
+            MoveToNextText();
+        }
     }
 
     public void MoveToNextText()
@@ -86,8 +89,11 @@ public class Dialogue : MonoBehaviour
             iterator = 0;
             currentLines = null;
             timesInteractedWith = 0;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (isSceneCutscene)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
             isInDialogue = false;
             dialogueInteractable.timesInteractedWith++;
             dialogueInteractable = null;
@@ -97,13 +103,11 @@ public class Dialogue : MonoBehaviour
         {
             if (isTextDone)
             {
-                Debug.Log("Moving to next line");
                 iterator++;
                 StartDialogue(iterator);
             }
             else
             {
-                Debug.Log("Skipping line");
                 StopAllCoroutines();
                 dialogueText.text = currentLines[iterator].dialogue;
                 isTextDone=true;

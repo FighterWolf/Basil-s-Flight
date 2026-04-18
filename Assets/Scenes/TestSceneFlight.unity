@@ -24308,6 +24308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandlePlayerDeath
   gameOverScreen: {fileID: 1124706970}
+  isStoryMode: 0
   player: {fileID: 0}
   pws: {fileID: 0}
   pilotCanvas: {fileID: 1823870981}
