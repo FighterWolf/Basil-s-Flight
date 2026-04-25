@@ -32,7 +32,9 @@ itch.io link: https://fighterwolfmc.itch.io/basils-flight
 - 2nd Lieutenant Toshiko Suzuki/鈴木敏子
 <img src="/Assets/Models/Characters/Toshiko/ToshikoThumbnail.png" alt="Portrait of Toshiko Suzuki" style="width:15%; height:auto;">
 
+- 1st Lieutenant Stefaan Katou/加藤ステファン
+<img src="/Assets/Models/Characters/Stefaan/StefaanThumbnail.png" alt="Portrait of Stefaan Katou" style="width:15%; height:auto;">
+
 WIP:
 - Lieke	Meijsing (Captain of the N.Y.M.S. Orange/Oranje)
-- Stefaan Katou/加藤ステファン (N.Y. Air National-Kindergarde squad leader/ground crew)
-- Unnamed Bostonian girl (N.Y. Air National-Kindergarde pilot trainee)
+- Lilija Revere (N.Y. Air National-Kindergarde pilot trainee)
