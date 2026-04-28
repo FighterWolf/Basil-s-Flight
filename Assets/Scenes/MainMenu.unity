@@ -5967,8 +5967,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterLookAt
   isSitting: 1
-  bodyWeight: 0.5
-  headWeight: 1
+  bodyWeight: 0.15
+  headWeight: 0.75
   lookAtObject: {fileID: 474464457}
 --- !u!1 &977280194
 GameObject:
@@ -18860,8 +18860,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterLookAt
   isSitting: 1
-  bodyWeight: 0.5
-  headWeight: 1
+  bodyWeight: 0.15
+  headWeight: 0.75
   lookAtObject: {fileID: 474464457}
 --- !u!4 &5478875377580781421
 Transform:

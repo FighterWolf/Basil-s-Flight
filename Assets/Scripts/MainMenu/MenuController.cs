@@ -52,11 +52,6 @@ public class MenuController : MonoBehaviour
         ChangeIcon();
     }
 
-    public void Update()
-    {
-        Debug.Log(language);
-    }
-
     public void OnStart()
     {
         SceneManager.LoadScene("TestSceneFlight");
