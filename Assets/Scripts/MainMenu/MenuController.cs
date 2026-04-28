@@ -8,11 +8,22 @@ public class MenuController : MonoBehaviour
 {
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullScreen;
+    public TMP_Dropdown langaugeDropdown;
     static int selectedResolution;
+    static int selectedLanguage;
 
     Resolution[] resolutions;
 
     public static bool isFullScreen=true;
+
+    public enum Language
+    {
+        English,
+        ZhongWen,
+        NihonGo
+    }
+
+    public static Language language;
 
     void Start()
     {
@@ -41,6 +52,11 @@ public class MenuController : MonoBehaviour
         ChangeIcon();
     }
 
+    public void Update()
+    {
+        Debug.Log(language);
+    }
+
     public void OnStart()
     {
         SceneManager.LoadScene("TestSceneFlight");
@@ -67,6 +83,7 @@ public class MenuController : MonoBehaviour
     {
         fullScreen.isOn = isFullScreen;
         resolutionDropdown.value = selectedResolution;
+        langaugeDropdown.value = selectedLanguage;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -76,5 +93,11 @@ public class MenuController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void ChangeLanguage()
+    {
+        selectedLanguage = langaugeDropdown.value;
+        language = (Language)selectedLanguage;
     }
 }

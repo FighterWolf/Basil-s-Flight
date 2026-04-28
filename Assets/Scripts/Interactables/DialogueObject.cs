@@ -6,8 +6,12 @@ public class DialogueObject : MonoBehaviour,Interactable
     [System.Serializable]
     public struct DialogueLine
     {
-        public string speakerName;
-        public string dialogue;
+        public string speakerNameEN;
+        public string speakerNameZH;
+        public string speakerNameJP;
+        public string dialogueEN;
+        public string dialogueZH;
+        public string dialogueJP;
         public bool appearOnlyInFirstInteraction;
         public Sprite speakerPFP;
     }
