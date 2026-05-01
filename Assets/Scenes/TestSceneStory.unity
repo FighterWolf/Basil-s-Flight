@@ -12949,6 +12949,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667016623}
   m_CullTransparentMesh: 1
+--- !u!1 &1675748081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675748083}
+  - component: {fileID: 1675748082}
+  - component: {fileID: 1675748084}
+  m_Layer: 0
+  m_Name: DialogueTriggerTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1675748082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675748081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1675748083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675748081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.524, y: 0.81, z: 3.22736}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675748084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675748081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f2b430a8597a342a19752b89620d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
+  linesOfDialogue:
+  - speakerNameEN: Box Collider-EN
+    speakerNameZH: Box Collider-ZH
+    speakerNameJP: Box Collider-JP
+    dialogueEN: You walked into the box! Now you have to read some dialogue.
+    dialogueZH: Ni zou jinle fang kuang li! Xianzai ne de du yiduan duihua.
+    dialogueJP: Bokkusu no naka ni hairimashita ne! Sa, serifu o yonde kudasai.
+    appearOnlyInFirstInteraction: 0
+    speakerPFP: {fileID: 0}
+  - speakerNameEN: Basil Avery
+    speakerNameZH: Baxier Aifuli
+    speakerNameJP: Bajiru Eifuri
+    dialogueEN: Cool!
+    dialogueZH: Kude!
+    dialogueJP: Ine!
+    appearOnlyInFirstInteraction: 0
+    speakerPFP: {fileID: 21300000, guid: 46be84eb1f03b7f4394a9a2c2cefe1ed, type: 3}
+  timesInteractedWith: 0
+  deleteObjectAfterDialogue: 1
 --- !u!1 &1690594672
 GameObject:
   m_ObjectHideFlags: 0
@@ -20783,7 +20868,17 @@ MonoBehaviour:
     dialogueJP: Konnichiwa!
     appearOnlyInFirstInteraction: 0
     speakerPFP: {fileID: 21300000, guid: 46be84eb1f03b7f4394a9a2c2cefe1ed, type: 3}
+  - speakerNameEN: Stefaan Katou
+    speakerNameZH: Jiateng Sidifen
+    speakerNameJP: Katou Stefaan
+    dialogueEN: Basil! Good to see you back safely. It's getting crazy up there,
+      eh?
+    dialogueZH: PLACEHOLDER-ZH
+    dialogueJP: PLACEHOLDER-JP
+    appearOnlyInFirstInteraction: 0
+    speakerPFP: {fileID: 21300000, guid: 32125a3fa1cb7924f9584ae954dd1409, type: 3}
   timesInteractedWith: 0
+  deleteObjectAfterDialogue: 0
 --- !u!4 &5895459745720347023
 Transform:
   m_ObjectHideFlags: 0
@@ -22163,3 +22258,4 @@ SceneRoots:
   - {fileID: 816380647}
   - {fileID: 1151841904}
   - {fileID: 543450653707612489}
+  - {fileID: 1675748083}

@@ -120,6 +120,9 @@ public class Dialogue : MonoBehaviour
             }
             isInDialogue = false;
             dialogueInteractable.timesInteractedWith++;
+
+            if (dialogueInteractable.deleteObjectAfterDialogue) Destroy(dialogueInteractable);
+            
             dialogueInteractable = null;
             gameObject.SetActive(false);
         }

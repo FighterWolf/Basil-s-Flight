@@ -37,4 +37,5 @@ itch.io link: https://fighterwolfmc.itch.io/basils-flight
 
 WIP:
 - Lieke	Meijsing (Captain of the N.Y.M.S. Orange/Oranje)
+- Lowiena Chernova/Луиза Чернова (N.Y. Air National-Kindergarde pilot trainee)
 - Lilija Revere (N.Y. Air National-Kindergarde pilot trainee)

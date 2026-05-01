@@ -60,7 +60,7 @@ public class ObjectiveArrow : MonoBehaviour
                 objectiveArrow.localEulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, target.normalized));
             }
 
-            if(objectiveToFollow.GetComponent<Ring>()!=null) objectiveDistance.GetComponent<TextMeshProUGUI>().text = "Objective Distance: " + EssentialFunctions.FindDescendants(objectiveToFollow.transform.parent, "Distance").GetComponent<TextMeshProUGUI>().text;
+            if(objectiveToFollow.GetComponent<Ring>()!=null) objectiveDistance.GetComponent<TextMeshProUGUI>().text = EssentialFunctions.FindDescendants(objectiveToFollow.transform.parent, "Distance").GetComponent<TextMeshProUGUI>().text;
         }
         else
         {

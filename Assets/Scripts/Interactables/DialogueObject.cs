@@ -19,6 +19,8 @@ public class DialogueObject : MonoBehaviour,Interactable
     [SerializeField] public DialogueLine[] linesOfDialogue;
     public float timesInteractedWith;
 
+    public bool deleteObjectAfterDialogue;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,13 +35,26 @@ public class DialogueObject : MonoBehaviour,Interactable
 
     public void Interact(GameObject player)
     {
+        StartDialogue();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<HandlePlayer>(out HandlePlayer player))
+        {
+            StartDialogue();
+        }
+    }
+
+    void StartDialogue()
+    {
         GameObject db = EssentialFunctions.FindDescendants(GameObject.Find("Canvas").transform, "DialogueBox").gameObject;
         db.SetActive(true);
         Dialogue dialogueBox = db.GetComponent<Dialogue>();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         dialogueBox.timesInteractedWith = timesInteractedWith;
-        dialogueBox.AssignLines(this,linesOfDialogue);
+        dialogueBox.AssignLines(this, linesOfDialogue);
         dialogueBox.StartDialogue(0);
     }
 
