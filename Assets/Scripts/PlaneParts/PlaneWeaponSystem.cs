@@ -53,6 +53,7 @@ public class PlaneWeaponSystem : MonoBehaviour
         missilePod = EssentialFunctions.FindDescendants(transform, "MissileLauncher").gameObject;
         flareDeployer = EssentialFunctions.FindDescendants(transform, "FlareLauncher").gameObject;
         weaponSystemSize = System.Enum.GetNames(typeof(WeaponSystem)).Length;
+        EnableModelStats();
 
         if (TryGetComponent<PlaneHUD>(out PlaneHUD pHUD)) this.pHUD = pHUD;
     }
@@ -79,6 +80,22 @@ public class PlaneWeaponSystem : MonoBehaviour
         }
 
         EssentialFunctions.HandleSound(gunPod.GetComponent<AudioSource>(), bullet.bulletSound, (!fire || weaponSystem!=WeaponSystem.Gun) || PauseMenu.isPaused);
+    }
+
+    public void EnableModelStats()
+    {
+        PlaneStats stats = GetComponentInChildren<PlaneStats>();
+        gunDamage = stats.gunDamage;
+        missileDamage = stats.missileDamage;
+        gunFireRate = stats.gunFireRate;
+        missileReloadRate = stats.missileReloadRate;
+        flareReloadRate = stats.flareReloadRate;
+        gunPod = stats.gunPod;
+        bullet = stats.bullet;
+        missilePod = stats.missilePod;
+        missile = stats.missile;
+        flareDeployer = stats.flareDeployer;
+        flareObject = stats.flareObject;
     }
 
     public bool MissileOperational()

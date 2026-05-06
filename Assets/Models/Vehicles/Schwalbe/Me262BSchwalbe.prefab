@@ -1185,6 +1185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 646184965160297483}
+  - component: {fileID: 277214311849291526}
   m_Layer: 6
   m_Name: Me262BSchwalbe
   m_TagString: Untagged
@@ -1236,6 +1237,34 @@ Transform:
   - {fileID: 5658260661610120926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277214311849291526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593141766586195260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e6fd5cd0f4b46aa0ce593209178a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneStats
+  planeClass: Me 262B Schwalbe
+  speed: 140
+  maxSpeed: 150
+  health: 125
+  maxHealth: 125
+  gunDamage: 75
+  missileDamage: 75
+  gunFireRate: 850
+  missileReloadRate: 6
+  flareReloadRate: 7
+  gunPod: {fileID: 7864604808280759432}
+  bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
+  missilePod: {fileID: 3882839172358345573}
+  missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
+  flareDeployer: {fileID: 902362628553811656}
+  flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
 --- !u!1 &3653956231021635549
 GameObject:
   m_ObjectHideFlags: 0

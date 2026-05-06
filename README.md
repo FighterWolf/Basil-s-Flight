@@ -6,7 +6,6 @@ Takes place several months before the events of [Operation Jager](https://github
 Player's Ground Controls:
 - WASD - Move around
 - Mouse - Look around
-- Space - Jump
 - Left-Shift - Sprint
 - F - Interact
 

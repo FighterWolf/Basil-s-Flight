@@ -74,6 +74,7 @@ public class Aircraft : Entity, Interactable
         
         rb = GetComponent<Rigidbody>();
         rb.maxLinearVelocity = maxSpeed * 0.75f;
+        EnableModelStats();
         planeLayer = LayerMask.GetMask("Plane Parts");
         cameraHolder = EssentialFunctions.FindDescendants(transform, "LookAtObject");
         if (isLeadPlane)
@@ -155,6 +156,16 @@ public class Aircraft : Entity, Interactable
     public void OnRelease()
     {
         
+    }
+
+    public void EnableModelStats()
+    {
+        PlaneStats stats = GetComponentInChildren<PlaneStats>();
+        speed = stats.speed;
+        glideSpeed = stats.speed;
+        maxSpeed = stats.speed;
+        health = stats.health;
+        maxHealth = stats.maxHealth;
     }
 
     public void SwitchControls(bool turnOnPlane)

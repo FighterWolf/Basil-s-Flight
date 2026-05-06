@@ -1410,6 +1410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2581919396102025888}
+  - component: {fileID: 250376238729494090}
   m_Layer: 6
   m_Name: SpatzAanvaller
   m_TagString: Untagged
@@ -1450,6 +1451,34 @@ Transform:
   - {fileID: 4133389748371761629}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &250376238729494090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540257586347802144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e6fd5cd0f4b46aa0ce593209178a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaneStats
+  planeClass: F/A-3 Spatz
+  speed: 90
+  maxSpeed: 100
+  health: 250
+  maxHealth: 250
+  gunDamage: 25
+  missileDamage: 75
+  gunFireRate: 3900
+  missileReloadRate: 6
+  flareReloadRate: 7
+  gunPod: {fileID: 4130425506448228091}
+  bullet: {fileID: 8816096203204802633, guid: 74f865546e9c5df4a8da66fbd602a97d, type: 3}
+  missilePod: {fileID: 8815961557574701743}
+  missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
+  flareDeployer: {fileID: 6113064400359715028}
+  flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
 --- !u!1 &8620793053659085290
 GameObject:
   m_ObjectHideFlags: 0

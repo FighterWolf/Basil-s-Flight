@@ -10,16 +10,16 @@ public class PlaneSelector : MonoBehaviour
 
     public TMP_Dropdown dropdown;
     static int selectValue;
-    public GameObject[] listOfPlanesToSelect;
+    public PlaneStats[] listOfPlanesToSelect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         List<string> aircraftNames = new List<string>();
 
-        foreach (GameObject o in listOfPlanesToSelect)
+        foreach (PlaneStats o in listOfPlanesToSelect)
         {
-            string name = o.name;
-            if (!aircraftNames.Contains(o.name))
+            string name = o.planeClass;
+            if (!aircraftNames.Contains(o.planeClass))
             {
                 aircraftNames.Add(name);
             }
@@ -30,7 +30,7 @@ public class PlaneSelector : MonoBehaviour
 
         if (!setDefault)
         {
-            planeToSummon = listOfPlanesToSelect[0];
+            planeToSummon = listOfPlanesToSelect[0].gameObject;
             setDefault = true;
         }
         dropdown.value = selectValue;
@@ -45,6 +45,6 @@ public class PlaneSelector : MonoBehaviour
     public void ChangeAircraftModel()
     {
         selectValue = dropdown.value;
-        planeToSummon = listOfPlanesToSelect[selectValue];
+        planeToSummon = listOfPlanesToSelect[selectValue].gameObject;
     }
 }

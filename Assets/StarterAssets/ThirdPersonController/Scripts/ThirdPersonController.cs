@@ -331,6 +331,7 @@ namespace StarterAssets
                 }
 
                 // Jump
+                /*
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f && EssentialFunctions.AllowPlayerMovement())
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
@@ -342,6 +343,7 @@ namespace StarterAssets
                         _animator.SetBool(_animIDJump, true);
                     }
                 }
+                */
 
                 if (!EssentialFunctions.AllowPlayerMovement())
                 {
