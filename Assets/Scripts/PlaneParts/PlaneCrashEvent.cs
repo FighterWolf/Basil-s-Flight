@@ -24,6 +24,12 @@ public class PlaneCrashEvent : MonoBehaviour
                 Destroy(other.gameObject);
                 return;
             }
+            else if(other.gameObject.TryGetComponent<Aircraft>(out Aircraft a) || other.transform.root.TryGetComponent<Aircraft>(out a))
+            {
+                a.DecreaseHealth(true,25);
+                plane.DecreaseHealth(true, 25);
+                return;
+            }
             plane.Explode();
         }
     }

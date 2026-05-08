@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
   missilesHeadingTowardsSelf: []
   deployedFlares: []
-  killCreditName: Enemy
+  killCreditName: Enemy Spatz
   health: 250
   maxHealth: 250
   isDisabled: 0

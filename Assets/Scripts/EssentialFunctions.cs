@@ -49,16 +49,17 @@ public class EssentialFunctions : MonoBehaviour
             {
                 if(!(target is Projectile))
                 {
-                    Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
+                    //Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
+
+                    KillLog killLog = FindFirstObjectByType<KillLog>();
+
+                    killLog.AddMessage(killer.killCreditName + " shot down " + target.killCreditName + " with: "+weaponName);
+
                     if(killer.TryGetComponent<HandlePlayer>(out HandlePlayer player))
                     {
                         player.currentKillPoints++;
                     }
                 }
-
-                //reward killer
-
-                //play sound for all, if player, display on screen.
             }
         }
     }
