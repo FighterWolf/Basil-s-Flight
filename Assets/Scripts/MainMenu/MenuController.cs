@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
     public TMP_Dropdown langaugeDropdown;
     static int selectedResolution;
     static int selectedLanguage;
+    public static string currentLevel;
 
     Resolution[] resolutions;
 
@@ -27,6 +28,10 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        if (currentLevel == null)
+        {
+            currentLevel = "TestSceneFlight";
+        }
         PauseMenu.isGameOver = false;
 
         resolutions = Screen.resolutions;
@@ -54,7 +59,7 @@ public class MenuController : MonoBehaviour
 
     public void OnStart()
     {
-        SceneManager.LoadScene("TestSceneFlight");
+        SceneManager.LoadScene(currentLevel);
     }
 
     public void OnExit()

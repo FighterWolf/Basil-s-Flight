@@ -20,10 +20,11 @@ public class LevelHandler : MonoBehaviour
 
     public bool isStory;
 
+    public bool isEndless;
+
     public static bool isLevelComplete;
 
     public string nextLevel;
-    public static string currentLevelStoryMode;
 
     public bool isLevelCheckpoint;
     public static string currentCheckpoint;
@@ -33,7 +34,8 @@ public class LevelHandler : MonoBehaviour
         isLevelComplete = false;
         if (isLevelCheckpoint)
         {
-            currentCheckpoint = currentLevelStoryMode;
+            currentCheckpoint = SceneManager.GetActiveScene().name;
+            MenuController.currentLevel = currentCheckpoint;
         }
         finalInstruction = mustExitThroughRing ? EssentialFunctions.FindDescendants(transform, "MustGoThroughExitRing").gameObject : null;
     }
@@ -58,7 +60,7 @@ public class LevelHandler : MonoBehaviour
 
     public void CompletionCheck()
     {
-        if (currentKillPoints >= numberOfKillsNeeded && currentRingPoints >= numberOfRingsToFlyThrough)
+        if (currentKillPoints >= numberOfKillsNeeded && currentRingPoints >= numberOfRingsToFlyThrough && !isEndless)
         {
             if (mustExitThroughRing)
             {

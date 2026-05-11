@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PilotModel : MonoBehaviour
 {
+    public string characterName;
+    public PlaneStats aircraft;
     protected Animator anim;
     protected int animationSit;
     protected int animationGrounded;
@@ -19,6 +21,7 @@ public class PilotModel : MonoBehaviour
         plane = transform.root;
         seat = EssentialFunctions.FindDescendants(plane,"Seat");
         transform.SetParent(seat);
+        if(aircraft) transform.localPosition = Vector3.zero;
     }
 
     // Update is called once per frame

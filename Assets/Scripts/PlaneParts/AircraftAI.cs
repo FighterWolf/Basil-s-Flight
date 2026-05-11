@@ -42,6 +42,12 @@ public class AircraftAI : Aircraft
         base.Start();
         pws = GetComponent<PlaneWeaponSystem>();
         pws.weaponSystem = PlaneWeaponSystem.WeaponSystem.Missile;
+
+        if(planeToFollow)
+        {
+            glideSpeed = planeToFollow.speed>maxSpeed ? maxSpeed-10 : planeToFollow.glideSpeed;
+            speed = planeToFollow.speed > maxSpeed ? maxSpeed - 10 : planeToFollow.glideSpeed;
+        }
     }
 
     // Update is called once per frame
@@ -335,18 +341,18 @@ public class AircraftAI : Aircraft
     {
         distanceToSpotToFollow = Vector3.Distance(transform.position,spotToFollow.transform.position);
         
-        ChangeSpeed(planeToFollow.glideSpeed);
+        ChangeSpeed(planeToFollow.actualSpeed);
     }
 
     void ChangeSpeed(float desiredSpeed)
     {   
-        if (glideSpeed<desiredSpeed)
+        if (actualSpeed<desiredSpeed)
         {
-            Accelerate(1);
+            throttle=1;
         }
-        else if (glideSpeed >desiredSpeed)
+        else if (actualSpeed > desiredSpeed)
         {
-            Accelerate(-1);
+            throttle = 0;
         }
     }
 

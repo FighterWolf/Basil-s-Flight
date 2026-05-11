@@ -73,7 +73,7 @@ public class Aircraft : Entity, Interactable
         //
         
         rb = GetComponent<Rigidbody>();
-        rb.maxLinearVelocity = maxSpeed * 0.75f;
+        rb.maxLinearVelocity = speed * 0.75f;
         EnableModelStats();
         planeLayer = LayerMask.GetMask("Plane Parts");
         cameraHolder = EssentialFunctions.FindDescendants(transform, "LookAtObject");

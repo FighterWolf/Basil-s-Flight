@@ -1,13 +1,8 @@
 using UnityEngine;
 
-public class HandlePlayer : MonoBehaviour
+public class HandlePlayer : HandleAlly
 {
     public GameObject gameOverScreen;
-
-    public bool isStoryMode;
-
-    public Entity player;
-    public PlaneWeaponSystem pws;
     public Canvas pilotCanvas;
 
     public float currentKillPoints;
@@ -16,11 +11,9 @@ public class HandlePlayer : MonoBehaviour
     public static bool isPlayerDead;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    public override void Awake()
     {
-        if (TryGetComponent<Entity>(out Entity e)) player = e;
-        if (TryGetComponent<PlaneWeaponSystem>(out PlaneWeaponSystem pws)) this.pws = pws;
-        if(!isStoryMode) SummonAircraft();
+        base.Awake();
     }
 
     void Start()
@@ -53,13 +46,6 @@ public class HandlePlayer : MonoBehaviour
         {
             ResetPlayer();
         }
-    }
-
-    public void SummonAircraft()
-    {
-        Instantiate(PlaneSelector.planeToSummon,transform,false);
-        player.Start();
-        pws.Start();
     }
 
     public void ResetPlayer()
