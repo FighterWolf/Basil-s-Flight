@@ -352,7 +352,7 @@ public class AircraftAI : Aircraft
         }
         else if (actualSpeed > desiredSpeed)
         {
-            throttle = 0;
+            throttle = -1;
         }
     }
 
