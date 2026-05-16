@@ -109,7 +109,7 @@ public class AircraftAI : Aircraft
         {
             return State.Disabled;
         }
-        else if (IsTooCloseToGround(250))
+        else if (IsTooCloseToGround(actualSpeed*5))
         {
             return State.AvoidingGround;
         }
@@ -244,9 +244,19 @@ public class AircraftAI : Aircraft
 
     void AvoidGround()
     {
-        if (transform.rotation.x > -25)
+        float pitchAngle = transform.eulerAngles.x;
+
+        if (pitchAngle > 180)
+        {
+            pitchAngle -= 360;
+        }
+
+        Debug.Log(pitchAngle);
+
+        if (pitchAngle > -45)
         {
             pitch=1;
+            throttle = 1;
         }
         else
         {

@@ -125,7 +125,6 @@ public class Aircraft : Entity, Interactable
     public virtual void FixedUpdate()
     {
         OnSteer();
-        OnTakeOff();
         AdhereToHeightLimit();
 
         actualSpeed=rb.linearVelocity.magnitude;
@@ -242,11 +241,6 @@ public class Aircraft : Entity, Interactable
 
         float bank = Vector3.Dot(transform.right, Vector3.up);
         roll = Mathf.Clamp(bank, -0.5f, 0.5f);
-    }
-
-    public void OnTakeOff()
-    {
-        rb.AddForce(transform.up*pitch*1.2f, ForceMode.Acceleration);
     }
 
     public GameObject whatIsBelowPlane;
