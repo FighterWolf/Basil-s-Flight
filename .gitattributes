@@ -1,5 +1,2 @@
-Assets/Shaders/** linguist-vendored
-Assets/TextMesh?Pro/** linguist-vendored
-
 *.shader linguist-vendored
 *.cginc linguist-vendored
