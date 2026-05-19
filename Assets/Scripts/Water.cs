@@ -29,6 +29,10 @@ public class Water : MonoBehaviour
                 DisableAircraft(plane);
                 rigidBody.linearVelocity = new Vector3(0, 0, 0);
             }
+            else if(other.transform.root.GetComponent<Projectile>()!=null || other.transform.root.GetComponent<Bullet>() != null)
+            {
+                Destroy(other.transform.root.gameObject);
+            }
         }
         else
         {
