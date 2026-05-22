@@ -1289,52 +1289,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &7754954937475012298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 774945442774125171}
-  - component: {fileID: 3369479564757660315}
-  m_Layer: 6
-  m_Name: VFormationRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &774945442774125171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7754954937475012298}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.02, y: 0.12, z: -14.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2581919396102025888}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3369479564757660315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7754954937475012298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b91cf116a64bf40b048aef151e173f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VFormationSpot
-  whoTakesTheSpot: {fileID: 0}
-  spot: 1
 --- !u!1 &8037190229650161880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,8 +1396,6 @@ Transform:
   - {fileID: 4719179661019205455}
   - {fileID: 9161651597847085925}
   - {fileID: 4183755162121656552}
-  - {fileID: 4193088654403954908}
-  - {fileID: 774945442774125171}
   - {fileID: 3504608345866348445}
   - {fileID: 1073620324740762353}
   - {fileID: 3077341777885925547}
@@ -1479,52 +1431,6 @@ MonoBehaviour:
   missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 6113064400359715028}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
---- !u!1 &8620793053659085290
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4193088654403954908}
-  - component: {fileID: 2528211557992374501}
-  m_Layer: 6
-  m_Name: VFormationLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4193088654403954908
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8620793053659085290}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.02, y: 0.12, z: -14.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2581919396102025888}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2528211557992374501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8620793053659085290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b91cf116a64bf40b048aef151e173f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VFormationSpot
-  whoTakesTheSpot: {fileID: 0}
-  spot: 0
 --- !u!1 &8815961557574701743
 GameObject:
   m_ObjectHideFlags: 0

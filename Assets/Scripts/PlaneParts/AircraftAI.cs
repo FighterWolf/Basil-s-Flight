@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class AircraftAI : Aircraft
 {
-    VFormationSpot spotToFollow;
+    //VFormationSpot spotToFollow;
 
     public string enemyTag;
 
     public bool isHit;
     private bool awaitingMissileClearance;
-    private float distanceToSpotToFollow;
+    //private float distanceToSpotToFollow;
 
     private List<Entity> listOfPotentialEnemies;
     [SerializeField] private Entity enemy;
@@ -251,8 +251,6 @@ public class AircraftAI : Aircraft
             pitchAngle -= 360;
         }
 
-        Debug.Log(pitchAngle);
-
         if (pitchAngle > -45)
         {
             pitch=1;
@@ -289,12 +287,11 @@ public class AircraftAI : Aircraft
     void FollowAlliedAircraft()
     {
         ResetRotation();
-        whichSpotToFollow = FindFirstEmptyFormationSpot();
-        spotToFollow = whichSpotToFollow;
-        if (spotToFollow != null)
+
+        if (planeToFollow != null)
         {
-            NavigateToTarget(spotToFollow.transform);
-            HandleSpeed();
+            NavigateToTarget(planeToFollow.transform);
+            ChangeSpeed(planeToFollow.actualSpeed);
         }
     }
 
@@ -347,13 +344,6 @@ public class AircraftAI : Aircraft
         }
     }
 
-    void HandleSpeed()
-    {
-        distanceToSpotToFollow = Vector3.Distance(transform.position,spotToFollow.transform.position);
-        
-        ChangeSpeed(planeToFollow.actualSpeed);
-    }
-
     void ChangeSpeed(float desiredSpeed)
     {   
         if (actualSpeed<desiredSpeed)
@@ -364,73 +354,5 @@ public class AircraftAI : Aircraft
         {
             throttle = -1;
         }
-    }
-
-    public VFormationSpot FindFirstEmptyFormationSpot()
-    {
-        if (spotToFollow != null)
-        {
-            return spotToFollow;
-        }
-
-        //planeToFollow.AddAllLastTrailingAircraft(planeToFollow,planeToFollow.listOfLastTrailingPlanes);
-
-        void ChooseFormationPosition(VFormationSpot.LeftORRight position)
-        {
-            switch (position)
-            {
-                case VFormationSpot.LeftORRight.Left:
-                    formationPosition = Aircraft.FormationPosition.Left;
-                    break;
-                case VFormationSpot.LeftORRight.Right:
-                    formationPosition = Aircraft.FormationPosition.Right;
-                    break;
-            }
-        }
-
-        VFormationSpot FindCorrectSpot(VFormationSpot[] slots, VFormationSpot.LeftORRight direction)
-        {
-            ChooseFormationPosition(direction);
-            foreach (VFormationSpot v in slots)
-            {
-                if (v.spot==direction)
-                {
-                    v.whoTakesTheSpot = this;
-                    return v;
-                }
-            }
-            return null;
-        }
-
-        foreach (Aircraft a in planeToFollow.listOfLastTrailingPlanes)
-        {
-            //If one of the trailing planes is leading.
-            if (a.isLeadPlane)
-            {
-                //Since both spots can be valid, check for first empty.
-                foreach(VFormationSpot v in a.vFormations)
-                {
-                    if (v.whoTakesTheSpot == null)
-                    {
-                        //Is the plane on the lead plane's left or right?
-                        ChooseFormationPosition(v.spot);
-                        v.whoTakesTheSpot = this;
-                        return v;
-                    }
-                }
-            }
-            else
-            {
-                //Check if the trailer is on the right or left of the V shape
-                switch (a.formationPosition)
-                {
-                    case Aircraft.FormationPosition.Left:
-                        return FindCorrectSpot(a.vFormations, VFormationSpot.LeftORRight.Left);
-                    case Aircraft.FormationPosition.Right:
-                        return FindCorrectSpot(a.vFormations, VFormationSpot.LeftORRight.Right);
-                }
-            }
-        }
-        return null;
     }
 }

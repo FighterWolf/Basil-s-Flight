@@ -453,6 +453,7 @@ namespace StarterAssets
 
         void EnterAircraft(Aircraft plane)
         {
+            plane.OnPlayerEnter(gameObject);
             currentVehicle = plane.GetComponent<Aircraft>();
             _playerInput.SwitchCurrentActionMap("Aircraft");
             GetComponent<CharacterController>().enabled = false;
@@ -468,7 +469,6 @@ namespace StarterAssets
         {
             if(transform.root.TryGetComponent<Aircraft>(out Aircraft plane))
             {
-                plane.Interact(gameObject);
                 EnterAircraft(plane);
             }
         }

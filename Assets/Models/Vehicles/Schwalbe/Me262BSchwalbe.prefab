@@ -1223,8 +1223,6 @@ Transform:
   - {fileID: 2605370822107955700}
   - {fileID: 7198651325349794617}
   - {fileID: 7074395817181433252}
-  - {fileID: 3321325358009858395}
-  - {fileID: 3889346078914143267}
   - {fileID: 4040712636722639456}
   - {fileID: 6229905867742785853}
   - {fileID: 6589347127046030986}
@@ -1265,52 +1263,6 @@ MonoBehaviour:
   missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 902362628553811656}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
---- !u!1 &3653956231021635549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3321325358009858395}
-  - component: {fileID: 8840112134132978657}
-  m_Layer: 6
-  m_Name: VFormationLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3321325358009858395
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653956231021635549}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.02, y: 0.12, z: -14.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 646184965160297483}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8840112134132978657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653956231021635549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b91cf116a64bf40b048aef151e173f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VFormationSpot
-  whoTakesTheSpot: {fileID: 0}
-  spot: 0
 --- !u!1 &3882839172358345573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,52 +1294,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 646184965160297483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4190397373929179211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3889346078914143267}
-  - component: {fileID: 8240176307319175073}
-  m_Layer: 6
-  m_Name: VFormationRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3889346078914143267
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4190397373929179211}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.02, y: 0.12, z: -14.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 646184965160297483}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8240176307319175073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4190397373929179211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b91cf116a64bf40b048aef151e173f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VFormationSpot
-  whoTakesTheSpot: {fileID: 0}
-  spot: 1
 --- !u!1 &4199092610422057981
 GameObject:
   m_ObjectHideFlags: 0

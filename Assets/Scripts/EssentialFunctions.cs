@@ -49,13 +49,12 @@ public class EssentialFunctions : MonoBehaviour
             {
                 if(!(target is Projectile))
                 {
-                    //Debug.Log(killer.killCreditName + " eliminated " + target.killCreditName + " using: " + weaponName);
 
                     KillLog killLog = FindFirstObjectByType<KillLog>();
 
-                    killLog.AddMessage(killer.killCreditName + " shot down " + target.killCreditName + " with: "+weaponName);
+                    if(killLog!=null) killLog.AddMessage(killer.killCreditName + " shot down " + target.killCreditName + " with: " + weaponName);
 
-                    if(killer.TryGetComponent<HandlePlayer>(out HandlePlayer player))
+                    if (killer.TryGetComponent<HandlePlayer>(out HandlePlayer player))
                     {
                         player.currentKillPoints++;
                     }
