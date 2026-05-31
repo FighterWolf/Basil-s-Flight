@@ -8603,6 +8603,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae464a7e37df6b345b6fa38ac6d59e08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1475999648}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae464a7e37df6b345b6fa38ac6d59e08, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1475999649}
   m_SourcePrefab: {fileID: 100100000, guid: ae464a7e37df6b345b6fa38ac6d59e08, type: 3}
 --- !u!4 &1475999646 stripped
 Transform:
@@ -8636,6 +8639,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1021555805185259336, guid: ae464a7e37df6b345b6fa38ac6d59e08, type: 3}
+--- !u!114 &1475999649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475999647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f8ce798f1d6be4d84c4f66a5255d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingOverride
+  isNight: 0
 --- !u!1 &1477255180
 GameObject:
   m_ObjectHideFlags: 0
