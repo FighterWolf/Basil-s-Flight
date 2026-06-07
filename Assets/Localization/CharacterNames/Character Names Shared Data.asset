@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Character Names Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Character Names
+  m_TableCollectionNameGuidString: 226d4f8deb5f37f48a39aa83659c50d9
+  m_Entries:
+  - m_Id: 8219029504
+    m_Key: character.Basil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 74199625728
+    m_Key: character.Toshiko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 97280880640
+    m_Key: character.Stefaan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4123242295296
+    m_Key: 'character.Grietje '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4201562533888
+    m_Key: character.Lieke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4239831363584
+    m_Key: character.Nienke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4587534970880
+    m_Key: character.Lilija
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4703582973952
+    m_Key: character.Lukyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4763553132544
+    m_Key: character.Mia
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4056331666589221109
+  references:
+    version: 2
+    RefIds:
+    - rid: 4056331666589221109
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1780862017547

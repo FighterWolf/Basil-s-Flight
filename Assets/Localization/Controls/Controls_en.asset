@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Controls_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c91296eaef9f4db479163c81580a30e4, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7552135168
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166872772608
+    m_Localized: '- P or ESC - Pause/Resume
+
+
+      Aircraft Controls:
+
+      - W/S
+      - Ascend/Descend
+
+      - A/D - Bank Left/Right
+
+      - Q/E - Turn Left/Right
+
+      -
+      F - Deploy Flares
+
+      - Left-Click - Use Plane''s Active Weapon
+
+      -
+      Space - Switch Weapon Type'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290587963392
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -17,10 +17,9 @@ Player's Aircraft Controls:
 - Left-Click - Use Plane's Active Weapon
 - Space - Switch Weapon Type
 
-Plot:\
-*"Yay! Playtime! Flying o'er New York to Halifax! It will be fun! What can go wrong?" - 2nd Lt. Basil Avery, 2124 A.D.*
+Plot:
 
-*"Turns out... many things..." - Captain Lieke Meijsing, 2124 A.D.*
+*Summary being rewritten*
 
 itch.io link: https://fighterwolfmc.itch.io/basils-flight
 
@@ -36,5 +35,5 @@ itch.io link: https://fighterwolfmc.itch.io/basils-flight
 
 WIP:
 - Lieke	Meijsing (Captain of the N.Y.M.S. Orange/Oranje)
-- Lowiena Chernova/Луиза Чернова (N.Y. Air National-Kindergarde pilot trainee)
+- Nienke Chernova/Ниенке Чернова (N.Y. Air National-Kindergarde pilot trainee)
 - Lilija Revere (N.Y. Air National-Kindergarde pilot trainee)

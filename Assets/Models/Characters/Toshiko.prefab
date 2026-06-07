@@ -1822,6 +1822,7 @@ GameObject:
   - component: {fileID: 6323310209409892118}
   - component: {fileID: 5327102700060997451}
   - component: {fileID: 2878232776274247698}
+  - component: {fileID: -1469091192461837753}
   m_Layer: 0
   m_Name: Toshiko
   m_TagString: Untagged
@@ -1890,8 +1891,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12371f174b71e5d46bc0a8d9b565a34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PilotModel
-  characterName: Toshiko Suzuki
+  localizedCharacterName:
+    m_TableReference:
+      m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+    m_TableEntryReference:
+      m_KeyId: 74199625728
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  characterName: Toshiko
   aircraft: {fileID: 250376238729494090, guid: eedda613dda54e44c99a22b49acb822a, type: 3}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-1469091192461837753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3561649028897443558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+    m_TableEntryReference:
+      m_KeyId: 74199625728
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2878232776274247698}
+        m_TargetAssemblyTypeName: PilotModel, Assembly-CSharp
+        m_MethodName: ChangeDisplayName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &3597214701192097057
 GameObject:
   m_ObjectHideFlags: 0

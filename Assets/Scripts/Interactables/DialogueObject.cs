@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class DialogueObject : MonoBehaviour,Interactable
 {
@@ -6,12 +7,8 @@ public class DialogueObject : MonoBehaviour,Interactable
     [System.Serializable]
     public struct DialogueLine
     {
-        public string speakerNameEN;
-        public string speakerNameZH;
-        public string speakerNameJP;
-        public string dialogueEN;
-        public string dialogueZH;
-        public string dialogueJP;
+        public LocalizedString localizedSpeakerName;
+        public LocalizedString localizedDialogue;
         public bool appearOnlyInFirstInteraction;
         public Sprite speakerPFP;
     }

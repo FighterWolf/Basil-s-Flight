@@ -2089,7 +2089,7 @@ Transform:
   m_GameObject: {fileID: 318579491}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1347, y: 32.85, z: 3229.4102}
+  m_LocalPosition: {x: -1347, y: 32.85, z: 3098.6958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5167,7 +5167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2317278491824980300, guid: 2c8e937850020634388217604c2320c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3233.7144
+      value: 3103
       objectReference: {fileID: 0}
     - target: {fileID: 2317278491824980300, guid: 2c8e937850020634388217604c2320c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7991,7 +7991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2317278491824980300, guid: 2c8e937850020634388217604c2320c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3237
+      value: 3106.2856
       objectReference: {fileID: 0}
     - target: {fileID: 2317278491824980300, guid: 2c8e937850020634388217604c2320c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9108,6 +9108,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 207050252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1282626650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282626651}
+  - component: {fileID: 1282626653}
+  - component: {fileID: 1282626652}
+  m_Layer: 8
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1282626651
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282626650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1719590897}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3843, y: 2903}
+  m_SizeDelta: {x: 15000, y: 15000}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1282626652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282626650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 252412362e5c40e4da10b8df4e42c234, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1282626653
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282626650}
+  m_CullTransparentMesh: 1
 --- !u!1 &1284225089
 GameObject:
   m_ObjectHideFlags: 0
@@ -11899,7 +11974,7 @@ Transform:
   m_GameObject: {fileID: 1675748081}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1350.5239, y: 33.66, z: 3232.6375}
+  m_LocalPosition: {x: -1350.5239, y: 33.66, z: 3101.923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11918,24 +11993,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
   linesOfDialogue:
-  - speakerNameEN: Box Collider-EN
-    speakerNameZH: Box Collider-ZH
-    speakerNameJP: Box Collider-JP
-    dialogueEN: You walked into the box! Now you have to read some dialogue.
-    dialogueZH: Ni zou jinle fang kuang li! Xianzai ne de du yiduan duihua.
-    dialogueJP: Bokkusu no naka ni hairimashita ne! Sa, serifu o yonde kudasai.
+  - localizedSpeakerName:
+      m_TableReference:
+        m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+      m_TableEntryReference:
+        m_KeyId: 97280880640
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    localizedDialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:620844eb74c22da49870b6fec5c6ee93
+      m_TableEntryReference:
+        m_KeyId: 89546584064
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    speakerName: 
+    dialogue: 
     appearOnlyInFirstInteraction: 0
     speakerPFP: {fileID: 0}
-  - speakerNameEN: Basil Avery
-    speakerNameZH: Baxier Aifuli
-    speakerNameJP: Bajiru Eifuri
-    dialogueEN: Cool!
-    dialogueZH: Kude!
-    dialogueJP: Ine!
+  - localizedSpeakerName:
+      m_TableReference:
+        m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+      m_TableEntryReference:
+        m_KeyId: 8219029504
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    localizedDialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:620844eb74c22da49870b6fec5c6ee93
+      m_TableEntryReference:
+        m_KeyId: 102813167616
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    speakerName: 
+    dialogue: 
     appearOnlyInFirstInteraction: 0
     speakerPFP: {fileID: 21300000, guid: 46be84eb1f03b7f4394a9a2c2cefe1ed, type: 3}
   timesInteractedWith: 0
   deleteObjectAfterDialogue: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1690594672
 GameObject:
   m_ObjectHideFlags: 0
@@ -12742,6 +12848,122 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710645621}
   m_CullTransparentMesh: 1
+--- !u!1 &1719590892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719590897}
+  - component: {fileID: 1719590896}
+  - component: {fileID: 1719590895}
+  - component: {fileID: 1719590894}
+  - component: {fileID: 1719590893}
+  m_Layer: 8
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1719590893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719590892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c012e63818abff341a55d19189ff2b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Marker
+  isPlayer: 0
+--- !u!114 &1719590894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719590892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1719590895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719590892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1719590896
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719590892}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1719590897
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719590892}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1282626651}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 97.5, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -373, y: 526}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1721964651
 GameObject:
   m_ObjectHideFlags: 0
@@ -16665,7 +16887,7 @@ Transform:
   m_GameObject: {fileID: 919132149179902963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -1351.96, y: 32.85, z: 3229.858}
+  m_LocalPosition: {x: -1351.96, y: 32.85, z: 3099.1436}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19609,25 +19831,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueObject
   linesOfDialogue:
-  - speakerNameEN: Basil Avery
-    speakerNameZH: Baxier Aifuli
-    speakerNameJP: Bajiru Eifuri
-    dialogueEN: Hi!
-    dialogueZH: Nihao!
-    dialogueJP: Konnichiwa!
-    appearOnlyInFirstInteraction: 0
-    speakerPFP: {fileID: 21300000, guid: 46be84eb1f03b7f4394a9a2c2cefe1ed, type: 3}
-  - speakerNameEN: Stefaan Katou
-    speakerNameZH: Jiateng Sidifen
-    speakerNameJP: Katou Stefaan
-    dialogueEN: Basil! Good to see you back safely. It's getting crazy up there,
-      eh?
-    dialogueZH: PLACEHOLDER-ZH
-    dialogueJP: PLACEHOLDER-JP
+  - localizedSpeakerName:
+      m_TableReference:
+        m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+      m_TableEntryReference:
+        m_KeyId: 97280880640
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    localizedDialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:620844eb74c22da49870b6fec5c6ee93
+      m_TableEntryReference:
+        m_KeyId: 4653871104
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    speakerName: 
+    dialogue: 
     appearOnlyInFirstInteraction: 0
     speakerPFP: {fileID: 21300000, guid: 32125a3fa1cb7924f9584ae954dd1409, type: 3}
+  - localizedSpeakerName:
+      m_TableReference:
+        m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+      m_TableEntryReference:
+        m_KeyId: 8219029504
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    localizedDialogue:
+      m_TableReference:
+        m_TableCollectionName: GUID:620844eb74c22da49870b6fec5c6ee93
+      m_TableEntryReference:
+        m_KeyId: 63290241024
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    speakerName: 
+    dialogue: 
+    appearOnlyInFirstInteraction: 0
+    speakerPFP: {fileID: 21300000, guid: 46be84eb1f03b7f4394a9a2c2cefe1ed, type: 3}
   timesInteractedWith: 0
   deleteObjectAfterDialogue: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &5895459745720347023
 Transform:
   m_ObjectHideFlags: 0
@@ -21009,3 +21261,4 @@ SceneRoots:
   - {fileID: 1675748083}
   - {fileID: 2062886000}
   - {fileID: 1174055966}
+  - {fileID: 1719590897}

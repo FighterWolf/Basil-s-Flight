@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Localization-Assets-Shared
+  m_GUID: 275c0412fc076c24288315e62e5a64ba
+  m_SerializeEntries:
+  - m_GUID: 208972cf4d4e078428a7a76ba078141f
+    m_Address: Assets/Localization/Menu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 226d4f8deb5f37f48a39aa83659c50d9
+    m_Address: Assets/Localization/CharacterNames/Character Names Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 495b327c926196143b50c698e55f6f16
+    m_Address: Assets/Localization/Settings/Settings Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 620844eb74c22da49870b6fec5c6ee93
+    m_Address: Assets/Localization/Dialogue/TestSceneStory/DialogueTSS Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba108bd5978015247b2e060d0e1afd38
+    m_Address: Assets/Localization/Dialogue/TestSceneCombat/DialogueTSC Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c16ab4e47c3403d42a64ece499bd2861
+    m_Address: Assets/Localization/Archives/Archives Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c91296eaef9f4db479163c81580a30e4
+    m_Address: Assets/Localization/Controls/Controls Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3e5a8b34c0940742adc9755484f357c
+    m_Address: Assets/Localization/Levels/Levels Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: ee7c6b4fd317e0244b4540e518f28090, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 09c962069d7adeb4e9519d542897def9, type: 2}
+    - {fileID: 11400000, guid: 7b816cda42d74e143909d0a69dc8c184, type: 2}

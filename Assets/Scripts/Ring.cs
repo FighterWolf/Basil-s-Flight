@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Ring : MonoBehaviour
+public class Ring : ObjectFaceCamera
 {
     public GameObject collectedParticle;
 
@@ -13,20 +13,16 @@ public class Ring : MonoBehaviour
     public MonoBehaviour[] scriptsToActivate;
 
     private bool isCollected;
-    private Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
-        cam = Camera.allCameras[0];
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        Quaternion cameraAngle = cam.transform.rotation;
-        Vector3 angle = cameraAngle.eulerAngles;
-        angle.z = 0;
-        transform.rotation = cameraAngle;
+        base.Update();
     }
 
     private void OnTriggerEnter(Collider other)

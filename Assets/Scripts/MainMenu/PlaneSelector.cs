@@ -19,7 +19,7 @@ public class PlaneSelector : MonoBehaviour
     static int selectValuePilot;
     public PilotModel[] listOfPilotsToSelect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
         List<string> aircraftNames = new List<string>();
         List<string> pilotNames = new List<string>();

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: DialogueTSC
+  m_EditorClassIdentifier: Unity.Localization.Editor::UnityEditor.Localization.StringTableCollection
+  m_SharedTableData: {fileID: 11400000, guid: ba108bd5978015247b2e060d0e1afd38, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 49240bc8bd3f56448a52d0f6662608ef, type: 2}
+  - {fileID: 11400000, guid: 05e7df6e750bab345a92bb772f81fb48, type: 2}
+  - {fileID: 11400000, guid: 6ce092b217b38c64b9dd77d8bd864b71, type: 2}
+  - {fileID: 11400000, guid: 60820275fdc7b0c45adf50d586042a5f, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

@@ -1074,7 +1074,6 @@ GameObject:
   - component: {fileID: 5356651342731591545}
   - component: {fileID: 5607591921001814293}
   - component: {fileID: 3400230626367483989}
-  - component: {fileID: 8304353798389777057}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1249,7 +1248,7 @@ MonoBehaviour:
   pitch: 0
   roll: 0
   throttle: 0
-  dismount: 0
+  flare: 0
   fire: 0
   switchWeapon: 0
   analogMovement: 0
@@ -1353,19 +1352,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8304353798389777057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798641827244873551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf3677373ccb004e8f5106b864ce911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  canvas: {fileID: 0}
 --- !u!1 &2008412999674335213
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,15 +4933,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2000122
+      value: 0.19999993
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3749828
+      value: 1.375
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.999969
+      value: -4.000001
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalRotation.w

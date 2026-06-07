@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Controls_ja
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: c91296eaef9f4db479163c81580a30e4, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7552135168
+    m_Localized: "\u64CD\u4F5C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166872772608
+    m_Localized: "- P \u304B ESC - Pause/Resume\n(PLACEHOLDER)\n\u822A\u7A7A\u6A5F\u306E\u64CD\u7E26\u88C5\u7F6E:\n-
+      W/S - Ascend/Descend\n- A/D - Bank Left/Right\n- Q/E - Turn Left/Right\n- F
+      - Deploy Flares\n- Left-Click - Use Plane's Active Weapon\n- Space - Switch
+      Weapon Type"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290587963392
+    m_Localized: "\u623B\u308B"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

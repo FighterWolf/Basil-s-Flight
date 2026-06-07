@@ -54,34 +54,12 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                switch (MenuController.language)
-                {
-                    case MenuController.Language.English:
-                        characterName.text = currentLines[iterator].speakerNameEN;
-                        break;
-                    case MenuController.Language.ZhongWen:
-                        characterName.text = currentLines[iterator].speakerNameZH;
-                        break;
-                    case MenuController.Language.NihonGo:
-                        characterName.text = currentLines[iterator].speakerNameJP;
-                        break;
-                }
+                characterName.text = currentLines[iterator].localizedSpeakerName.GetLocalizedString();
 
                 if (characterPortrait != null) characterPortrait.sprite = currentLines[iterator].speakerPFP;
                 dialogueText.text = "";
 
-                switch (MenuController.language)
-                {
-                    case MenuController.Language.English:
-                        StartCoroutine(Type(currentLines[iterator].dialogueEN));
-                        break;
-                    case MenuController.Language.ZhongWen:
-                        StartCoroutine(Type(currentLines[iterator].dialogueZH));
-                        break;
-                    case MenuController.Language.NihonGo:
-                        StartCoroutine(Type(currentLines[iterator].dialogueJP));
-                        break;
-                }
+                StartCoroutine(Type(currentLines[iterator].localizedDialogue.GetLocalizedString()));
             }
         }
         else
@@ -136,18 +114,9 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                switch (MenuController.language)
-                {
-                    case MenuController.Language.English:
-                        dialogueText.text = currentLines[iterator].dialogueEN;
-                        break;
-                    case MenuController.Language.ZhongWen:
-                        dialogueText.text = currentLines[iterator].dialogueZH;
-                        break;
-                    case MenuController.Language.NihonGo:
-                        dialogueText.text = currentLines[iterator].dialogueJP;
-                        break;
-                }
+
+                dialogueText.text = currentLines[iterator].localizedDialogue.GetLocalizedString();
+
                 isTextDone=true;
             }
         }

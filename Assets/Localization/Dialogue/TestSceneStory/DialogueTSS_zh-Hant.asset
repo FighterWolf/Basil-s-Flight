@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DialogueTSS_zh-Hant
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: zh-Hant
+  m_SharedData: {fileID: 11400000, guid: 620844eb74c22da49870b6fec5c6ee93, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 102813167616
+    m_Localized: "\u9177\uFF01"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89546584064
+    m_Localized: "\u9019\u662F\u4E00\u500B\u6B63\u5728\u6E2C\u8A66\u4E2D\u7684\u5C0D\u8A71\u89F8\u767C\u5668\u3002"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4653871104
+    m_Localized: "\u563F\uFF0C\u5DF4\u897F\u723E\uFF0C\u600E\u9EBC\u6A23\uFF1F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63290241024
+    m_Localized: "\u4E00\u5207\u6B63\u5E38\u3002\u898B\u5230\u4F60\u771F\u597D\uFF01"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

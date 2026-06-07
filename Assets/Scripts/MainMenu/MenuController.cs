@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class MenuController : MonoBehaviour
 {
@@ -16,15 +18,6 @@ public class MenuController : MonoBehaviour
     Resolution[] resolutions;
 
     public static bool isFullScreen=true;
-
-    public enum Language
-    {
-        English,
-        ZhongWen,
-        NihonGo
-    }
-
-    public static Language language;
 
     void Start()
     {
@@ -97,7 +90,6 @@ public class MenuController : MonoBehaviour
 
     public void ChangeLanguage()
     {
-        selectedLanguage = langaugeDropdown.value;
-        language = (Language)selectedLanguage;
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[langaugeDropdown.value];
     }
 }

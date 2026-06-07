@@ -2646,6 +2646,7 @@ GameObject:
   - component: {fileID: 4494365899719774430}
   - component: {fileID: 7601510192829003352}
   - component: {fileID: 3999831277623467156}
+  - component: {fileID: -1512261389859519662}
   m_Layer: 0
   m_Name: Stefaan
   m_TagString: Untagged
@@ -2714,8 +2715,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12371f174b71e5d46bc0a8d9b565a34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PilotModel
-  characterName: Stefaan Katou
+  localizedCharacterName:
+    m_TableReference:
+      m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+    m_TableEntryReference:
+      m_KeyId: 97280880640
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  characterName: Stefaan
   aircraft: {fileID: 277214311849291526, guid: b8b96b48388252447a28e30b432a571c, type: 3}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-1512261389859519662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432366590656546622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+    m_TableEntryReference:
+      m_KeyId: 97280880640
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3999831277623467156}
+        m_TargetAssemblyTypeName: PilotModel, Assembly-CSharp
+        m_MethodName: ChangeDisplayName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &5471627483254128722
 GameObject:
   m_ObjectHideFlags: 0
