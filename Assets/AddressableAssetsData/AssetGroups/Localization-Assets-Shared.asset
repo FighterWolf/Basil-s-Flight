@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe2c8a1252d12af49a44c8219274bcad
+    m_Address: Assets/Localization/HUD/HUD Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ee7c6b4fd317e0244b4540e518f28090, type: 2}
   m_SchemaSet:

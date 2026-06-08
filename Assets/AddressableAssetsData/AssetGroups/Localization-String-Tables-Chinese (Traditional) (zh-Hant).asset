@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh-Hant
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bdd071101a7d7eb4bb5095f05b84834a
+    m_Address: HUD_zh-Hant
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hant
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c1d04bed5f45bb94d86980d8a7c16d36
     m_Address: Controls_zh-Hant
     m_ReadOnly: 1

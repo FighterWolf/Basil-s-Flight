@@ -39,6 +39,38 @@ MonoBehaviour:
     m_Key: menu.exit
     m_Metadata:
       m_Items: []
+  - m_Id: 122808573390848
+    m_Key: menu.paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 123364452888576
+    m_Key: menu.resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124502900240384
+    m_Key: menu.restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124661835001856
+    m_Key: menu.exitToMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 130759400910848
+    m_Key: menu.gameOverMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131828357033984
+    m_Key: menu.continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131846363181056
+    m_Key: menu.missionComplete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 133481982357504
+    m_Key: menu.endTheMission
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -42,6 +42,39 @@ MonoBehaviour:
     m_Localized: QUIT GAME
     m_Metadata:
       m_Items: []
+  - m_Id: 122808573390848
+    m_Localized: PAUSED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 123364452888576
+    m_Localized: RESUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124502900240384
+    m_Localized: RESTART
+    m_Metadata:
+      m_Items: []
+  - m_Id: 124661835001856
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 130759400910848
+    m_Localized: Your plane got disabled!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131846363181056
+    m_Localized: Mission Complete!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 131828357033984
+    m_Localized: NEXT LEVEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 133481982357504
+    m_Localized: Objectives complete, fly through the designated ring to complete
+      the mission.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -3832,7 +3832,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -124.47412, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9037,9 +9037,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:c91296eaef9f4db479163c81580a30e4
+      m_TableCollectionName: GUID:208972cf4d4e078428a7a76ba078141f
     m_TableEntryReference:
-      m_KeyId: 7552135168
+      m_KeyId: 20551785803776
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
