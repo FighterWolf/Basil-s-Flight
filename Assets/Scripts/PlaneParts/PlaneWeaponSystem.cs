@@ -133,7 +133,6 @@ public class PlaneWeaponSystem : MonoBehaviour
 
     public void FireGun()
     {
-        //Debug.Log(GetComponent<Entity>().killCreditName + ": Firing Gun");
         GameObject o = Instantiate(this.bullet.gameObject, gunPod.transform.position, transform.rotation);
         Bullet bullet = o.GetComponent<Bullet>();
         bullet.gunDamage = gunDamage;

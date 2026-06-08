@@ -28,7 +28,7 @@ public class HandleAlly : MonoBehaviour
     {
         GameObject model = Instantiate(PlaneSelector.pilotToSummon, transform, false);
         Instantiate(model.GetComponent<PilotModel>().aircraft, transform, false);
-        transform.root.GetComponent<Entity>().killCreditName = model.GetComponent<PilotModel>().characterName;
+        transform.root.GetComponent<Entity>().localizedKillCreditName = model.GetComponent<PilotModel>().localizedCharacterName;
     }
 
     public void SummonAircraft()

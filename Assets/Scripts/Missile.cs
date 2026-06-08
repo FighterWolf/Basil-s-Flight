@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using UnityEngine.Localization.Settings;
 public class Missile : Projectile
 {
     public float explosionRadius;
@@ -143,7 +143,7 @@ public class Missile : Projectile
             {
                 if (hitEntities.Add(entity) && entity != owner && entity != this)
                 {
-                    EssentialFunctions.OnSuccessfulHit(owner,entity,true,damage, "Missile");
+                    EssentialFunctions.OnSuccessfulHit(owner,entity,true,damage, LocalizationSettings.StringDatabase.GetLocalizedString("HUD", "hud.missile"));
 
                     if (entity.TryGetComponent<AircraftAI>(out AircraftAI planeAI))
                     {

@@ -16,8 +16,72 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: fe2c8a1252d12af49a44c8219274bcad, type: 2}
   m_Metadata:
-    m_Items: []
-  m_TableData: []
+    m_Items:
+    - rid: 4056331689966698696
+  m_TableData:
+  - m_Id: 246147019206656
+    m_Localized: 'Throttle:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246192699371520
+    m_Localized: 'Speed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246221728149504
+    m_Localized: 'Altitude:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246288597938176
+    m_Localized: 'Health:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246314061557760
+    m_Localized: 'Ordnance:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246426959638528
+    m_Localized: Autocannon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246751816871936
+    m_Localized: Missile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256459629948928
+    m_Localized: 'Missile:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256462247194624
+    m_Localized: 'Flare:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260131847958528
+    m_Localized: 'Enemies Killed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260133500514304
+    m_Localized: 'Rings Flown Through:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 262542150889472
+    m_Localized: '!! MISSILE ALERT !!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 263655587606528
+    m_Localized: PLANE DISABLED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 283365196722176
+    m_Localized: '{killer} shot down {target} with {weapon}'
+    m_Metadata:
+      m_Items:
+      - rid: 4056331689966698696
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4056331689966698696
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 283365196722176

@@ -87,6 +87,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AircraftAI
   missilesHeadingTowardsSelf: []
   deployedFlares: []
+  localizedKillCreditName:
+    m_TableReference:
+      m_TableCollectionName: GUID:668a531105564a843ae10e56c22a58e0
+    m_TableEntryReference:
+      m_KeyId: 3567546368
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   killCreditName: Enemy Spatz
   health: 250
   maxHealth: 250
@@ -101,18 +110,8 @@ MonoBehaviour:
   overrideHeightLimit: 0
   altitude: 0
   actualSpeed: 90
-  exitSpots:
-  - {fileID: 0}
-  - {fileID: 0}
-  vFormations:
-  - {fileID: 0}
-  - {fileID: 0}
-  isLeadPlane: 1
   planeToFollow: {fileID: 0}
   glideSpeed: 90
-  formationPosition: 0
-  whichSpotToFollow: {fileID: 0}
-  listOfLastTrailingPlanes: []
   look: {x: 0, y: 0}
   yaw: 0
   pitch: 0
@@ -125,6 +124,9 @@ MonoBehaviour:
   enemy: {fileID: 0}
   enemyDistance: 0
   state: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &7547029568279557784
 MonoBehaviour:
   m_ObjectHideFlags: 0

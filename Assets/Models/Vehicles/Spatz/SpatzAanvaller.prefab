@@ -1415,6 +1415,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc79e6fd5cd0f4b46aa0ce593209178a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaneStats
+  localizedPlaneClass:
+    m_TableReference:
+      m_TableCollectionName: GUID:668a531105564a843ae10e56c22a58e0
+    m_TableEntryReference:
+      m_KeyId: 3567546368
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   planeClass: F/A-3 Spatz
   speed: 90
   maxSpeed: 100
@@ -1431,6 +1440,9 @@ MonoBehaviour:
   missile: {fileID: 2688189731839695459, guid: af7c4a0cc4fdaea4381f8484d0ee53e0, type: 3}
   flareDeployer: {fileID: 6113064400359715028}
   flareObject: {fileID: -4071748205640175008, guid: ad49e3a66676ab3469cbce021c742bdd, type: 3}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8815961557574701743
 GameObject:
   m_ObjectHideFlags: 0

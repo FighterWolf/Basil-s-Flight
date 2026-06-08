@@ -16,8 +16,72 @@ MonoBehaviour:
     m_Code: zh-Hant
   m_SharedData: {fileID: 11400000, guid: fe2c8a1252d12af49a44c8219274bcad, type: 2}
   m_Metadata:
-    m_Items: []
-  m_TableData: []
+    m_Items:
+    - rid: 4056331689966698698
+  m_TableData:
+  - m_Id: 246147019206656
+    m_Localized: "\u7BC0\u6D41\u95A5\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246192699371520
+    m_Localized: "\u901F\u5EA6\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246221728149504
+    m_Localized: "\u6D77\u62D4\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246288597938176
+    m_Localized: "\u5065\u5EB7\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246314061557760
+    m_Localized: "\u8ECD\u68B0\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246426959638528
+    m_Localized: "\u6A5F\u7832"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246751816871936
+    m_Localized: "\u98DB\u5F48"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256459629948928
+    m_Localized: "\u98DB\u5F48\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256462247194624
+    m_Localized: "\u71B1\u8A98\u990C\u5F48\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260131847958528
+    m_Localized: "\u64CA\u6BBA\u6575\u4EBA\u6578\u91CF\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260133500514304
+    m_Localized: "\u7A7F\u904E\u7684\u74B0\u6578\uFF1A"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 262542150889472
+    m_Localized: "!! \u5C0E\u5F48\u8B66\u5831 !!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 263655587606528
+    m_Localized: "\u8A72\u98DB\u884C\u5668\u7121\u6CD5\u904B\u4F5C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 283365196722176
+    m_Localized: "{killer}\u7528{weapon}\u64CA\u843D\u4E86{target}"
+    m_Metadata:
+      m_Items:
+      - rid: 4056331689966698698
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 4056331689966698698
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 283365196722176

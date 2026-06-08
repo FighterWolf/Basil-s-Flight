@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Localization.Settings;
 
 public class Bullet : MonoBehaviour
 {
@@ -72,7 +73,7 @@ public class Bullet : MonoBehaviour
         {
             if(!(e is Projectile p && p.tag == owner.tag) && e != owner)
             {
-                EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, "Machine Gun");
+                EssentialFunctions.OnSuccessfulHit(owner, e, false, gunDamage, LocalizationSettings.StringDatabase.GetLocalizedString("HUD", "hud.autoCannon"));
             }
         }
         Destroy(gameObject);

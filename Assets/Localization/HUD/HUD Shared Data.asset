@@ -14,7 +14,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: HUD
   m_TableCollectionNameGuidString: fe2c8a1252d12af49a44c8219274bcad
-  m_Entries: []
+  m_Entries:
+  - m_Id: 246147019206656
+    m_Key: hud.throttle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246192699371520
+    m_Key: hud.speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246221728149504
+    m_Key: hud.altitude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246288597938176
+    m_Key: hud.health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246314061557760
+    m_Key: hud.weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246426959638528
+    m_Key: hud.autoCannon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 246751816871936
+    m_Key: hud.missile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256459629948928
+    m_Key: hud.missileStatus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 256462247194624
+    m_Key: hud.flareStatus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260131847958528
+    m_Key: hud.kills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260133500514304
+    m_Key: hud.ringsFlownThru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 262542150889472
+    m_Key: hud.missileWarning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 263655587606528
+    m_Key: hud.planeDisabled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 283365196722176
+    m_Key: hud.killLog
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

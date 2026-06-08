@@ -3,8 +3,7 @@ using UnityEngine.Localization;
 
 public class PilotModel : MonoBehaviour
 {
-    [SerializeField]
-    private LocalizedString localizedCharacterName;
+    public LocalizedString localizedCharacterName;
     public string characterName;
     public PlaneStats aircraft;
     protected Animator anim;

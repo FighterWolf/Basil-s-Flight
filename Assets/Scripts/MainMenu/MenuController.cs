@@ -90,6 +90,7 @@ public class MenuController : MonoBehaviour
 
     public void ChangeLanguage()
     {
+        selectedLanguage = langaugeDropdown.value;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[langaugeDropdown.value];
     }
 }

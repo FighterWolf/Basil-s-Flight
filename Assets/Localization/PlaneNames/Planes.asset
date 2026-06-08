@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Planes
+  m_EditorClassIdentifier: Unity.Localization.Editor::UnityEditor.Localization.StringTableCollection
+  m_SharedTableData: {fileID: 11400000, guid: 668a531105564a843ae10e56c22a58e0, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: aa6a243d30669494d9af31f13bcd3060, type: 2}
+  - {fileID: 11400000, guid: cc45b85a274f3bc49a32abae86a49ee0, type: 2}
+  - {fileID: 11400000, guid: 421554a5a6416724cbf9cb6ba0cf5ed3, type: 2}
+  - {fileID: 11400000, guid: b28a7ca8eebdc3a429c83e0405dd2f0a, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

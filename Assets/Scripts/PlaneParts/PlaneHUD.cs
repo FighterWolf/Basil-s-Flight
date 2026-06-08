@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class PlaneHUD : ObjectiveArrow
 {
@@ -199,18 +201,19 @@ public class PlaneHUD : ObjectiveArrow
                 switch (planeWeaponSystem.weaponSystem)
                 {
                     case PlaneWeaponSystem.WeaponSystem.Gun:
-                        currentWeaponSystem.text = "Machine Gun";
+                        currentWeaponSystem.text = LocalizationSettings.StringDatabase.GetLocalizedString("HUD", "hud.autoCannon");
                         break;
                     case PlaneWeaponSystem.WeaponSystem.Missile:
-                        currentWeaponSystem.text = "Missile";
+                        currentWeaponSystem.text = LocalizationSettings.StringDatabase.GetLocalizedString("HUD", "hud.missile");
                         break;
                 }
             }
             else
             {
-                currentWeaponSystem.text = "PLANE DISABLED";
+                string planeDisabled = LocalizationSettings.StringDatabase.GetLocalizedString("HUD", "hud.planeDisabled");
+                currentWeaponSystem.text = planeDisabled;
                 currentWeaponSystem.color = Color.red;
-                planeThrottle.text = "PLANE DISABLED";
+                planeThrottle.text = planeDisabled;
                 planeThrottle.color = Color.red;
             }
 

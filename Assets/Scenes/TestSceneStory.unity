@@ -2632,6 +2632,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   missilesHeadingTowardsSelf: []
   deployedFlares: []
+  localizedKillCreditName:
+    m_TableReference:
+      m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9
+    m_TableEntryReference:
+      m_KeyId: 8219029504
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   killCreditName: 
   health: 100
   maxHealth: 100
@@ -2641,6 +2650,9 @@ MonoBehaviour:
   explosionSound: {fileID: 0}
   waypoints: []
   waypointsIterator: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &318579504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5260,8 +5272,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7726,8 +7738,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10398,8 +10410,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14322,7 +14334,7 @@ MonoBehaviour:
       m_WaitForCompletion: 0
       m_LocalVariables: []
     appearOnlyInFirstInteraction: 0
-    speakerPFP: {fileID: 0}
+    speakerPFP: {fileID: 21300000, guid: 32125a3fa1cb7924f9584ae954dd1409, type: 3}
   - localizedSpeakerName:
       m_TableReference:
         m_TableCollectionName: GUID:226d4f8deb5f37f48a39aa83659c50d9

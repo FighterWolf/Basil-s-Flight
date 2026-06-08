@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-zh-Hant
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 421554a5a6416724cbf9cb6ba0cf5ed3
+    m_Address: Planes_zh-Hant
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hant
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6837dbd489092254e9c1d7545409bbc4
     m_Address: DialogueTSS_zh-Hant
     m_ReadOnly: 1

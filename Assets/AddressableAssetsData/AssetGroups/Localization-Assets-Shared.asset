@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 668a531105564a843ae10e56c22a58e0
+    m_Address: Assets/Localization/PlaneNames/Planes Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ba108bd5978015247b2e060d0e1afd38
     m_Address: Assets/Localization/Dialogue/TestSceneCombat/DialogueTSC Shared Data.asset
     m_ReadOnly: 1

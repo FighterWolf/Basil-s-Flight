@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 public class Entity : MonoBehaviour
 {   
@@ -10,6 +11,7 @@ public class Entity : MonoBehaviour
     public List<Missile> missilesHeadingTowardsSelf = new List<Missile>();
     public List<Flare> deployedFlares = new List<Flare>();
 
+    public LocalizedString localizedKillCreditName;
     public string killCreditName;
 
     public float health;

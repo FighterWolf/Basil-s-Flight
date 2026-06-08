@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.Localization;
 
 public class EssentialFunctions : MonoBehaviour
 {
@@ -52,7 +54,23 @@ public class EssentialFunctions : MonoBehaviour
 
                     KillLog killLog = FindFirstObjectByType<KillLog>();
 
-                    if(killLog!=null) killLog.AddMessage(killer.killCreditName + " shot down " + target.killCreditName + " with: " + weaponName);
+
+
+                    if (killLog != null)
+                    {
+                        LocalizedString localizedKillLog = new LocalizedString("HUD", "hud.killLog");
+                        var args = new Dictionary<string, string> 
+                        {
+                            { "killer", killer.localizedKillCreditName.GetLocalizedString() },
+                            { "target", target.localizedKillCreditName.GetLocalizedString() },
+                            { "weapon", weaponName } 
+                        };
+
+                        localizedKillLog.Arguments = new object[] { args };
+
+                        killLog.AddMessage(localizedKillLog.GetLocalizedString());
+                        //killLog.AddMessage(killer.localizedKillCreditName.GetLocalizedString() + " shot down " + target.localizedKillCreditName.GetLocalizedString() + " with: " + weaponName);
+                    }
 
                     if (killer.TryGetComponent<HandlePlayer>(out HandlePlayer player))
                     {

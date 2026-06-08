@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class PlaneStats : MonoBehaviour
 {
+    public LocalizedString localizedPlaneClass;
     public string planeClass;
 
     public float speed;

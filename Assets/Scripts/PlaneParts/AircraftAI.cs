@@ -157,7 +157,6 @@ public class AircraftAI : Aircraft
 
     private IEnumerator GunBurst()
     {
-        //Debug.Log(killCreditName + " is firing gun");
         float timer = 0;
         float duration = 2f;
 
@@ -167,7 +166,6 @@ public class AircraftAI : Aircraft
             timer += Time.deltaTime;
             yield return null;
         }
-        //Debug.Log(killCreditName + " is on cooldown");
         yield return new WaitForSeconds(1f);
         gunBurstCoroutine = null;
     }

@@ -63,6 +63,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b28a7ca8eebdc3a429c83e0405dd2f0a
+    m_Address: Planes_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d1eb3e41bca525547a154cd5ecc917b7
     m_Address: Controls_ja
     m_ReadOnly: 1
