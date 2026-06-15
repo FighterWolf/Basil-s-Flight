@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Key: archive.currentPilot
     m_Metadata:
       m_Items: []
+  - m_Id: 2892971429359616
+    m_Key: archive.currentAircraft
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

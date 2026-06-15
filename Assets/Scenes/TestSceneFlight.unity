@@ -12981,7 +12981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220.22, y: 475}
+  m_AnchoredPosition: {x: -120, y: 475}
   m_SizeDelta: {x: 299.23, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794267225
@@ -14847,7 +14847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 270.42993, y: 475}
+  m_AnchoredPosition: {x: 375, y: 475}
   m_SizeDelta: {x: 299.23, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091485800
@@ -15338,7 +15338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -220.22, y: 425}
+  m_AnchoredPosition: {x: -120, y: 425}
   m_SizeDelta: {x: 299.23, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113409285
@@ -21673,7 +21673,7 @@ MonoBehaviour:
   isStoryMode: 0
   player: {fileID: 0}
   pws: {fileID: 0}
-  gameOverScreen: {fileID: 0}
+  gameOverScreen: {fileID: 729909485}
   pilotCanvas: {fileID: 1823870981}
   currentKillPoints: 0
   currentRingPoints: 0

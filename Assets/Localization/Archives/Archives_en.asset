@@ -34,6 +34,10 @@ MonoBehaviour:
     m_Localized: 'Current Pilot:'
     m_Metadata:
       m_Items: []
+  - m_Id: 2892971429359616
+    m_Localized: 'Current Aircraft:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
