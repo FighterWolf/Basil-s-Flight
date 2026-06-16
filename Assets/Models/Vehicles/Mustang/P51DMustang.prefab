@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8590573646158368080}
   - component: {fileID: 8180299313875447106}
   - component: {fileID: 5682807061874317039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6261018002870296967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Propeller_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 118584735857618474}
   - component: {fileID: 6424017978444156450}
   - component: {fileID: 7497401161152143223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AileronL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 8924602650162702493}
   - component: {fileID: 5905782501721958103}
   - component: {fileID: 601609786297264319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Propeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5073642958041334611}
   - component: {fileID: 3886022517894566836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P51DMustang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 5665228484384883753}
   - component: {fileID: 7555787392268323745}
   - component: {fileID: 7159046673365194122}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rudder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3714475719795826013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Propeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 1843161979997112022}
   - component: {fileID: 4885914143478726198}
   - component: {fileID: 7342885896550440141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LandingGear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 2230583794171138890}
   - component: {fileID: 3836076884487786029}
   - component: {fileID: 2717139894932137385}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canopy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1235,7 +1235,7 @@ GameObject:
   - component: {fileID: 6327700596456261310}
   - component: {fileID: 2829370562763094227}
   - component: {fileID: 1180755938962734977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Seat2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 7208423289296227582}
   - component: {fileID: 6843085369089466279}
   - component: {fileID: 4598320643623206715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Seat1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3228025894680035536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1490,7 +1490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3702485918929597950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 2938548945652100563}
   - component: {fileID: 5763931417801564508}
   - component: {fileID: 134494005566181222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1669,7 +1669,7 @@ GameObject:
   - component: {fileID: 6400353926882850307}
   - component: {fileID: 807451882574184781}
   - component: {fileID: 5075348489854035119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Elevators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1911,7 +1911,7 @@ GameObject:
   - component: {fileID: 190717602682654664}
   - component: {fileID: 417967283282268879}
   - component: {fileID: 4127760377516975839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AileronR
   m_TagString: Untagged
   m_Icon: {fileID: 0}

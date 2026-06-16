@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Frame
-    second: {fileID: 2100000, guid: fce1907cd54ca444ab2ddf769732b368, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: fa45c91c9e6fb384680898f8f8ab8e69, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Lights
-    second: {fileID: 2100000, guid: 0b9ec2e32fd5627489bceeb86e1dbffc, type: 2}
+      name: Spatz
+    second: {fileID: 2100000, guid: d7e1b9422f0b92a4e8575422f4416917, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
