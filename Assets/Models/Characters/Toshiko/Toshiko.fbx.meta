@@ -32,11 +32,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Flag
-    second: {fileID: 2100000, guid: 875a5074170bf6f45b40585c993f1ed3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Hair
     second: {fileID: 2100000, guid: 5073fdda4d60f8345850d2a7a453503b, type: 2}
   - first:
@@ -59,6 +54,61 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Skirt
     second: {fileID: 2100000, guid: 6242612d36d753f4a80e56cab136f26d, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Accessories
+    second: {fileID: 2800000, guid: dc2862fe3d390c04a99a22b2d9e668b0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2800000, guid: baa8998ef511c304491a50b97db9018a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Diaper
+    second: {fileID: 2800000, guid: 4cbac026456ed3f4180fa84171940054, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Emotes
+    second: {fileID: 2800000, guid: dda9cdbc0507a964ea64ab30b1d7f2ae, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2800000, guid: ed7e6d7e89f476d478a2a0a2ecbf6421, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Flag
+    second: {fileID: 2800000, guid: 4b8d8e5e94d11ba4a90e16f23c85aa1c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2800000, guid: e768c00dbbb1e9544a2beba452eb3a6a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: NameTag_NL
+    second: {fileID: 2800000, guid: 8b2fc3138470ab648834ebf9359009be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sandals
+    second: {fileID: 2800000, guid: 1a88a5ce8a5fbad4381630dc2cb25ca2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Shirt
+    second: {fileID: 2800000, guid: aaf09c5ad4014fa4fbf45693260b58e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Skirt
+    second: {fileID: 2800000, guid: 8686f703713a65d47bb901d3186360df, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -637,17 +687,17 @@ ModelImporter:
       parentName: BackHair2_L
       position: {x: -5.0291415e-10, y: 0.00092320656, z: 3.7252902e-11}
       rotation: {x: -0.07204765, y: 0.013838091, z: 0.13524354, w: 0.9880926}
-      scale: {x: 1.0000014, y: 1.0000035, z: 1.0000004}
+      scale: {x: 1.0000011, y: 1.0000038, z: 1.0000004}
     - name: BackHair4_L
       parentName: BackHair3_L
-      position: {x: 4.0978193e-10, y: 0.0009778984, z: -1.8626451e-11}
+      position: {x: 3.9115547e-10, y: 0.0009778969, z: -1.8626451e-11}
       rotation: {x: -0.014838424, y: 0.0001288587, z: 0.06399112, w: 0.9978402}
-      scale: {x: 1.0000015, y: 1.000008, z: 1.0000055}
+      scale: {x: 1.0000015, y: 1.0000077, z: 1.0000055}
     - name: BackHair5_L
       parentName: BackHair4_L
-      position: {x: -8.381903e-11, y: 0.0011799873, z: -2.2351741e-10}
+      position: {x: -9.3132255e-12, y: 0.0011799864, z: 9.313225e-11}
       rotation: {x: -0.026369426, y: -0.004634149, z: 0.08918403, w: 0.9956553}
-      scale: {x: 1.0000011, y: 1.0000125, z: 1.0000023}
+      scale: {x: 0.9999996, y: 1.0000119, z: 1.0000019}
     - name: BackHair5_L_end
       parentName: BackHair5_L
       position: {x: -0, y: 0.0012592014, z: 0}
@@ -661,13 +711,13 @@ ModelImporter:
     - name: FrontHair2_L
       parentName: FrontHair1_L
       position: {x: 1.6763806e-10, y: 0.0005028665, z: 0}
-      rotation: {x: -0.06380392, y: 0.049636137, z: 0.023833942, w: 0.9964423}
-      scale: {x: 1.0000044, y: 1.0000064, z: 1.0000024}
+      rotation: {x: -0.06380392, y: 0.049636103, z: 0.023833923, w: 0.9964424}
+      scale: {x: 1.0000055, y: 1.0000081, z: 1.0000024}
     - name: FrontHair3_L
       parentName: FrontHair2_L
-      position: {x: 3.7252902e-11, y: 0.0005346476, z: 1.11758706e-10}
-      rotation: {x: -0.15681155, y: -0.0047968924, z: -0.059560955, w: 0.98581934}
-      scale: {x: 1.0000082, y: 1.0000107, z: 0.99999875}
+      position: {x: -1.9557773e-10, y: 0.000534649, z: 1.0244548e-10}
+      rotation: {x: -0.15681155, y: -0.0047969287, z: -0.05956092, w: 0.9858192}
+      scale: {x: 1.0000031, y: 1.0000056, z: 0.9999988}
     - name: FrontHair3_L_end
       parentName: FrontHair3_L
       position: {x: -0, y: 0.0005503402, z: 0}
@@ -687,17 +737,17 @@ ModelImporter:
       parentName: BackHair2_R
       position: {x: 1.862645e-10, y: 0.0009232047, z: -1.862645e-10}
       rotation: {x: -0.07204753, y: -0.013837151, z: -0.13524355, w: 0.98809254}
-      scale: {x: 1.0000018, y: 1.0000046, z: 1.0000013}
+      scale: {x: 1.0000017, y: 1.0000043, z: 1.0000005}
     - name: BackHair4_R
       parentName: BackHair3_R
-      position: {x: 7.4505804e-11, y: 0.0009778981, z: -1.3038516e-10}
+      position: {x: -1.8626451e-11, y: 0.0009778991, z: 4.0978193e-10}
       rotation: {x: -0.014830401, y: -0.00012886802, z: -0.06399112, w: 0.9978403}
-      scale: {x: 1.0000011, y: 1.0000087, z: 1.0000019}
+      scale: {x: 1.0000012, y: 1.0000082, z: 1.0000026}
     - name: BackHair5_R
       parentName: BackHair4_R
-      position: {x: 2.8871e-10, y: 0.0011799863, z: 1.4901161e-10}
+      position: {x: 2.4214386e-10, y: 0.0011799859, z: 4.6566126e-11}
       rotation: {x: -0.026371447, y: 0.0046332967, z: -0.08918402, w: 0.9956552}
-      scale: {x: 0.99999875, y: 1.0000076, z: 1.0000032}
+      scale: {x: 0.9999985, y: 1.0000072, z: 1.0000021}
     - name: BackHair5_R_end
       parentName: BackHair5_R
       position: {x: -0, y: 0.0012592014, z: 0}
@@ -711,13 +761,13 @@ ModelImporter:
     - name: FrontHair2_R
       parentName: FrontHair1_R
       position: {x: -0, y: 0.0005028674, z: -1.11758706e-10}
-      rotation: {x: -0.063803956, y: -0.04963635, z: -0.023833841, w: 0.9964423}
-      scale: {x: 1.0000032, y: 1.0000054, z: 0.9999993}
+      rotation: {x: -0.063803956, y: -0.049636286, z: -0.023833837, w: 0.9964423}
+      scale: {x: 1.0000054, y: 1.0000067, z: 1.0000002}
     - name: FrontHair3_R
       parentName: FrontHair2_R
-      position: {x: 1.9557773e-10, y: 0.0005346513, z: 4.6566126e-11}
-      rotation: {x: -0.1568115, y: 0.004797194, z: 0.059561025, w: 0.98581934}
-      scale: {x: 1.0000069, y: 1.000006, z: 1.0000011}
+      position: {x: 1.8626451e-11, y: 0.0005346512, z: -7.4505804e-11}
+      rotation: {x: -0.15681152, y: 0.004797131, z: 0.05956101, w: 0.98581934}
+      scale: {x: 1.0000068, y: 1.0000058, z: 1.0000014}
     - name: FrontHair3_R_end
       parentName: FrontHair3_R
       position: {x: -0, y: 0.0005503402, z: 0}

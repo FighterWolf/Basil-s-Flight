@@ -52,6 +52,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Missile
   missilesHeadingTowardsSelf: []
   deployedFlares: []
+  localizedKillCreditName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   killCreditName: AIM-9 Sidewinder
   health: 5
   maxHealth: 5
@@ -71,6 +80,9 @@ MonoBehaviour:
   distance: 0
   missileSound: {fileID: 8300000, guid: c88e638b76c6d2a4a90f45ebe431c166, type: 3}
   launchMissileSound: {fileID: 8300000, guid: 66d6dcc71a5a5c146b502b0bdd4c88aa, type: 3}
+  references:
+    version: 2
+    RefIds: []
 --- !u!54 &3773582429414321847
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -410,8 +422,8 @@ RectTransform:
   m_GameObject: {fileID: 6305444636197112019}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 636349777907756044}
   m_Father: {fileID: 1675472091435821119}

@@ -151,17 +151,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flare
   missilesHeadingTowardsSelf: []
   deployedFlares: []
+  localizedKillCreditName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   killCreditName: Flare
   health: 5
   maxHealth: 5
   isDisabled: 0
   missileWarning: {fileID: 0}
   explosionParticle: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c, type: 3}
+  explosionSound: {fileID: 0}
   waypoints: []
   waypointsIterator: 0
-  owner: {fileID: 0}
   fuel: 5
+  damage: 0
+  speed: 0
+  speedModifier: 0
+  owner: {fileID: 0}
   flareParticle: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &5739267027670707174
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,8 +207,8 @@ RectTransform:
   m_GameObject: {fileID: 5739267027670707174}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 765144636203012638}
   m_Father: {fileID: 371027330913624131}
