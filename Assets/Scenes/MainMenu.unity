@@ -10743,7 +10743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: -2.25}
+  m_AnchoredPosition: {x: 273.9, y: -2.25}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1497482196
@@ -11640,8 +11640,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 120}
-  m_SizeDelta: {x: 372.53, y: 50}
+  m_AnchoredPosition: {x: -193.26642, y: 120}
+  m_SizeDelta: {x: 497.9169, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1648799132
 CanvasRenderer:
@@ -11671,7 +11671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Current Partner Pilot:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15186,6 +15186,7 @@ MonoBehaviour:
   - {fileID: 250376238729494090, guid: eedda613dda54e44c99a22b49acb822a, type: 3}
   - {fileID: 277214311849291526, guid: b8b96b48388252447a28e30b432a571c, type: 3}
   - {fileID: 3886022517894566836, guid: 3ecbb3d0af80c2145ab3c4b13550e58d, type: 3}
+  - {fileID: 5336340733073163765, guid: bcc05b6587a09804386d641386b2c1a0, type: 3}
   dropdownPilot: {fileID: 1497482194}
   listOfPilotsToSelect:
   - {fileID: 2878232776274247698, guid: c118cc9961b66b44d887287b594c53dd, type: 3}

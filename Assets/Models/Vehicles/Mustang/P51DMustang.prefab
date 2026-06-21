@@ -637,11 +637,11 @@ MonoBehaviour:
   planeClass: P-51D Mustang
   speed: 125
   maxSpeed: 135
-  health: 105
-  maxHealth: 105
+  health: 115
+  maxHealth: 115
   gunDamage: 50
   missileDamage: 75
-  gunFireRate: 850
+  gunFireRate: 1250
   missileReloadRate: 6
   flareReloadRate: 7
   gunPod: {fileID: 8428779934663268262}
@@ -679,13 +679,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671466074365877454}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0013225434, y: -0.050505944, z: 0.026143493, w: 0.99838066}
+  m_LocalRotation: {x: 0.0013225434, y: -0.050505944, z: -0.026143493, w: 0.99838066}
   m_LocalPosition: {x: -3.35, y: 1.5599875, z: 0.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5073642958041334611}
-  m_LocalEulerAnglesHint: {x: 0, y: -5.792, z: 3}
+  m_LocalEulerAnglesHint: {x: 0, y: -5.792, z: -3}
 --- !u!65 &4693705600940199718
 BoxCollider:
   m_ObjectHideFlags: 0

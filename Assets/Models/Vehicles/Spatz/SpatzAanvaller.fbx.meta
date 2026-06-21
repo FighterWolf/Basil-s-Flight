@@ -14,6 +14,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Spatz
     second: {fileID: 2100000, guid: d7e1b9422f0b92a4e8575422f4416917, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Spatz
+    second: {fileID: 2800000, guid: 19a640b0e9dc7aa479af32f126dcde9e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Spatz_Emission
+    second: {fileID: 2800000, guid: 31850127bdfc5074593a406e8e814ae9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

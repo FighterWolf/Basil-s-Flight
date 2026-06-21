@@ -128,6 +128,12 @@ public class Aircraft : Entity
         maxSpeed = stats.speed;
         health = stats.health;
         maxHealth = stats.maxHealth;
+
+        if(EssentialFunctions.FindDescendants(transform,"LandingGear").gameObject is GameObject landingGear)
+        {
+            Destroy(landingGear);
+        }
+
     }
 
     public void SwitchControls(bool turnOnPlane)

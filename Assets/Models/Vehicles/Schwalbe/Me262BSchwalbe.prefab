@@ -1262,7 +1262,7 @@ MonoBehaviour:
   health: 125
   maxHealth: 125
   gunDamage: 75
-  missileDamage: 75
+  missileDamage: 80
   gunFireRate: 850
   missileReloadRate: 6
   flareReloadRate: 7
