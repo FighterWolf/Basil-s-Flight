@@ -129,9 +129,9 @@ public class Aircraft : Entity
         health = stats.health;
         maxHealth = stats.maxHealth;
 
-        if(EssentialFunctions.FindDescendants(transform,"LandingGear").gameObject is GameObject landingGear)
+        if(EssentialFunctions.FindDescendants(transform,"LandingGear") is Transform landingGear)
         {
-            Destroy(landingGear);
+            Destroy(landingGear.gameObject);
         }
 
     }

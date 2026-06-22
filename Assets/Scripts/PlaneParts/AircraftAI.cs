@@ -298,10 +298,7 @@ public class AircraftAI : Aircraft
     {
         ResetRotation();
         speed = 0;
-        if (transform.rotation.x < 10)
-        {
-            pitch = -1;
-        }
+        glideSpeed = 0;
     }
 
     void SearchForClosestEnemy()

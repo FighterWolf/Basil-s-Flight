@@ -6016,6 +6016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   entitiesToSpawn:
   - {fileID: 5676728369717317080, guid: 6a41d2728c8893648ad117a8a7ffd5c5, type: 3}
+  - {fileID: 4009436592960189425, guid: 90bc059dda7c56746b54492404183d77, type: 3}
   entitiesLinkedToSpawner: []
   allowRandomYHeight: 1
   maxNumberOfEntities: 3

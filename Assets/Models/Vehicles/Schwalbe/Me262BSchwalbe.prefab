@@ -594,7 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f45291709da154595c093d73a11c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Propellor
-  propellorSound: {fileID: 8300000, guid: 2ab398c7e758dfe438026903874161bc, type: 3}
+  propellerSound: {fileID: 8300000, guid: 2ab398c7e758dfe438026903874161bc, type: 3}
+  isHelicopter: 0
 --- !u!82 &8366202756920398679
 AudioSource:
   m_ObjectHideFlags: 0

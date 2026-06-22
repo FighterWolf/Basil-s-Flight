@@ -31,6 +31,10 @@ MonoBehaviour:
     m_Key: plane.yak9
     m_Metadata:
       m_Items: []
+  - m_Id: 5084795308896256
+    m_Key: plane.prober
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

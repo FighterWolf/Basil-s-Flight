@@ -4169,7 +4169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   entitiesToSpawn:
-  - {fileID: 5676728369717317080, guid: 6a41d2728c8893648ad117a8a7ffd5c5, type: 3}
+  - {fileID: 4009436592960189425, guid: 90bc059dda7c56746b54492404183d77, type: 3}
   entitiesLinkedToSpawner: []
   allowRandomYHeight: 1
   maxNumberOfEntities: 3
@@ -12035,7 +12035,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 73}
-  m_SizeDelta: {x: 446.13, y: 75}
+  m_SizeDelta: {x: 540, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721964653
 MonoBehaviour:
@@ -12982,7 +12982,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 169.20007}
-  m_SizeDelta: {x: 632, y: 112}
+  m_SizeDelta: {x: 700, y: 112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1828598094
 MonoBehaviour:

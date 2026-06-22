@@ -34,6 +34,10 @@ MonoBehaviour:
     m_Localized: Yak-9U
     m_Metadata:
       m_Items: []
+  - m_Id: 5084795308896256
+    m_Localized: FVQ-5 "Prober"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
