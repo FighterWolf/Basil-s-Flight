@@ -16,19 +16,28 @@ public class DialogueObject : MonoBehaviour,Interactable
     [SerializeField] public DialogueLine[] linesOfDialogue;
     public float timesInteractedWith;
 
+    public GameObject[] listOfGameObjectsToEnable;
+    public MonoBehaviour[] listOfMonoBehaviorsToEnable;
+
+    protected bool enabledDialogueComplete;
+
     public bool deleteObjectAfterDialogue;
     private bool isTriggerEnter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
         if (TryGetComponent<Collider>(out Collider c) && c.isTrigger) isTriggerEnter = true;
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        if (timesInteractedWith > 0 && !enabledDialogueComplete)
+        {
+            EnableAtTheEndOfDialogue();
+            enabledDialogueComplete = true;
+        }
     }
 
     public void Interact(GameObject player)
@@ -57,6 +66,18 @@ public class DialogueObject : MonoBehaviour,Interactable
         dialogueBox.timesInteractedWith = timesInteractedWith;
         dialogueBox.AssignLines(this, linesOfDialogue);
         dialogueBox.StartDialogue(0);
+    }
+
+    public void EnableAtTheEndOfDialogue()
+    {
+        foreach (GameObject o in listOfGameObjectsToEnable)
+        {
+            o.SetActive(true);
+        }
+        foreach (MonoBehaviour mb in listOfMonoBehaviorsToEnable)
+        {
+            mb.enabled = true;
+        }
     }
 
     public string GetName()

@@ -3,25 +3,16 @@ using System.Collections;
 
 public class DialogueStarter : DialogueObject
 {
-    bool enabledDialogueComplete;
-
-    public GameObject[] listOfGameObjectsToEnable;
-    public MonoBehaviour[] listOfMonoBehaviorsToEnable;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
         StartCoroutine(Wait());
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        if (timesInteractedWith > 0 && !enabledDialogueComplete)
-        {
-            EnableAtTheEndOfDialogue();
-            enabledDialogueComplete = true;
-        }
+        base.Update();
     }
 
     public void StartDialogue()
@@ -32,18 +23,6 @@ public class DialogueStarter : DialogueObject
         dialogueBox.timesInteractedWith = timesInteractedWith;
         dialogueBox.AssignLines(this, linesOfDialogue);
         dialogueBox.StartDialogue(0);
-    }
-
-    public void EnableAtTheEndOfDialogue()
-    {
-        foreach (GameObject o in listOfGameObjectsToEnable)
-        {
-            o.SetActive(true);
-        }
-        foreach (MonoBehaviour mb in listOfMonoBehaviorsToEnable)
-        {
-            mb.enabled = true;
-        }
     }
 
     private IEnumerator Wait()

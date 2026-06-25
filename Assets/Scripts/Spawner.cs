@@ -16,15 +16,25 @@ public class Spawner : MonoBehaviour
 
     public Transform[] waypointsToFollow;
 
+    private LevelHandler lvlHandler;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        lvlHandler = FindFirstObjectByType<LevelHandler>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (lvlHandler)
+        {
+            if (lvlHandler.numberOfKillsNeeded > 0)
+            {
+                maxNumberOfEntities = lvlHandler.numberOfKillsNeeded - lvlHandler.currentKillPoints;
+            }
+        }
+        
         CleanListOfDestroyedEntity();
 
         if (!LevelHandler.isLevelComplete)

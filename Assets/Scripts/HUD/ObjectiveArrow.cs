@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class ObjectiveArrow : MonoBehaviour
 {
-    protected GameObject currentRing;
+    public List<GameObject> objectives = new List<GameObject>();
+
     protected Transform objectivePointer;
     protected Transform objectiveArrow;
     protected GameObject objectiveDistance;
@@ -26,14 +27,25 @@ public class ObjectiveArrow : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        FindObjective();
         HandleObjectiveArrow();
     }
+
+    public void FindObjective()
+    {
+        foreach(GameObject o in objectives)
+        {
+            if (o == null) continue;
+            
+            if (o.activeInHierarchy && (o.GetComponent<DialogueObject>()==null || (o.TryGetComponent<DialogueObject>(out DialogueObject dialogueObj) && dialogueObj.timesInteractedWith<1)))
+            {
+                objectiveToFollow = o;
+            }
+        }
+    }
+
     public void HandleObjectiveArrow()
     {
-        Ring ring = FindFirstObjectByType<Ring>();
-        currentRing = ring != null ? ring.gameObject : null;
-        objectiveToFollow = objectiveToFollow == null ? currentRing : objectiveToFollow;
-
         if (objectiveToFollow != null)
         {
             objectivePointer.gameObject.SetActive(true);
@@ -60,7 +72,10 @@ public class ObjectiveArrow : MonoBehaviour
                 objectiveArrow.localEulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, target.normalized));
             }
 
-            if(objectiveToFollow.GetComponent<Ring>()!=null) objectiveDistance.GetComponent<TextMeshProUGUI>().text = EssentialFunctions.FindDescendants(objectiveToFollow.transform.parent, "Distance").GetComponent<TextMeshProUGUI>().text;
+            if (objectiveToFollow)
+            {
+                objectiveDistance.GetComponent<TextMeshProUGUI>().text = objectiveToFollow.GetComponentInChildren<ObjectiveDistance>().distanceTextString;
+            }
         }
         else
         {

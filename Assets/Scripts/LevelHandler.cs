@@ -15,7 +15,7 @@ public class LevelHandler : MonoBehaviour
 
     public bool mustExitThroughRing;
     public GameObject exitRing;
-    public GameObject finalInstruction;
+    public GameObject activateObjectAtEnd;
     private bool isExitRingGenerated;
 
     public bool isStory;
@@ -37,7 +37,6 @@ public class LevelHandler : MonoBehaviour
             currentCheckpoint = SceneManager.GetActiveScene().name;
             MenuController.currentLevel = currentCheckpoint;
         }
-        finalInstruction = mustExitThroughRing ? EssentialFunctions.FindDescendants(transform, "MustGoThroughExitRing").gameObject : null;
     }
 
     // Update is called once per frame
@@ -66,9 +65,20 @@ public class LevelHandler : MonoBehaviour
             {
                 if (!isExitRingGenerated)
                 {
-                    exitRing.SetActive(true);
-                    isExitRingGenerated = true;
-                    finalInstruction.SetActive(true);
+                    if (activateObjectAtEnd!=null)
+                    {
+                        activateObjectAtEnd.SetActive(true);
+
+                        if (exitRing.activeInHierarchy)
+                        {
+                            isExitRingGenerated = true;
+                        }
+                    }
+                    else
+                    {
+                        exitRing.SetActive(true);
+                        isExitRingGenerated = true;
+                    }
                 }
                 if (exitRing == null)
                 {
@@ -84,7 +94,6 @@ public class LevelHandler : MonoBehaviour
 
     public void GameOver()
     {
-        if (finalInstruction != null) finalInstruction.SetActive(false);
         levelCompleteHUD.SetActive(true);
         EssentialFunctions.GameOver();
         isLevelComplete = true;
